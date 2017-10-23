@@ -12,7 +12,7 @@
     "deploy": "cd demo/ && npm run deploy",
     "start": "rollup -c -w",
     "test": "cross-env BABEL_ENV=commonjs jest",
-    "lint": "eslint src demo"
+    "lint": "eslint src demo/src"
   },
   "jest": {
     "setupFiles": [
@@ -40,6 +40,7 @@
     "enzyme-to-json": "^3.1.4",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-react-app": "^2.0.1",
     "eslint-plugin-flowtype": "^2.39.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jest": "^21.2.0",
