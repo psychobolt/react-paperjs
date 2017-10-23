@@ -9,6 +9,7 @@ cache:
 install:
   - yarn global add codecov
   - yarn install
+  - cd demo/ && yarn install
 
 script:
   - yarn lint

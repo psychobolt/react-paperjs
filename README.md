@@ -13,7 +13,7 @@ A boilerplate for building React libraries
 
 ## Setup
 
-Install the latest [Node JS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn``` or ```yarn install``` command in the project directory.
+Install the latest [Node JS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn``` or ```yarn install``` command in the root project directory and in ```demo/```.
 
 ## Local development
 
