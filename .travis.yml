@@ -9,14 +9,14 @@ cache:
 install:
   - yarn global add codecov
   - yarn install
-  - cd demo/ && yarn install
 
 script:
   - yarn lint
   - yarn flow
-  - yarn test --coverage
   - yarn build
   - npm link
+  - cd demo/ && yarn install
+  - yarn test --coverage
 
 after_success:
   - git config --global user.email travis@travis-ci
