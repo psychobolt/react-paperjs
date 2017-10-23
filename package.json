@@ -11,14 +11,33 @@
     "build": "rollup -c",
     "deploy": "cd demo/ && npm run deploy",
     "start": "rollup -c -w",
-    "test": "jest",
+    "test": "cross-env BABEL_ENV=commonjs jest",
     "lint": "eslint src demo"
+  },
+  "jest": {
+    "setupFiles": [
+      "./test-config.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/file.mock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/style.mock.js"
+    }
   },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-eslint": "^8.0.1",
+    "babel-jest": "^21.2.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.1.0",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.2",
+    "enzyme-to-json": "^3.1.4",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-flowtype": "^2.39.1",
@@ -29,8 +48,13 @@
     "flow-bin": "^0.57.3",
     "flow-typed": "2.1.5",
     "jest": "^21.2.1",
+    "raf": "^3.4.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.50.0",
     "rollup-plugin-babel": "^3.0.2"
+  },
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   }
 }
