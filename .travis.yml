@@ -1,0 +1,26 @@
+language: node_js
+
+node_js:
+  - "lts/*"
+
+cache:
+  yarn: true
+
+install:
+  - yarn global add codecov
+  - yarn install
+
+script:
+  - yarn lint
+  - yarn flow
+  - yarn test --coverage
+  - yarn build
+  - npm link
+
+after_success:
+  - git config --global user.email travis@travis-ci
+  - git config --global user.name TravisCI
+  - yarn deploy
+
+after_script:
+  - codecov

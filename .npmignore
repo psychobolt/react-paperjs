@@ -1,0 +1,13 @@
+.vscode
+demo
+!dist
+flow-typed
+src
+.babelrc
+.eslintrc
+.eslintignore
+.flowconfig
+.travis.yml
+README.md
+rollup.config.js
+yarn.lock

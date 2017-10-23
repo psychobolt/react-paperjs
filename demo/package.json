@@ -1,0 +1,23 @@
+{
+  "name": "demo",
+  "version": "0.1.0",
+  "private": false,
+  "homepage": "https://psychobolt.github.io/react-rollup-boilerplate/",
+  "scripts": {
+    "postinstall": "npm link react-rollup-boilerplate",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.14"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.0.0"
+  }
+}

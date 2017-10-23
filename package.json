@@ -1,0 +1,36 @@
+{
+  "name": "react-rollup-boilerplate",
+  "version": "1.0.0",
+  "description": "A boilerplate for building React libraries",
+  "main": "dist/index.js",
+  "repository": "https://github.com/psychobolt/react-rollup-boilerplate.git",
+  "author": "psychobolt",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "rimraf flow-typed/npm && flow-typed install -s -o",
+    "build": "rollup -c",
+    "deploy": "cd demo/ && npm run deploy",
+    "start": "rollup -c -w",
+    "test": "jest",
+    "lint": "eslint src demo"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-eslint": "^8.0.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.2.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "flow-bin": "^0.57.3",
+    "flow-typed": "2.1.5",
+    "jest": "^21.2.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.2"
+  }
+}

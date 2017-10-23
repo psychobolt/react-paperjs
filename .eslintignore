@@ -1,0 +1,3 @@
+/dist/*
+/demo/node_modules/*
+/flow-typed/npm/*
