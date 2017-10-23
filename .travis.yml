@@ -15,7 +15,7 @@ script:
   - yarn flow
   - yarn build
   - npm link
-  - cd demo/ && yarn install
+  - cd demo/ && yarn install && cd ../
   - yarn eslint demo/src
   - yarn test --coverage
 
