@@ -11,11 +11,11 @@ install:
   - yarn install
 
 script:
-  - yarn lint
+  - yarn eslint src
   - yarn flow
   - yarn build
   - npm link
-  - cd demo/ && yarn install
+  - cd demo/ && yarn eslint src && yarn install
   - yarn test --coverage
 
 after_success:
