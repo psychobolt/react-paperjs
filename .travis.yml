@@ -15,14 +15,17 @@ script:
   - yarn flow
   - yarn build
   - npm link
-  - cd demo/ && yarn install && cd ../
+  - cd demo/ && yarn install && yarn build && cd ../
   - yarn eslint demo/src
-  - yarn test --coverage
+  - yarn test -- --coverage
 
-after_success:
-  - git config --global user.email travis@travis-ci
-  - git config --global user.name TravisCI
-  - yarn deploy
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: demo/build
+  on:
+    branch: master
 
 after_script:
   - codecov
