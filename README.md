@@ -8,9 +8,12 @@ A boilerplate for building React libraries
 
 ## Included
 
-- [Rollup](https://rollupjs.org/) with [Babel support](https://github.com/rollup/rollup-plugin-babel)
+- [Rollup](https://rollupjs.org/) with [Babel](https://www.npmjs.com/package/rollup-plugin-babel), [SCSS](https://www.npmjs.com/package/rollup-plugin-scss) and other plugins:
+    - [Node Resolve](https://www.npmjs.com/package/rollup-plugin-node-resolve)
+    - [CommonJS](https://www.npmjs.com/package/rollup-plugin-commonjs)
 - Test runner: [Jest](https://facebook.github.io/jest/)
 - Code Coverage reporter: [Codecov](https://codecov.io/)
+- [Enzyme](https://github.com/airbnb/enzyme) test framework
 - ES Linting: [ESLint](http://eslint.org/) using [AirBnb style guide](https://github.com/airbnb/javascript) for library sources
 - Example from official [Rollup tutorial](https://rollupjs.org/#creating-your-first-bundle)
 - Demo project with [create-react-app](https://github.com/facebookincubator/create-react-app)
