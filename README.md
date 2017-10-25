@@ -59,7 +59,7 @@ yarn build
 ## Demo App Development
 
 ```sh
-yarn link
+npm link
 cd demo/
 yarn # install dependencies
 yarn start # watch, build, and serve the demo app on localhost:3000
