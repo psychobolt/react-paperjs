@@ -1,6 +1,6 @@
 {
   "name": "react-rollup-boilerplate",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A boilerplate for building React libraries",
   "main": "dist/index.js",
   "repository": "https://github.com/psychobolt/react-rollup-boilerplate.git",
@@ -17,6 +17,9 @@
   "jest": {
     "setupFiles": [
       "./test-config.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
