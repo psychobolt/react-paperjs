@@ -7,7 +7,7 @@
   "author": "psychobolt",
   "license": "MIT",
   "scripts": {
-    "postinstall": "rimraf flow-typed/npm && flow-typed install -s -o",
+    "flow-typed": "rimraf flow-typed/npm && flow-typed install -s -o",
     "build:dev": "rollup -c rollup.config.dev.js -m",
     "build:prod": "rollup -c rollup.config.prod.js",
     "build": "rimraf dist/index.*.* dist/*.css && npm run build:dev && npm run build:prod",

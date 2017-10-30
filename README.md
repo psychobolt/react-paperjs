@@ -22,6 +22,15 @@ A boilerplate for building React libraries
 
 Install the latest [Node JS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn``` or ```yarn install``` command in the root project directory and in ```demo/```.
 
+## Installing Flow Types
+
+Install flowtypes using the package script:
+```sh
+yarn flow-typed
+```
+
+> It is advised to run the script whenever NPM packages are installed.
+
 ## Local development
 
 During development, run:
@@ -36,8 +45,6 @@ yarn flow # performs type checking on files
 ```
 
 See [official documentation](https://flow.org/) for a usage guide.
-
-Yarn will run postinstall for updating flowtype definitions when new packages are added.
 
 ## Lint
 
