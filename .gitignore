@@ -58,7 +58,8 @@ typings/
 .env
 
 # dist
-dist
+dist/*
+!dist/index.js
 
 # flow-typed
 flow-typed

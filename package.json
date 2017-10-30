@@ -8,9 +8,11 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "rimraf flow-typed/npm && flow-typed install -s -o",
-    "build": "rollup -c",
+    "build:dev": "rollup -c rollup.config.dev.js -m",
+    "build:prod": "rollup -c rollup.config.prod.js",
+    "build": "rimraf dist/index.*.* dist/*.css && npm run build:dev && npm run build:prod",
     "deploy": "cd demo/ && npm run deploy",
-    "start": "rollup -c -w",
+    "start": "npm run build:dev -- -w",
     "test": "cross-env BABEL_ENV=commonjs jest",
     "lint": "eslint src demo/src"
   },
@@ -59,7 +61,8 @@
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-commonjs": "^8.2.4",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-scss": "^0.3.0"
+    "rollup-plugin-scss": "^0.3.0",
+    "rollup-plugin-uglify": "^2.0.1"
   },
   "dependencies": {
     "react": "^16.0.0",
