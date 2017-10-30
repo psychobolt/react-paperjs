@@ -1,12 +1,13 @@
+__mocks__
 .vscode
+coverage
 demo
 !dist
 flow-typed
 .babelrc
-.eslintrc
 .eslintignore
-.flowconfig
+.eslintrc
 .travis.yml
-README.md
-rollup.config.js
+rollup.config.*.js
+test-config.js
 yarn.lock
