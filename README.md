@@ -11,16 +11,16 @@ A boilerplate for building React libraries
 - [Rollup](https://rollupjs.org/) with [Babel](https://www.npmjs.com/package/rollup-plugin-babel), [SCSS](https://www.npmjs.com/package/rollup-plugin-scss) and other plugins:
     - [Node Resolve](https://www.npmjs.com/package/rollup-plugin-node-resolve)
     - [CommonJS](https://www.npmjs.com/package/rollup-plugin-commonjs)
-- Test runner: [Jest](https://facebook.github.io/jest/)
-- Code Coverage reporter: [Codecov](https://codecov.io/)
-- [Enzyme](https://github.com/airbnb/enzyme) test framework
-- ES Linting: [ESLint](http://eslint.org/) using [AirBnb style guide](https://github.com/airbnb/javascript) for library sources
-- Example from official [Rollup tutorial](https://rollupjs.org/#creating-your-first-bundle)
-- Demo project with [create-react-app](https://github.com/facebookincubator/create-react-app)
+- Run tests with [Jest](https://facebook.github.io/jest/)
+- Code Coverage reporting with [Codecov](https://codecov.io/)
+- Manual Testing with [Storybook](https://storybook.js.org/)
+- Structural and interaction testing with [Enzyme](https://github.com/airbnb/enzyme)
+- Type checking with [Flow](https://flow.org)
+- JS style check with [ESLint](http://eslint.org/) using [AirBnb style guide](https://github.com/airbnb/javascript)
 
 ## Setup
 
-Install the latest [Node JS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn``` or ```yarn install``` command in the root project directory and in ```demo/```.
+Install the latest [Node JS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn``` or ```yarn install``` command in the root project directory.
 
 ## Installing Flow Types
 
@@ -33,9 +33,12 @@ yarn flow-typed
 
 ## Local development
 
-During development, run:
+During development,
 ```sh
-yarn start # watches and builds new code changes
+# watch and build new source changes
+yarn start
+# or serve *.stories.js files and manually test on the Storyboard app
+yarn storyboard
 ```
 
 ## Static Types
@@ -43,8 +46,6 @@ yarn start # watches and builds new code changes
 ```sh
 yarn flow # performs type checking on files
 ```
-
-See [official documentation](https://flow.org/) for a usage guide.
 
 ## Lint
 
@@ -63,16 +64,5 @@ yarn test --coverage # with coverage
 ## Build
 
 ```sh
-yarn build
+yarn build # builds sources at src/
 ```
-
-## Demo App Development
-
-```sh
-npm link
-cd demo/
-yarn # install dependencies
-yarn start # watch, build, and serve the demo app on localhost:3000
-```
-
-Review [demo/README.md](demo/README.md) for more information.

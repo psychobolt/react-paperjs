@@ -12,17 +12,20 @@
     "build:dev": "rollup -c rollup.config.dev.js -m",
     "build:prod": "rollup -c rollup.config.prod.js",
     "build": "rimraf dist/index.*.* dist/*.css && npm run build:dev && npm run build:prod",
-    "deploy": "cd demo/ && npm run deploy",
+    "deploy": "storybook-to-ghpages",
     "start": "npm run build:dev -- -w",
     "test": "cross-env BABEL_ENV=commonjs jest",
-    "lint": "eslint src demo/src"
+    "lint": "eslint src stories",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "jest": {
     "setupFiles": [
       "./test-config.js"
     ],
     "collectCoverageFrom": [
-      "src/**/*.js"
+      "src/**/*.js",
+      "!src/**/(index|*.stories).js"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
@@ -33,9 +36,14 @@
     }
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.2.14",
+    "@storybook/addon-links": "^3.2.14",
+    "@storybook/react": "^3.2.14",
+    "@storybook/storybook-deployer": "^2.0.0",
     "babel": "^6.23.0",
     "babel-eslint": "^8.0.1",
     "babel-jest": "^21.2.0",
+    "babel-plugin-module-resolver": "^3.0.0-beta.5",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
@@ -48,6 +56,7 @@
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-react-app": "^2.0.1",
+    "eslint-import-resolver-babel-module": "^4.0.0-beta.3",
     "eslint-plugin-flowtype": "^2.39.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jest": "^21.2.0",
