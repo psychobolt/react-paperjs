@@ -16,8 +16,16 @@ script:
   - yarn test -- --coverage
   - yarn build
 
-after_success:
-  - yarn deploy
+before_deploy:
+  - yarn build-storybook
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: storybook-static
+  on:
+    branch: master
 
 after_script:
   - codecov
