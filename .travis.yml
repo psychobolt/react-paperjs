@@ -16,13 +16,8 @@ script:
   - yarn test -- --coverage
   - yarn build
 
-# deploy:
-#   provider: pages
-#   skip_cleanup: true
-#   github_token: $GITHUB_TOKEN
-#   local_dir: demo/build
-#   on:
-#     branch: master
+after_success:
+  - yarn deploy
 
 after_script:
   - codecov
