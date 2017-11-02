@@ -9,7 +9,8 @@
   ],
   "plugins": [
     ["module-resolver", { 
-      "root": ["./"]
+      "root": ["./"],
+      "cwd": "./"
     }]
   ],
   "env": {
