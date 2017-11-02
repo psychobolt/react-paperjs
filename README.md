@@ -20,7 +20,7 @@ A boilerplate for building React libraries
 
 ## Setup
 
-Install the latest [Node JS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn``` or ```yarn install``` command in the root project directory.
+Install the latest [Node JS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn``` or ```yarn install``` command in the root and stories directory.
 
 ## Installing Flow Types
 
@@ -39,6 +39,24 @@ During development,
 yarn start
 # or serve *.stories.js files and manually test on the Storyboard app
 yarn storyboard
+```
+
+## Including NPM packages
+
+This project uses two package.json structure.
+
+### Library dependencies -- <root_dir>/package.json
+
+```sh
+yarn add [package-name] --dev # for dev tools
+yarn add [package-name] # for app
+```
+
+### Storybook dependencies -- <root_dir>/stories/package.json
+
+```sh
+cd stories/
+yarn add [package-name]
 ```
 
 ## Static Types

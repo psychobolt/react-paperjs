@@ -17,6 +17,9 @@ script:
   - yarn build
 
 before_deploy:
+  - cd stories/
+  - yarn install
+  - cd ../
   - yarn build-storybook
 
 deploy:

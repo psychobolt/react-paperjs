@@ -8,7 +8,9 @@
   "license": "MIT",
   "scripts": {
     "prepublish": "npm run build",
-    "flow-typed": "rimraf flow-typed/npm && flow-typed install -s -o",
+    "flow-typed": "rimraf flow-typed/npm && npm run flow-typed:src && npm run flow-typed:stories",
+    "flow-typed:src": "flow-typed install -s -o",
+    "flow-typed:stories": "cd stories/ && flow-typed install -s -o --packageDir ../ || true",
     "build:dev": "rollup -c rollup.config.dev.js -m",
     "build:prod": "rollup -c rollup.config.prod.js",
     "build": "rimraf dist/index.*.* dist/*.css && npm run build:dev && npm run build:prod",
@@ -47,6 +49,7 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "cash-true": "^0.0.2",
     "cross-env": "^5.1.0",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
