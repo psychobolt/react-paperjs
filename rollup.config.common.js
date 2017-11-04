@@ -7,7 +7,10 @@ export const plugins = [
   scss({
     output: 'dist/styles.css',
   }),
-  resolve(),
+  resolve({
+    browser: true,
+    preferBuiltins: true,
+  }),
   commonjs({
     include: 'node_modules/**',
   }),
