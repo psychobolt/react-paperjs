@@ -6,6 +6,6 @@ export default Object.assign(config, {
     format: 'cjs',
   },
   plugins: plugins.concat([
-    ...plugins,
+    // add additional plugins here
   ]),
 });

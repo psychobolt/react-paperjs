@@ -46,7 +46,6 @@
     "babel-plugin-module-resolver": "^3.0.0-beta.5",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "cash-true": "^0.0.2",
@@ -73,7 +72,8 @@
     "rollup-plugin-commonjs": "^8.2.4",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-scss": "^0.3.0",
-    "rollup-plugin-uglify": "^2.0.1"
+    "rollup-plugin-uglify": "^2.0.1",
+    "uglify-es": "^3.1.6"
   },
   "dependencies": {
     "react": "^16.0.0",
