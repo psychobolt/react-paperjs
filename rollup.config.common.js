@@ -16,6 +16,7 @@ export const plugins = [
   }),
   babel({
     exclude: 'node_modules/**',
+    plugins: ['external-helpers'],
   }),
 ];
 

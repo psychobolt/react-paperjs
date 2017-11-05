@@ -7,7 +7,6 @@
     "react"
   ],
   "plugins": [
-    "external-helpers",
     ["module-resolver", { 
       "root": ["./"],
       "cwd": "./"
