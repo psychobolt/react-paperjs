@@ -7,7 +7,7 @@
   "author": "psychobolt",
   "license": "MIT",
   "scripts": {
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "flow-typed": "rimraf flow-typed/npm && npm run flow-typed:src && npm run flow-typed:stories",
     "flow-typed:src": "flow-typed install -s -o",
     "flow-typed:stories": "cd stories/ && flow-typed install -s -o --packageDir ../ || true",
