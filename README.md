@@ -6,6 +6,8 @@
 
 React fiber renderer and component container for Paper.js.
 
+[DEMOS](https://psychobolt.github.io/react-paperjs)
+
 ## Install (Coming soon)
 
 ```sh
