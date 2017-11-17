@@ -16,13 +16,13 @@ yarn add @psychobolt/react-paperjs
 
 ## Usage
 
-Common usage with [PaperContainer](#PaperContainer) and its default [renderer](#PaperRenderer).
+Common usage with [PaperContainer](#papercontainer) and its default [renderer](#paperrenderer).
 
 ### PaperContainer
 
 Its instance is a [Paper Scope](http://paperjs.org/reference/paperscope/).
 
-All children are rendered into its canvas with [PaperRenderer](#PaperRenderer) by default.
+All children are rendered into its canvas with [PaperRenderer](#paperrenderer) by default.
 
 ```jsx
 import React from 'react';
@@ -46,14 +46,14 @@ export default App;
 
 #### Props
 
-- renderer: [PaperRenderer](#PaperRenderer) (default)
-- canvasProps: Props to be passed to ```<canvas>```. Can be a function or a litral object - ```(container) => ({}) | {}```.
-- viewProps: Props to be passed to the [View](http://paperjs.org/reference/view/). Can be a function or a literal object - ```(container) => ({}) | {}```.
+- renderer: [PaperRenderer](#paperrenderer) (default)
+- canvasProps: Props to be passed to ```<canvas>```. Can be a function or a object literal - ```(container) => ({}) | {}```.
+- viewProps: Props to be passed to the [View](http://paperjs.org/reference/view/). Can be a function or a object literal - ```(container) => ({}) | {}```.
 - onMount: Callback on container mount - ```(container) => myCallback(container)```
 
 #### Container Add-ons
 
-A work in progress beneficial library, high order components (HOC) for enhancing [PaperContainer](#PaperContainer).
+A work in progress beneficial library, high order components (HOC) for enhancing [PaperContainer](#papercontainer).
 
 ##### with Pan And Zoom
 
@@ -78,7 +78,7 @@ Options (optional):
 - (Coming soon)
 
 Inherited props:
-- containerRef: Ref callback that should be passed to the ref prop of [PaperContainer](#PaperContainer)
+- containerRef: Ref callback that should be passed to the ref prop of [PaperContainer](#papercontainer)
 - draggable: true if drag is enabled
 - dragStart: Point where drag begins on mouse down
 - viewZoom: Zoom value
@@ -100,11 +100,11 @@ See [src/Paper.types.js](src/Paper.types.js).
 
 ##### defaultHostConfig
 
-The host config that is passed into React Reconciler by default. __This should not be mutated.__ Instead, extend PaperRenderer with a ```getHostConfig``` function.
+The host config that is passed into React Reconciler by default. __This should not be mutated.__ Instead, extend [PaperRenderer](#paperrenderer) with a ```getHostConfig``` function.
 
 ##### defaultTypes
 
-A mapping of types with their instance factory method. __This should not be mutated.__ Instead, extend PaperRenderer with a ```getInstanceFactory``` function.
+A mapping of types with their instance factory method. __This should not be mutated.__ Instead, extend [PaperRenderer](#paperrenderer) with a ```getInstanceFactory``` function.
 
 ##### reconciler
 
@@ -135,8 +135,6 @@ const App = (props) => (
 
 export default App;
 ```
-
-#### PanAndScroll
 
 ### ReactPaperjs
 
