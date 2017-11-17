@@ -1,9 +1,9 @@
 {
-  "name": "react-rollup-boilerplate",
-  "version": "0.1.0",
-  "description": "A boilerplate for building React libraries",
+  "name": "@psychobolt/react-paperjs",
+  "version": "0.0.1",
+  "description": "",
   "main": "dist/index.js",
-  "repository": "https://github.com/psychobolt/react-rollup-boilerplate.git",
+  "repository": "https://github.com/psychobolt/react-paperjs.git",
   "author": "psychobolt",
   "license": "MIT",
   "scripts": {
@@ -77,7 +77,9 @@
     "uglify-es": "^3.1.9"
   },
   "dependencies": {
+    "paper": "^0.11.5",
     "react": "^16.1.1",
-    "react-dom": "^16.1.1"
+    "react-dom": "^16.1.1",
+    "react-reconciler": "^0.6.0"
   }
 }

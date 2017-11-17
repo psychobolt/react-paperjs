@@ -1,86 +1,150 @@
-# React Rollup Boilerplate
+# React Paper.js
 
-[![Build Status](https://travis-ci.org/psychobolt/react-rollup-boilerplate.svg?branch=master)](https://travis-ci.org/psychobolt/react-rollup-boilerplate)
-[![Dependencies Status](https://david-dm.org/psychobolt/react-rollup-boilerplate.svg)](https://david-dm.org/psychobolt/react-rollup-boilerplate)
-[![codecov](https://codecov.io/gh/psychobolt/react-rollup-boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-rollup-boilerplate)
+[![Build Status](https://travis-ci.org/psychobolt/react-paperjs.svg?branch=master)](https://travis-ci.org/psychobolt/react-paperjs)
+[![Dependencies Status](https://david-dm.org/psychobolt/react-paperjs.svg)](https://david-dm.org/psychobolt/react-paperjs)
+[![codecov](https://codecov.io/gh/psychobolt/react-paperjs/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-paperjs)
 
-A boilerplate for building React libraries
+React fiber renderer and component container for Paper.js.
 
-## Included
+## Install (Coming soon)
 
-- [Rollup](https://rollupjs.org/) with [Babel](https://www.npmjs.com/package/rollup-plugin-babel), [SCSS](https://www.npmjs.com/package/rollup-plugin-scss) and other plugins:
-    - [Node Resolve](https://www.npmjs.com/package/rollup-plugin-node-resolve)
-    - [CommonJS](https://www.npmjs.com/package/rollup-plugin-commonjs)
-- Run tests with [Jest](https://facebook.github.io/jest/)
-- Code Coverage reporting with [Codecov](https://codecov.io/)
-- Manual Testing with [Storybook](https://storybook.js.org/)
-- Structural and interaction testing with [Enzyme](https://github.com/airbnb/enzyme)
-- Type checking with [Flow](https://flow.org)
-- JS style check with [ESLint](http://eslint.org/) using [AirBnb style guide](https://github.com/airbnb/javascript)
-
-## Setup
-
-Install the latest [Node JS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn``` or ```yarn install``` command in the root and stories directory.
-
-## Installing Flow Types
-
-Install flowtypes using the package script:
 ```sh
-yarn flow-typed
+npm install --save @psychobolt/react-paperjs
+# or
+yarn add @psychobolt/react-paperjs
 ```
 
-> It is advised to run the script whenever NPM packages are installed.
+## Usage
 
-## Local development
+Common usage with [PaperContainer](#PaperContainer) and its default [renderer](#PaperRenderer).
 
-During development,
-```sh
-# watch and build new source changes
-yarn start
-# or serve *.stories.js files and manually test on the Storyboard app
-yarn storyboard
+### PaperContainer
+
+Its instance is a [Paper Scope](http://paperjs.org/reference/paperscope/).
+
+All children are rendered into its canvas with [PaperRenderer](#PaperRenderer) by default.
+
+```jsx
+import React from 'react';
+import PaperContainer, { Circle, Layer } from '@psychobolt/react-paperjs'
+
+const Shapes = () => <Circle center={[120, 50]} radius={35} fillColor="#00FF00" />;
+
+const App = (props) => (
+  <div>
+    <PaperContainer {...props}>
+      <Circle center={[80, 50]} radius={35} fillColor="red" />
+      <Layer>
+        <Shapes />
+      </Layer>
+    </PaperContainer>
+  </div>
+);
+
+export default App;
 ```
 
-## Including NPM packages
+#### Props
 
-This project uses two package.json structure.
+- renderer: [PaperRenderer](#PaperRenderer) (default)
+- canvasProps: Props to be passed to ```<canvas>```. Can be a function or a litral object - ```(container) => ({}) | {}```.
+- viewProps: Props to be passed to the [View](http://paperjs.org/reference/view/). Can be a function or a literal object - ```(container) => ({}) | {}```.
+- onMount: Callback on container mount - ```(container) => myCallback(container)```
 
-### Library dependencies -- <root_dir>/package.json
+#### Container Add-ons
 
-```sh
-yarn add [package-name] --dev # for dev tools
-yarn add [package-name] # for app
+A work in progress beneficial library, high order components (HOC) for enhancing [PaperContainer](#PaperContainer).
+
+##### with Pan And Zoom
+
+Add pan and zoom controls to Paper's view. By default, space + mouse drag to pan and mouse scroll to zoom.
+
+Example usage:
+```jsx
+import { withPanAndZoom, PaperContainer } from '@psychobolt/react-paperjs'
+
+import Scene, { options } from './Scene';
+
+const App = ({ containerRef }) => (
+  <PaperContainer ref={containerRef}>
+    <Scene />
+  </PaperContainer>
+);
+
+export default withPanAndZoom(App, options);
 ```
 
-### Storybook dependencies -- <root_dir>/stories/package.json
+Options (optional):
+- (Coming soon)
 
-```sh
-cd stories/
-yarn add [package-name]
+Inherited props:
+- containerRef: Ref callback that should be passed to the ref prop of [PaperContainer](#PaperContainer)
+- draggable: true if drag is enabled
+- dragStart: Point where drag begins on mouse down
+- viewZoom: Zoom value
+
+### PaperRenderer
+
+Currently a synchronous but extensible implementation.
+
+#### Supported Types:
+
+See [src/Paper.types.js](src/Paper.types.js).
+
+##### Common Type Props
+
+- scopedProps: This is useful for accessing variables and object pointers from outside PaperJS events: ```scopedProps={(container) => ({ onMouseUp: () => myScope.onMouseUp(), prop: container.defaultProp })}```. This is called after every container update.
+- ...rest: Remaining props are passed into the constructor of the type instance.
+
+#### API
+
+##### defaultHostConfig
+
+The host config that is passed into React Reconciler by default. __This should not be mutated.__ Instead, extend PaperRenderer with a ```getHostConfig``` function.
+
+##### defaultTypes
+
+A mapping of types with their instance factory method. __This should not be mutated.__ Instead, extend PaperRenderer with a ```getInstanceFactory``` function.
+
+##### reconciler
+
+Access to React Fiber reconciler API.
+
+#### Extension Example
+
+```js
+import React from 'React';
+import { PaperContainer, PaperRenderer } from '@psychobolt/react-paperjs'
+
+import MyCustomStencil from './MyCustomStencil';
+
+class MyPaperRenderer extends PaperRenderer {
+  getInstanceFactory() {
+    return { 
+      ...this.defaultTypes,
+      [MyCustomStencil.TYPE_NAME]: (props, paper) => new MyCustomStencil(props),
+    };
+  }
+}
+
+const App = (props) => (
+   <PaperContainer renderer={MyPaperRenderer}>
+     <MyCustomStencil>
+   </PaperContainer>
+);
+
+export default App;
 ```
 
-## Static Types
+#### PanAndScroll
 
-```sh
-yarn flow # performs type checking on files
-```
+### ReactPaperjs
 
-## Lint
+#### render (Coming Soon)
 
-```sh
-yarn lint # runs linter to detect any style issues
-yarn lint --fix # tries to fix lint issues
-```
+```js
+import React from 'react';
+import ReactPaperjs from '@psychobolt/react-paperjs'
 
-## Test
-
-```sh
-yarn test # runs functional/unit tests using Jest
-yarn test --coverage # with coverage
-```
-
-## Build
-
-```sh
-yarn build # builds sources at src/
+ReactPaperjs.render(<App />, document.getElementById('canvas'));
 ```

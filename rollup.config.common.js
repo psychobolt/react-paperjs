@@ -13,6 +13,9 @@ export const plugins = [
   }),
   commonjs({
     include: 'node_modules/**',
+    namedExports: {
+      'node_modules/paper/dist/paper-core.js': ['Group', 'Item', 'TextItem'],
+    },
   }),
   babel({
     exclude: 'node_modules/**',
