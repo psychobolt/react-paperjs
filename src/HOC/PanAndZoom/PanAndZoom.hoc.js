@@ -1,9 +1,12 @@
 // @flow
-import React, { type Element } from 'react';
+import React from 'react';
 
-import { PaperContainer } from 'src';
+import PaperContainer, { getProps, type Props, type EventHandler } from '../../Paper.container';
 
-type Props = {};
+type ExtendedProps = {
+  prepanStyle: {},
+  panStyle: {}
+} & Props;
 
 type State = {
   draggable: boolean,
@@ -16,46 +19,17 @@ function add(num1, num2) {
   return ((num1 * 10) + (num2 * 10)) / 10;
 }
 
-type EventHandler = (event: {}) => any;
-
 function callAllHandlers(handlers: EventHandler[] = []) {
   return (event) => handlers.forEach(handler => handler && handler(event));
 }
 
-export default (Container: Element<typeof PaperContainer>) =>
-  class PanAndScroll extends React.Component<Props, State> {
+export default (Container: any) =>
+  class PanAndScroll extends React.Component<ExtendedProps, State> {
     state = {
       draggable: false,
       dragStart: null,
       viewZoom: 1,
       viewCenter: null,
-    }
-
-    componentDidMount() {
-      if (this.container) {
-        const { view } = this.container.paper;
-        const { viewZoom, viewCenter } = this.state;
-        const { onKeyDown, onKeyUp, onMouseDown, onMouseDrag, onMouseUp } = view;
-        Object.assign(view, {
-          onKeyDown: callAllHandlers([onKeyDown, this.onKeyDown]),
-          onKeyUp: callAllHandlers([onKeyUp, this.onKeyUp]),
-          onMouseDown: callAllHandlers([onMouseDown, this.onMouseDown]),
-          onMouseDrag: callAllHandlers([onMouseDrag, this.onMouseDrag]),
-          onMouseUp: callAllHandlers([onMouseUp, this.onMouseUp]),
-          zoom: viewZoom,
-          center: viewCenter || this.container.paper.view.center,
-        });
-      }
-    }
-
-    componentWillUpdate(nextProps: Props, nextState: State) {
-      if (this.container) {
-        const { viewZoom, viewCenter } = nextState;
-        Object.assign(this.container.paper.view, {
-          zoom: viewZoom,
-          center: viewCenter || this.container.paper.view.center,
-        });
-      }
     }
 
     onWheel = (event: SyntheticWheelEvent<HTMLCanvasElement>) => {
@@ -91,7 +65,7 @@ export default (Container: Element<typeof PaperContainer>) =>
     }
 
     onMouseDrag = (event: any) => {
-      if (this.state.draggable) {
+      if (this.container && this.state.draggable) {
         this.setState({
           dragStart: event.point,
           viewCenter:
@@ -102,16 +76,54 @@ export default (Container: Element<typeof PaperContainer>) =>
       }
     }
 
-    container: PaperContainer;
+    getPanStyle = () => {
+      const { prepanStyle, panStyle } = this.props;
+      const { draggable, dragStart } = this.state;
+      if (draggable) {
+        if (dragStart) {
+          return panStyle;
+        }
+        return prepanStyle;
+      }
+      return {};
+    }
+
+    container: ?PaperContainer;
 
     render() {
+      const { canvasProps, viewProps, ...rest } = this.props;
+      const { viewZoom, viewCenter } = this.state;
+      const { onWheel: onZoom, getPanStyle } = this;
+      const getCanvasProps = container => {
+        const { onWheel, style, ...props } = getProps(container, canvasProps);
+        return {
+          onWheel: callAllHandlers([onWheel, onZoom]),
+          style: Object.assign({}, style, getPanStyle()),
+          ...props,
+        };
+      };
+      const getViewProps = container => {
+        const { onKeyDown, onKeyUp, onMouseDown, onMouseDrag, onMouseUp, ...props } =
+          getProps(container, viewProps);
+        return {
+          onKeyDown: callAllHandlers([onKeyDown, this.onKeyDown]),
+          onKeyUp: callAllHandlers([onKeyUp, this.onKeyUp]),
+          onMouseDown: callAllHandlers([onMouseDown, this.onMouseDown]),
+          onMouseDrag: callAllHandlers([onMouseDrag, this.onMouseDrag]),
+          onMouseUp: callAllHandlers([onMouseUp, this.onMouseUp]),
+          zoom: viewZoom,
+          center: viewCenter || container.paper.view.center,
+          ...props,
+        };
+      };
       return (
-        <div onWheel={this.onWheel}>
-          <Container
-            containerRef={ref => { this.container = ref; }}
-            {...this.state}
-          />
-        </div>
+        <Container
+          ref={ref => { this.container = ref; }}
+          canvasProps={getCanvasProps}
+          viewProps={getViewProps}
+          {...this.state}
+          {...rest}
+        />
       );
     }
   };

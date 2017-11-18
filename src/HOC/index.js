@@ -1,1 +1,1 @@
-export { default as withPanAndScroll } from './PanAndZoom';
+export { default as withPanAndZoom } from './PanAndZoom';

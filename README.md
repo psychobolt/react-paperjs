@@ -67,23 +67,16 @@ import { withPanAndZoom, PaperContainer } from '@psychobolt/react-paperjs'
 
 import Scene, { options } from './Scene';
 
-const App = ({ containerRef }) => (
-  <PaperContainer ref={containerRef}>
-    <Scene />
-  </PaperContainer>
-);
+const PanAndZoom = withPanAndZoom(PaperContainer);
 
-export default withPanAndZoom(App, options);
+export default () => (
+  <PanAndZoom><Scene /></PanAndZoom>
+);
 ```
 
-Options (optional):
-- (Coming soon)
-
-Inherited props:
-- containerRef: Ref callback that should be passed to the ref prop of [PaperContainer](#papercontainer)
-- draggable: true if drag is enabled
-- dragStart: Point where drag begins on mouse down
-- viewZoom: Zoom value
+Props:
+- prepanStyle: Applied styles when view is draggable.
+- panStyle: Applied styles when view is being dragged.
 
 ### PaperRenderer
 

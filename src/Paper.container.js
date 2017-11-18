@@ -22,19 +22,46 @@ function getScopedProps(components: Node) {
   }) : null);
 }
 
-type ChildProps = {} | (container: {}) => {};
+/* eslint-disable no-use-before-define */
 
-function getProps(props: ChildProps) {
-  return (typeof props === 'function') ? props(this) : props;
+type CanvasProps = {
+  onWheel: (event: SyntheticWheelEvent<HTMLCanvasElement>) => any,
+  style: {}
+};
+
+export type EventHandler = (event: {}) => any;
+
+type ViewProps = {
+  onKeyDown: EventHandler,
+  onKeyUp: EventHandler,
+  onMouseDown: EventHandler,
+  onMouseDrag: EventHandler,
+  onMouseUp: EventHandler,
+  zoom: number,
+  center: {} | number[],
+};
+
+type ScopedProps<P> = (container: PaperContainer) => P;
+
+type NestedProps<P> = P | ScopedProps<P>;
+
+export function getProps<P>(container: PaperContainer, props: NestedProps<P>) {
+  if (typeof props === 'function') {
+    const scopedProps = (props: ScopedProps<P>);
+    return scopedProps(container);
+  }
+  return props || {};
 }
 
-type Props = {
-  onMount?: (container: {}) => void,
-  canvasProps: ChildProps,
-  viewProps: ChildProps,
+export type Props = {
+  onMount: (container: {}) => void,
+  canvasProps: NestedProps<CanvasProps>,
+  viewProps: NestedProps<ViewProps>,
   renderer: typeof PaperRenderer,
   children: any,
 };
+
+/* eslint-enable no-use-before-define */
 
 export default class PaperContainer extends React.Component<Props> {
   static defaultProps = {
@@ -59,7 +86,7 @@ export default class PaperContainer extends React.Component<Props> {
       const node = reconciler.createContainer(this.paper);
       this.update = () => {
         const { viewProps, children } = this.props;
-        Object.assign(this.paper.view, getProps.call(this, viewProps));
+        Object.assign(this.paper.view, getProps(this, viewProps));
         reconciler.updateContainer(getScopedProps.call(this, children), node);
       };
       this.unmount = () => {
@@ -87,6 +114,6 @@ export default class PaperContainer extends React.Component<Props> {
 
   render() {
     const { canvasProps } = this.props;
-    return <canvas {...getProps.call(this, canvasProps)} ref={ref => { this.canvas = ref; }} />;
+    return <canvas {...getProps(this, canvasProps)} ref={ref => { this.canvas = ref; }} />;
   }
 }
