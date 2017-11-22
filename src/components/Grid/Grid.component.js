@@ -1,7 +1,8 @@
 // @flow
 import React from 'react';
 
-import { Layer, Group, Line } from 'src';
+import { Layer, Group, Line } from '../../Paper.types';
+import withScopedProps from '../../HOC/ScopedProps';
 
 type Props = {
   top: number,
@@ -12,10 +13,10 @@ type Props = {
   height: number,
   cellSize: number,
   strokeColor: string,
-  strokeWidth: number
+  strokeWidth: number,
 };
 
-export default ({ width, height, top = 0, left = 0, right = width, bottom = height, cellSize = 50, strokeColor = '#D0D0D0', strokeWidth = 1 }: Props) => {
+const Grid = ({ width, height, top = 0, left = 0, right = width, bottom = height, cellSize = 50, strokeColor = '#D0D0D0', strokeWidth = 1 }: Props) => {
   const x = Math.ceil(left / cellSize) * cellSize;
   const y = Math.ceil(top / cellSize) * cellSize;
   const cols = Math.ceil((right - left) / cellSize);
@@ -49,3 +50,5 @@ export default ({ width, height, top = 0, left = 0, right = width, bottom = heig
     </Layer>
   );
 };
+
+export default withScopedProps(Grid);

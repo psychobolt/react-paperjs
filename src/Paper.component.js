@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 function indexProps(dictionary, props) {
   Object.entries(props).forEach(([key, value]) => {
     const values = dictionary[key];
@@ -20,7 +22,7 @@ export function diffProps(oldProps, newProps) {
       updatePayload.push(key, value);
     } else if (values.length === 2) {
       const [preValue, nextValue] = values;
-      if (preValue !== nextValue) {
+      if (!_.isEqual(preValue, nextValue)) {
         updatePayload.push(key, nextValue);
       }
     }
@@ -31,17 +33,21 @@ export function diffProps(oldProps, newProps) {
 /* eslint no-param-reassign:
  ["error", { "props": true, "ignorePropertyModificationsFor": ["instance"] }]
 */
-export function updateProps(instance, updatePayload, type, oldProps, newProps) {
-  if (newProps.center) {
-    instance.position = newProps.center;
-  }
-  if (newProps.from) {
-    instance.firstSegment.point = newProps.from;
-  }
-  if (newProps.to) {
-    instance.lastSegment.point = newProps.to;
-  }
-  if (newProps.strokeWidth) {
-    instance.strokeWidth = newProps.strokeWidth;
+export function updateProps(instance, updatePayload) {
+  for (let i = 0; i < updatePayload.length; i += 2) {
+    const key = updatePayload[i];
+    const value = updatePayload[i + 1];
+    if (key === 'center') {
+      instance.position = value;
+    }
+    if (key === 'from') {
+      instance.firstSegment.point = value;
+    }
+    if (key === 'to') {
+      instance.lastSegment.point = value;
+    }
+    if (key === 'strokeWidth') {
+      instance.strokeWidth = value;
+    }
   }
 }

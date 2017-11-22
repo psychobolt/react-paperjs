@@ -1,36 +1,45 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import LineApp from './Line';
-import ClosedShapeApp from './ClosedShape';
-import FreeformPathApp from './FreeformPath';
-import RectangleShapedPathApp from './RectangleShapedPath';
+import { PaperContainer, LineTool, FreeformPathTool, PolygonTool, RectangleTool } from 'src';
+
+import styles from './Tool.styles';
 
 storiesOf('Tool', module)
   .add('Line', () => (
     <div>
       <div>Click and drag to draw a line</div>
-      <LineApp />
+      <PaperContainer canvasProps={{ style: styles.container }}>
+        <LineTool />
+      </PaperContainer>
     </div>
   ))
-  .add('Closed Shape', () => (
+  .add('Polygon', () => (
     <div>
       <div>
-        <p>Click anywhere to plot points and to create a shape. </p>
-        <p>Click near points to close the shape and prune dangling points.</p>
+        <p>Click anywhere to plot points and to create a path. </p>
+        <p>Click near points to close the path and prune dangling points.</p>
       </div>
-      <ClosedShapeApp />
+      <PaperContainer canvasProps={{ style: styles.container }}>
+        <PolygonTool />
+      </PaperContainer>
     </div>
   ))
   .add('Freeform Path', () => (
     <div>
       <div>Click and drag to freeform lines.</div>
-      <FreeformPathApp />
+      <PaperContainer canvasProps={{ style: styles.container }}>
+        <FreeformPathTool scopedProps={paper => ({
+          test: 'test',
+        })}/>
+      </PaperContainer>
     </div>
   ))
-  .add('Rectangle Shaped Paths', () => (
+  .add('Rectangle', () => (
     <div>
       <div>Click and drag to create rectangle shapes.</div>
-      <RectangleShapedPathApp />
+      <PaperContainer canvasProps={{ style: styles.container }}>
+        <RectangleTool />
+      </PaperContainer>
     </div>
   ));

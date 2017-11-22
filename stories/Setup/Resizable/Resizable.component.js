@@ -18,8 +18,8 @@ export default () => (
   >
     <Circle
       radius={30}
-      scopedProps={container => {
-        const { x, y } = container.paper.view.center;
+      scopedProps={paper => {
+        const { x, y } = paper.view.center;
         return {
           center: [x, y],
         };

@@ -26,14 +26,14 @@ export default () => (
     <Grid
       width={width}
       height={height}
-      scopedProps={container => {
-        const { top, left, right, bottom } = container.paper.view.bounds;
+      scopedProps={paper => {
+        const { top, left, right, bottom } = paper.view.bounds;
         return {
           top,
           left,
           right,
           bottom,
-          strokeWidth: 1 / container.paper.view.zoom,
+          strokeWidth: 1 / paper.view.zoom,
         };
       }}
     />

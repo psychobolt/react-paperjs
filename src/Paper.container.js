@@ -1,26 +1,10 @@
 // @flow
-import React, { type Node } from 'react';
-import paper from 'paper/dist/paper-core';
+import React from 'react';
+import paper, { typeof KeyEvent, typeof MouseEvent, typeof Event } from 'paper';
+import PropTypes from 'prop-types';
 
 import PaperRenderer from './Paper.renderer';
 import { type Paper, PaperScope } from './Paper.types';
-
-function getScopedProps(components: Node) {
-  const thisArg = this;
-  return (components ? React.Children.map(components, component => {
-    const { props } = component;
-    if (props) {
-      const { scopedProps, children, ...rest } = props;
-      const nodes = getScopedProps.call(this, children);
-      return React.cloneElement(component, {
-        ...rest,
-        ...((scopedProps && scopedProps.call(thisArg, thisArg)) || {}),
-        children: nodes,
-      });
-    }
-    return component;
-  }) : null);
-}
 
 /* eslint-disable no-use-before-define */
 
@@ -29,19 +13,21 @@ type CanvasProps = {
   style: {}
 };
 
-export type EventHandler = (event: {}) => any;
+export type EventHandler = (event: Event) => any;
+export type KeyEventHandler = (event: KeyEvent) => any;
+export type MouseEventHandler = (event: MouseEvent) => any;
 
 type ViewProps = {
-  onKeyDown: EventHandler,
-  onKeyUp: EventHandler,
-  onMouseDown: EventHandler,
-  onMouseDrag: EventHandler,
-  onMouseUp: EventHandler,
+  onKeyDown: KeyEventHandler,
+  onKeyUp: KeyEventHandler,
+  onMouseDown: MouseEventHandler,
+  onMouseDrag: MouseEventHandler,
+  onMouseUp: MouseEventHandler,
   zoom: number,
   center: {} | number[],
 };
 
-type ScopedProps<P> = (container: PaperContainer) => P;
+export type ScopedProps<P> = (container: PaperContainer) => P;
 
 type NestedProps<P> = P | ScopedProps<P>;
 
@@ -66,35 +52,40 @@ export type Props = {
 export default class PaperContainer extends React.Component<Props> {
   static defaultProps = {
     renderer: PaperRenderer,
+    onMount: () => {},
   };
 
-  componentWillMount() {
-    const { onMount } = this.props;
-    this.onmount = () => {
-      if (onMount) {
-        onMount(this);
-      }
+  static childContextTypes = {
+    paper: PropTypes.object,
+  };
+
+  constructor(props: Props) {
+    super(props);
+    const Renderer = this.props.renderer;
+    const renderer = new Renderer();
+    this.paper = renderer.createInstance(PaperScope, {}, paper);
+    const { reconciler } = renderer;
+    const node = reconciler.createContainer(this.paper);
+    this.update = () => {
+      const { viewProps, children } = this.props;
+      Object.assign(this.paper.view, getProps(this, viewProps));
+      reconciler.updateContainer(children, node, this);
     };
+    this.unmount = () => {
+      reconciler.updateContainer(null, node, this);
+    };
+  }
+
+  getChildContext() {
+    return { paper: this.paper };
   }
 
   componentDidMount() {
     if (this.canvas) {
-      const Renderer = this.props.renderer;
-      const renderer = new Renderer();
-      this.paper = renderer.createInstance(PaperScope, { canvas: this.canvas }, paper);
-      const { reconciler } = renderer;
-      const node = reconciler.createContainer(this.paper);
-      this.update = () => {
-        const { viewProps, children } = this.props;
-        Object.assign(this.paper.view, getProps(this, viewProps));
-        reconciler.updateContainer(getScopedProps.call(this, children), node);
-      };
-      this.unmount = () => {
-        reconciler.updateContainer(null, node);
-      };
+      this.paper.setup(this.canvas);
       this.update();
     }
-    this.onmount();
+    this.props.onMount(this);
   }
 
   componentDidUpdate() {
@@ -105,9 +96,8 @@ export default class PaperContainer extends React.Component<Props> {
     this.unmount();
   }
 
-  onmount = () => {};
-  unmount = () => {};
-  update = () => {};
+  update: () => void
+  unmount: () => void
 
   canvas: ?HTMLCanvasElement;
   paper: Paper;

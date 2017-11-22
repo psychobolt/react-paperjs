@@ -7,9 +7,13 @@
     "react"
   ],
   "plugins": [
+    "transform-decorators-legacy",
     ["module-resolver", { 
       "root": ["./"],
-      "cwd": "./"
+      "cwd": "./",
+      "alias": {
+        "paper": "paper/dist/paper-core"
+      }
     }]
   ],
   "env": {

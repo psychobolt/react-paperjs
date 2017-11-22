@@ -1,11 +1,13 @@
 // @flow
 import Reconciler from 'react-reconciler';
-import { Group, Item, TextItem } from 'paper/dist/paper-core';
+import { Group, Item, TextItem } from 'paper';
 
 import TYPES, { type PaperTypes, type Paper } from './Paper.types';
 import { diffProps, updateProps } from './Paper.component';
+import { type ScopedProps } from './Paper.container';
 
 type Props = {
+  scopedProps: ScopedProps<*>,
   children: any,
 };
 
@@ -14,7 +16,7 @@ type CreateInstance = (type: string, props: Props, paper: Paper) => any;
 export function getTypes(instanceFactory: PaperTypes): CreateInstance {
   return (type: string, { children, ...rest }: Props, paper: Paper) => {
     const TYPE = instanceFactory[type];
-    return TYPE && TYPE(rest || {}, paper);
+    return TYPE && TYPE(rest, paper, children);
   };
 }
 

@@ -22,7 +22,7 @@ Common usage with [PaperContainer](#papercontainer) and its default [renderer](#
 
 ### PaperContainer
 
-Its instance is a [Paper Scope](http://paperjs.org/reference/paperscope/).
+Creates a [Paper Scope](http://paperjs.org/reference/paperscope/) and populate the child context with it.
 
 All children are rendered into its canvas with [PaperRenderer](#paperrenderer) by default.
 
@@ -88,7 +88,7 @@ See [src/Paper.types.js](src/Paper.types.js).
 
 ##### Common Type Props
 
-- scopedProps: This is useful for accessing variables and object pointers from outside PaperJS events: ```scopedProps={(container) => ({ onMouseUp: () => myScope.onMouseUp(), prop: container.defaultProp })}```. This is called after every container update.
+- scopedProps: This is useful for accessing variables and object pointers from outside PaperJS events: ```scopedProps={paper => ({ onMouseUp: () => myScope.onMouseUp(), center: paper.view.center })}```. Scoped props overrides other existing props.
 - ...rest: Remaining props are passed into the constructor of the type instance.
 
 #### API
@@ -129,15 +129,4 @@ const App = (props) => (
 );
 
 export default App;
-```
-
-### ReactPaperjs
-
-#### render (Coming Soon)
-
-```js
-import React from 'react';
-import ReactPaperjs from '@psychobolt/react-paperjs'
-
-ReactPaperjs.render(<App />, document.getElementById('canvas'));
 ```
