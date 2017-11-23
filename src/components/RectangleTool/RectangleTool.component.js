@@ -86,10 +86,12 @@ export default class RectangleTool extends React.PureComponent<Props> {
           onMouseDrag(toolEvent);
         }}
         onMouseUp={event => {
-          Object.assign(ref.path, {
-            selected: false,
-            ...pathProps,
-          });
+          if (ref.path) {
+            Object.assign(ref.path, {
+              selected: false,
+              ...pathProps,
+            });
+          }
           onMouseUp(event);
         }}
         {...rest}

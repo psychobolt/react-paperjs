@@ -59,7 +59,9 @@ export default class LineTool extends React.PureComponent<Props> {
           onMouseDrag(toolEvent);
         }}
         onMouseUp={toolEvent => {
-          ref.path.selected = false;
+          if (ref.path) {
+            ref.path.selected = false;
+          }
           onMouseUp(toolEvent);
         }}
         {...rest}
