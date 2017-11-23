@@ -29,9 +29,7 @@ storiesOf('Tool', module)
     <div>
       <div>Click and drag to freeform lines.</div>
       <PaperContainer canvasProps={{ style: styles.container }}>
-        <FreeformPathTool scopedProps={paper => ({
-          test: 'test',
-        })}/>
+        <FreeformPathTool />
       </PaperContainer>
     </div>
   ))

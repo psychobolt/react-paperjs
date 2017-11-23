@@ -10,17 +10,25 @@ type Props = {
   scopedProps: ScopedProps<*>
 };
 
-type Context = {
-  paper: Paper
-};
+export default (WrappedComponent: ComponentType<*>) =>
+  class extends React.PureComponent<Props> {
+    static defaultProps = {
+      scopedProps: (scope: Paper) => ({}), // eslint-disable-line no-unused-vars
+    };
 
-const withScopedProps = (Component: ComponentType<*>) => {
-  const WrappedComponent = (
-    { scopedProps = scope => ({}), ...rest }: Props, // eslint-disable-line no-unused-vars
-    context: Context,
-  ) => <Component {...{ ...rest, ...scopedProps(context.paper) }} />;
-  WrappedComponent.contextTypes = { paper: PropTypes.instanceOf(PaperScope).isRequired };
-  return WrappedComponent;
-};
+    static contextTypes = {
+      paper: PropTypes.instanceOf(PaperScope).isRequired,
+    };
 
-export default withScopedProps;
+    instance: ?Object;
+
+    render() {
+      const { scopedProps, ...rest } = this.props;
+      return (
+        <WrappedComponent
+          ref={ref => { this.instance = ref; }}
+          {...{ ...rest, ...scopedProps(this.context.paper) }}
+        />
+      );
+    }
+  };

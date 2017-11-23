@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import paper, { typeof KeyEvent, typeof MouseEvent, typeof Event } from 'paper';
+import paper, { typeof KeyEvent, typeof MouseEvent, typeof ToolEvent, typeof Event } from 'paper';
 import PropTypes from 'prop-types';
 
 import PaperRenderer from './Paper.renderer';
@@ -16,6 +16,7 @@ type CanvasProps = {
 export type EventHandler = (event: Event) => any;
 export type KeyEventHandler = (event: KeyEvent) => any;
 export type MouseEventHandler = (event: MouseEvent) => any;
+export type ToolEventHandler = (event: ToolEvent) => any;
 
 type ViewProps = {
   onKeyDown: KeyEventHandler,

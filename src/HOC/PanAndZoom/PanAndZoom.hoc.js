@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import _ from 'lodash';
 import type { KeyEvent, MouseEvent } from 'paper';
 
 import PaperContainer, { getProps, type Props, type EventHandler } from '../../Paper.container';
@@ -16,6 +15,10 @@ type State = {
   viewZoom: number,
   viewCenter: ?number[] | ?Object
 };
+
+function add(num1, num2) {
+  return ((num1 * 10) + (num2 * 10)) / 10;
+}
 
 function callAllHandlers(handlers: EventHandler[] = []) {
   return (event) => handlers.forEach(handler => handler && handler(event));
@@ -33,10 +36,10 @@ export default (Container: any) =>
     onWheel = (event: SyntheticWheelEvent<HTMLCanvasElement>) => {
       const { viewZoom } = this.state;
       if (event.deltaY < 0) {
-        this.setState({ viewZoom: _.add(viewZoom, 0.1) });
+        this.setState({ viewZoom: add(viewZoom, 0.1) });
       }
       if (event.deltaY > 0 && viewZoom > 0.1) {
-        this.setState({ viewZoom: _.subtract(viewZoom, 0.1) });
+        this.setState({ viewZoom: add(viewZoom, -0.1) });
       }
     }
 

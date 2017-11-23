@@ -5,15 +5,17 @@ import PropTypes from 'prop-types';
 
 import { Tool } from '../../Paper.types';
 import ScopedProps from '../../HOC/ScopedProps';
-import type { KeyEventHandler } from '../../Paper.container';
+import type { ToolEventHandler } from '../../Paper.container';
 
 type Props = {
   pathProps: {
     strokeColor: string,
   },
-  onMouseDown: KeyEventHandler,
-  onMouseDrag: KeyEventHandler,
+  onMouseDown: ToolEventHandler,
+  onMouseDrag: ToolEventHandler,
 };
+
+const MOUSE_LEFT_CODE = 0;
 
 // $FlowFixMe
 @ScopedProps
@@ -38,14 +40,18 @@ export default class FreeformPathTool extends React.PureComponent<Props> {
     return (
       <Tool
         minDistance={10}
-        onMouseDown={event => {
-          const path = new this.context.paper.Path(pathProps);
-          ref.path = path;
-          onMouseDown(event);
+        onMouseDown={toolEvent => {
+          if (toolEvent.event.button === MOUSE_LEFT_CODE) {
+            const path = new this.context.paper.Path(pathProps);
+            ref.path = path;
+            onMouseDown(toolEvent);
+          }
         }}
-        onMouseDrag={event => {
-          ref.path.add(event.point);
-          onMouseDrag(event);
+        onMouseDrag={toolEvent => {
+          if (toolEvent.event.buttons === 1) {
+            ref.path.add(toolEvent.point);
+            onMouseDrag(toolEvent);
+          }
         }}
         {...rest}
       />
