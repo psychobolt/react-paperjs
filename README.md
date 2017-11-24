@@ -77,6 +77,8 @@ export default () => (
 Props:
 - prepanStyle: Applied styles when view is draggable.
 - panStyle: Applied styles when view is being dragged.
+- onTrigger: Callback when zoom or panning is triggered.
+- onDisable: Callback when zoom or panning is disabled.
 
 ### PaperRenderer
 

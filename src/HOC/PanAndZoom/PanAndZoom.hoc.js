@@ -6,7 +6,9 @@ import PaperContainer, { getProps, type Props, type EventHandler } from '../../P
 
 type ExtendedProps = {
   prepanStyle: {},
-  panStyle: {}
+  panStyle: {},
+  onTrigger: Function,
+  onDisabled: Function,
 } & Props;
 
 type State = {
@@ -26,6 +28,11 @@ function callAllHandlers(handlers: EventHandler[] = []) {
 
 export default (Container: any) =>
   class PanAndScroll extends React.Component<ExtendedProps, State> {
+    static defaultProps = {
+      onEnabled: () => {},
+      onDisabled: () => {},
+    };
+
     state = {
       draggable: false,
       dragStart: null,
@@ -34,24 +41,29 @@ export default (Container: any) =>
     }
 
     onWheel = (event: SyntheticWheelEvent<HTMLCanvasElement>) => {
+      const { onTrigger } = this.props;
       const { viewZoom } = this.state;
       if (event.deltaY < 0) {
         this.setState({ viewZoom: add(viewZoom, 0.1) });
+        onTrigger();
       }
       if (event.deltaY > 0 && viewZoom > 0.1) {
         this.setState({ viewZoom: add(viewZoom, -0.1) });
+        onTrigger();
       }
     }
 
     onKeyDown = (event: KeyEvent) => {
       if (event.key === 'space' && !this.state.draggable) {
         this.setState({ draggable: true });
+        this.props.onTrigger();
       }
     }
 
     onKeyUp = (event: KeyEvent) => {
       if (event.key === 'space') {
         this.setState({ draggable: false });
+        this.props.onDisabled();
       }
     }
 
@@ -64,6 +76,7 @@ export default (Container: any) =>
     onMouseUp = () => {
       if (this.state.dragStart) {
         this.setState({ dragStart: null });
+        this.props.onDisabled();
       }
     }
 
