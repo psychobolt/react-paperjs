@@ -1,10 +1,9 @@
 // @flow
 import React from 'react';
-import { typeof Path, typeof Point, PaperScope } from 'paper';
-import PropTypes from 'prop-types';
+import typeof { Path, Point } from 'paper';
 
 import { Tool } from '../../Paper.types';
-import ScopedProps from '../../HOC/ScopedProps';
+import ScopedProps, { ScopedComponent } from '../../HOC/ScopedProps';
 import type { ToolEventHandler } from '../../Paper.container';
 
 type Props = {
@@ -20,7 +19,7 @@ const MOUSE_LEFT_CODE = 0;
 
 // $FlowFixMe
 @ScopedProps
-export default class RectangleTool extends React.PureComponent<Props> {
+export default class RectangleTool extends ScopedComponent<Props> {
   static defaultProps = {
     pathProps: {
       fillColor: 'white',
@@ -31,10 +30,6 @@ export default class RectangleTool extends React.PureComponent<Props> {
     onMouseUp: () => {},
   }
 
-  static contextTypes = {
-    paper: PropTypes.instanceOf(PaperScope),
-  };
-
   path: Path;
   start: Point;
 
@@ -43,6 +38,7 @@ export default class RectangleTool extends React.PureComponent<Props> {
     const ref = this;
     return (
       <Tool
+        ref={this.ref}
         onMouseDown={toolEvent => {
           if (toolEvent.event.button === MOUSE_LEFT_CODE) {
             const start = toolEvent.point;

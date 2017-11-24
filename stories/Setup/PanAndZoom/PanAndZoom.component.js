@@ -3,6 +3,8 @@ import React from 'react';
 
 import { withPanAndZoom, PaperContainer, Circle, Grid } from 'src';
 
+import { ref } from '../../shared';
+
 const width = 500;
 const height = 500;
 
@@ -24,6 +26,7 @@ export default () => (
     onMount={container => container.canvas.focus()}
   >
     <Grid
+      ref={ref}
       width={width}
       height={height}
       scopedProps={paper => {
@@ -38,6 +41,7 @@ export default () => (
       }}
     />
     <Circle
+      ref={ref}
       radius={35}
       strokeColor="black"
       fillColor="white"

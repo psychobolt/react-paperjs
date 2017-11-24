@@ -1,1 +1,1 @@
-export { default } from './ScopedProps.component';
+export { default, ScopedComponent } from './ScopedProps.component';

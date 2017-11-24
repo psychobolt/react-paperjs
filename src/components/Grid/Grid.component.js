@@ -14,9 +14,10 @@ type Props = {
   cellSize: number,
   strokeColor: string,
   strokeWidth: number,
+  instanceRef: (ref: typeof Layer) => void
 };
 
-const Grid = ({ width, height, top = 0, left = 0, right = width, bottom = height, cellSize = 50, strokeColor = '#D0D0D0', strokeWidth = 1 }: Props) => {
+const Grid = ({ width, height, top = 0, left = 0, right = width, bottom = height, cellSize = 50, strokeColor = '#D0D0D0', strokeWidth = 1, instanceRef = () => {} }: Props) => {
   const x = Math.ceil(left / cellSize) * cellSize;
   const y = Math.ceil(top / cellSize) * cellSize;
   const cols = Math.ceil((right - left) / cellSize);
@@ -44,7 +45,7 @@ const Grid = ({ width, height, top = 0, left = 0, right = width, bottom = height
     />);
   }
   return (
-    <Layer>
+    <Layer ref={instanceRef}>
       <Group>{verticalLines}</Group>
       <Group>{horizontalLines}</Group>
     </Layer>

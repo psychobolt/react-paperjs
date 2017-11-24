@@ -3,6 +3,8 @@ import React from 'react';
 
 import { PaperContainer, Circle } from 'src';
 
+import { ref } from '../../shared';
+
 export default () => (
   <PaperContainer
     canvasProps={{
@@ -17,6 +19,7 @@ export default () => (
     })}
   >
     <Circle
+      ref={ref}
       radius={30}
       scopedProps={paper => {
         const { x, y } = paper.view.center;

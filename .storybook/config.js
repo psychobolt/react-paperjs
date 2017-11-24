@@ -1,4 +1,4 @@
-import '@storybook/addon-console';
+// import '@storybook/addon-console';
 import { configure } from '@storybook/react';
 
 const reqMain = require.context('../stories', true, /\.stories\.js$/);

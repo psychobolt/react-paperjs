@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import { PaperContainer, LineTool, FreeformPathTool, PolygonTool, RectangleTool } from 'src';
 
+import { ref } from '../shared';
 import styles from './Tool.styles';
 
 storiesOf('Tool', module)
@@ -10,7 +11,7 @@ storiesOf('Tool', module)
     <div>
       <div>Click and drag to draw a line</div>
       <PaperContainer canvasProps={{ style: styles.container }}>
-        <LineTool />
+        <LineTool ref={ref} />
       </PaperContainer>
     </div>
   ))
@@ -21,7 +22,7 @@ storiesOf('Tool', module)
         <p>Click near points to close the path and prune dangling points.</p>
       </div>
       <PaperContainer canvasProps={{ style: styles.container }}>
-        <PolygonTool />
+        <PolygonTool ref={ref} />
       </PaperContainer>
     </div>
   ))
@@ -29,7 +30,7 @@ storiesOf('Tool', module)
     <div>
       <div>Click and drag to freeform lines.</div>
       <PaperContainer canvasProps={{ style: styles.container }}>
-        <FreeformPathTool />
+        <FreeformPathTool ref={ref} />
       </PaperContainer>
     </div>
   ))
@@ -37,7 +38,7 @@ storiesOf('Tool', module)
     <div>
       <div>Click and drag to create rectangle shapes.</div>
       <PaperContainer canvasProps={{ style: styles.container }}>
-        <RectangleTool />
+        <RectangleTool ref={ref} />
       </PaperContainer>
     </div>
   ));

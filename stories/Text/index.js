@@ -3,10 +3,13 @@ import { storiesOf } from '@storybook/react';
 
 import { PaperContainer, PointText } from 'src';
 
+import { ref } from '../shared';
+
 storiesOf('Text', module)
   .add('PointText', () => (
     <PaperContainer canvasProps={{ width: 516, height: 100 }}>
       <PointText
+        ref={ref}
         point={[50, 50]}
         fillColor="black"
         fontFamily="Courier New"
