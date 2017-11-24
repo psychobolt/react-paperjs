@@ -23,6 +23,12 @@ export default () => (
     panStyle={{
       cursor: '-webkit-grabbing',
     }}
+    onPanEnabled={() => {
+      console.log('Pan enabled'); // eslint-disable-line no-console
+    }}
+    onPanDisabled={() => {
+      console.log('Pan disabled'); // eslint-disable-line no-console
+    }}
     onMount={container => container.canvas.focus()}
   >
     <Grid
