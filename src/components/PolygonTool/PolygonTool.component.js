@@ -1,37 +1,32 @@
 // @flow
 import React from 'react';
-import typeof { Path, Group, Segment } from 'paper';
+import typeof { Group, Segment } from 'paper';
 
 import { Tool } from '../../Paper.types';
-import ScopedProps, { ScopedComponent } from '../../HOC/ScopedProps';
-import type { ToolEventHandler } from '../../Paper.container';
+import { PathTool } from '../shared/PathTool';
 
 type Props = {
   pathProps: {
     strokeColor: string,
   },
-  onMouseDown: ToolEventHandler
 };
 
 const MOUSE_LEFT_CODE = 0;
 
-// $FlowFixMe
-@ScopedProps
-export default class PolygonTool extends ScopedComponent<Props> {
+export default class PolygonTool extends PathTool<Props> {
   static defaultProps = {
+    ...PathTool.defaultProps,
     pathProps: {
       strokeColor: 'black',
       selected: true,
     },
-    onMouseDown: () => {},
   };
 
-  path: Path;
   points: Group;
   selectedSegment: Segment;
 
   render() {
-    const { pathProps, onMouseDown, ...rest } = this.props;
+    const { pathProps, onMouseDown, onPathAdd, ...rest } = this.props;
     const ref = this;
     return (
       <Tool
@@ -66,6 +61,7 @@ export default class PolygonTool extends ScopedComponent<Props> {
               points.remove();
               path.closed = true;
               path.selected = false;
+              onPathAdd(path);
               ref.path = null;
               ref.points = null;
               ref.selectedSegment = null;

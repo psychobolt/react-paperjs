@@ -3,38 +3,30 @@ import React from 'react';
 import typeof { Path, Point } from 'paper';
 
 import { Tool } from '../../Paper.types';
-import ScopedProps, { ScopedComponent } from '../../HOC/ScopedProps';
-import type { ToolEventHandler } from '../../Paper.container';
+import { PathTool } from '../shared/PathTool';
 
 type Props = {
   pathProps: {
     fillColor: string,
   },
-  onMouseDown: ToolEventHandler,
-  onMouseDrag: ToolEventHandler,
-  onMouseUp: ToolEventHandler,
 };
 
 const MOUSE_LEFT_CODE = 0;
 
-// $FlowFixMe
-@ScopedProps
-export default class RectangleTool extends ScopedComponent<Props> {
+export default class RectangleTool extends PathTool<Props> {
   static defaultProps = {
+    ...PathTool.defaultProps,
     pathProps: {
       fillColor: 'white',
       strokeColor: 'black',
     },
-    onMouseDown: () => {},
-    onMouseDrag: () => {},
-    onMouseUp: () => {},
   }
 
   path: Path;
   start: Point;
 
   render() {
-    const { pathProps, onMouseDown, onMouseUp, onMouseDrag, ...rest } = this.props;
+    const { pathProps, onMouseDown, onMouseUp, onMouseDrag, onPathAdd, ...rest } = this.props;
     const ref = this;
     return (
       <Tool
@@ -82,11 +74,13 @@ export default class RectangleTool extends ScopedComponent<Props> {
           onMouseDrag(toolEvent);
         }}
         onMouseUp={event => {
-          if (ref.path) {
-            Object.assign(ref.path, {
+          const { path } = ref;
+          if (path) {
+            Object.assign(path, {
               selected: false,
               ...pathProps,
             });
+            onPathAdd(path);
           }
           onMouseUp(event);
         }}

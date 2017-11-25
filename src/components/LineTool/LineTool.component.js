@@ -1,38 +1,27 @@
 // @flow
 import React from 'react';
-import typeof { Path } from 'paper';
 
 import { Tool } from '../../Paper.types';
-import ScopedProps, { ScopedComponent } from '../../HOC/ScopedProps';
-import type { ToolEventHandler } from '../../Paper.container';
+import { PathTool } from '../shared/PathTool';
 
 type Props = {
   pathProps: {
     strokeColor: string,
   },
-  onMouseDown: ToolEventHandler,
-  onMouseDrag: ToolEventHandler,
-  onMouseUp: ToolEventHandler,
 };
 
 const MOUSE_LEFT_CODE = 0;
 
-// $FlowFixMe
-@ScopedProps
-export default class LineTool extends ScopedComponent<Props> {
+export default class LineTool extends PathTool<Props> {
   static defaultProps = {
+    ...PathTool.defaultProps,
     pathProps: {
       strokeColor: 'black',
     },
-    onMouseDown: () => {},
-    onMouseDrag: () => {},
-    onMouseUp: () => {},
   };
 
-  path: Path;
-
   render() {
-    const { pathProps, onMouseDown, onMouseDrag, onMouseUp, ...rest } = this.props;
+    const { pathProps, onMouseDown, onMouseDrag, onMouseUp, onPathAdd, ...rest } = this.props;
     const ref = this;
     return (
       <Tool
@@ -54,8 +43,10 @@ export default class LineTool extends ScopedComponent<Props> {
           onMouseDrag(toolEvent);
         }}
         onMouseUp={toolEvent => {
-          if (ref.path) {
-            ref.path.selected = false;
+          const { path } = ref;
+          if (path) {
+            path.selected = false;
+            onPathAdd(path);
           }
           onMouseUp(toolEvent);
         }}

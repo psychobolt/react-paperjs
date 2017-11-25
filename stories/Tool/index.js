@@ -6,12 +6,16 @@ import { PaperContainer, LineTool, FreeformPathTool, PolygonTool, RectangleTool 
 import { ref } from '../shared';
 import styles from './Tool.styles';
 
+function onPathAdd(path) {
+  console.log(path); // eslint-disable-line no-console
+}
+
 storiesOf('Tool', module)
   .add('Line', () => (
     <div>
       <div>Click and drag to draw a line</div>
       <PaperContainer canvasProps={{ style: styles.container }}>
-        <LineTool ref={ref} />
+        <LineTool ref={ref} onPathAdd={onPathAdd} />
       </PaperContainer>
     </div>
   ))
@@ -22,7 +26,7 @@ storiesOf('Tool', module)
         <p>Click near points to close the path and prune dangling points.</p>
       </div>
       <PaperContainer canvasProps={{ style: styles.container }}>
-        <PolygonTool ref={ref} />
+        <PolygonTool ref={ref} onPathAdd={onPathAdd} />
       </PaperContainer>
     </div>
   ))
@@ -30,7 +34,7 @@ storiesOf('Tool', module)
     <div>
       <div>Click and drag to freeform lines.</div>
       <PaperContainer canvasProps={{ style: styles.container }}>
-        <FreeformPathTool ref={ref} />
+        <FreeformPathTool ref={ref} onPathAdd={onPathAdd} />
       </PaperContainer>
     </div>
   ))
@@ -38,7 +42,7 @@ storiesOf('Tool', module)
     <div>
       <div>Click and drag to create rectangle shapes.</div>
       <PaperContainer canvasProps={{ style: styles.container }}>
-        <RectangleTool ref={ref} />
+        <RectangleTool ref={ref} onPathAdd={onPathAdd} />
       </PaperContainer>
     </div>
   ));
