@@ -2,7 +2,8 @@
 import React from 'react';
 
 import { Tool } from '../../Paper.types';
-import { PathTool } from '../shared/PathTool';
+import PathTool from '../shared/PathTool';
+import ScopedProps from '../../hoc/ScopedProps';
 
 type Props = {
   pathProps: {
@@ -12,6 +13,8 @@ type Props = {
 
 const MOUSE_LEFT_CODE = 0;
 
+// $FlowFixMe
+@ScopedProps
 export default class FreeformPathTool extends PathTool<Props> {
   static defaultProps = {
     ...PathTool.defaultProps,

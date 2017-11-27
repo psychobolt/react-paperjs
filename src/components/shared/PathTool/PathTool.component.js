@@ -1,25 +1,27 @@
 // @flow
-import typeof { Path } from 'paper';
+import typeof { Path, Segment } from 'paper';
 
-import withScopedProps, { ScopedComponent } from '../../../HOC/ScopedProps';
+import { ScopedComponent } from '../../../hoc/ScopedProps';
 import type { ToolEventHandler } from '../../../Paper.container';
 
 type Props = {
   onMouseDown: ToolEventHandler,
   onMouseDrag: ToolEventHandler,
   onMouseUp: ToolEventHandler,
-  onPathAdd: (path: Path) => any
+  onPathAdd: (path: Path) => any,
+  onSegmentAdd: (segment: Segment | Segment[]) => any,
+  onSegmentRemove: (segment: Segment | Segment[]) => any
 };
 
-export class PathTool<P> extends ScopedComponent<P & Props> {
+export default class PathTool<P> extends ScopedComponent<P & Props> {
   static defaultProps = {
     onMouseDown: () => {},
     onMouseDrag: () => {},
     onMouseUp: () => {},
     onPathAdd: () => {},
+    onSegmentAdd: () => {},
+    onSegmentRemove: () => {},
   }
 
   path: Path
 }
-
-export default withScopedProps(PathTool);

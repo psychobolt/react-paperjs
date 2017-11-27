@@ -4,7 +4,7 @@ import paper, { typeof KeyEvent, typeof MouseEvent, typeof ToolEvent, typeof Eve
 import PropTypes from 'prop-types';
 
 import PaperRenderer from './Paper.renderer';
-import { type Paper, PaperScope } from './Paper.types';
+import { type Paper, CONSTANTS } from './Paper.types';
 
 /* eslint-disable no-use-before-define */
 
@@ -64,9 +64,15 @@ export default class PaperContainer extends React.Component<Props> {
     super(props);
     const Renderer = this.props.renderer;
     const renderer = new Renderer();
-    this.paper = renderer.createInstance(PaperScope, {}, paper);
+    this.paper = renderer.createInstance(CONSTANTS.PaperScope, {}, paper);
     const { reconciler } = renderer;
     const node = reconciler.createContainer(this.paper);
+    const newLayer = (options = {}) =>
+      this.paper.project.addLayer(renderer.createInstance(CONSTANTS.Layer, options, this.paper));
+    this.mount = () => {
+      newLayer({ name: '_metadata' });
+      newLayer().activate();
+    };
     this.update = () => {
       const { viewProps, children } = this.props;
       Object.assign(this.paper.view, getProps(this, viewProps));
@@ -84,6 +90,7 @@ export default class PaperContainer extends React.Component<Props> {
   componentDidMount() {
     if (this.canvas) {
       this.paper.setup(this.canvas);
+      this.mount();
       this.update();
     }
     this.props.onMount(this);
@@ -98,6 +105,7 @@ export default class PaperContainer extends React.Component<Props> {
   }
 
   update: () => void
+  mount: () => void
   unmount: () => void
 
   canvas: ?HTMLCanvasElement;

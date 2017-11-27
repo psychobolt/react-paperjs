@@ -2,7 +2,7 @@
 import React from 'react';
 
 import { Layer, Group, Line } from '../../Paper.types';
-import withScopedProps from '../../HOC/ScopedProps';
+import withScopedProps from '../../hoc/ScopedProps';
 
 type Props = {
   top: number,

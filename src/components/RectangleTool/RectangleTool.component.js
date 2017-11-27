@@ -1,9 +1,10 @@
 // @flow
 import React from 'react';
-import typeof { Path, Point } from 'paper';
+import typeof { Point } from 'paper';
 
 import { Tool } from '../../Paper.types';
-import { PathTool } from '../shared/PathTool';
+import PathTool from '../shared/PathTool';
+import ScopedProps from '../../hoc/ScopedProps';
 
 type Props = {
   pathProps: {
@@ -13,6 +14,8 @@ type Props = {
 
 const MOUSE_LEFT_CODE = 0;
 
+// $FlowFixMe
+@ScopedProps
 export default class RectangleTool extends PathTool<Props> {
   static defaultProps = {
     ...PathTool.defaultProps,
@@ -22,7 +25,6 @@ export default class RectangleTool extends PathTool<Props> {
     },
   }
 
-  path: Path;
   start: Point;
 
   render() {
