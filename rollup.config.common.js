@@ -14,7 +14,7 @@ export const plugins = [
   commonjs({
     include: 'node_modules/**',
     namedExports: {
-      'node_modules/paper/dist/paper-core.js': ['PaperScope', 'Group', 'Item', 'TextItem'],
+      'node_modules/paper/dist/paper-core.js': ['PaperScope', 'Group', 'Item', 'TextItem', 'Color'],
     },
   }),
   babel({
