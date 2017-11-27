@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import typeof { Point } from 'paper';
+import { typeof Point, Color } from 'paper';
 
 import { Tool } from '../../Paper.types';
 import PathTool from '../shared/PathTool';
@@ -39,7 +39,7 @@ export default class RectangleTool extends PathTool<Props> {
             const path = new this.context.paper.Path.Rectangle({
               point: start,
               size: [1, 1],
-              fillColor: '#e9e9ff',
+              fillColor: pathProps.selectedFillColor || new Color(0.9, 0.9, 1, 0.75),
               selected: true,
             });
             this.path = path;
