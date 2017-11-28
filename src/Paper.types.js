@@ -14,6 +14,7 @@ const PAPER = {
   Tool: 'Tool',
   Layer: 'Layer',
   Group: 'Group',
+  Path: 'Path',
   Line: 'Line',
   Circle: 'Circle',
   PointText: 'PointText',
@@ -29,6 +30,7 @@ export default {
   [CONSTANTS.Tool]: (props, paper) => new paper.Tool(props),
   [CONSTANTS.Layer]: (props, paper) => new paper.Layer(props),
   [CONSTANTS.Group]: (props, paper) => new paper.Group(props),
+  [CONSTANTS.Path]: (props, paper) => new paper.Path(props),
   [CONSTANTS.Line]: (props, paper) => new paper.Path.Line(props),
   [CONSTANTS.Circle]: (props, paper) => new paper.Path.Circle(props),
   [CONSTANTS.PointText]: (props, paper, children) => new paper.PointText({
@@ -41,6 +43,7 @@ export const {
   Tool,
   Layer,
   Group,
+  Path,
   Line,
   Circle,
   PointText,

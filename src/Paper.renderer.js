@@ -8,15 +8,23 @@ import { type ScopedProps } from './Paper.container';
 
 type Props = {
   scopedProps: ScopedProps<*>,
+  pathData: string,
   children: any,
 };
 
 type CreateInstance = (type: string, props: Props, paper: Paper) => any;
 
 export function getTypes(instanceFactory: PaperTypes): CreateInstance {
-  return (type: string, { children, ...rest }: Props, paper: Paper) => {
+  return (type: string, { children, pathData, ...rest }: Props, paper: Paper) => {
     const TYPE = instanceFactory[type];
-    return TYPE && TYPE(rest, paper, children);
+    let instance;
+    if (TYPE) {
+      instance = TYPE(rest, paper, children);
+      if (pathData) {
+        instance.pathData = pathData;
+      }
+    }
+    return instance;
   };
 }
 
