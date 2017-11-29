@@ -16,6 +16,7 @@ const PAPER = {
   Group: 'Group',
   Path: 'Path',
   Line: 'Line',
+  Rectangle: 'Rectangle',
   Circle: 'Circle',
   PointText: 'PointText',
 };
@@ -32,6 +33,7 @@ export default {
   [CONSTANTS.Group]: (props, paper) => new paper.Group(props),
   [CONSTANTS.Path]: (props, paper) => new paper.Path(props),
   [CONSTANTS.Line]: (props, paper) => new paper.Path.Line(props),
+  [CONSTANTS.Rectangle]: (props, paper) => new paper.Path.Rectangle(props),
   [CONSTANTS.Circle]: (props, paper) => new paper.Path.Circle(props),
   [CONSTANTS.PointText]: (props, paper, children) => new paper.PointText({
     ...props,
@@ -45,6 +47,7 @@ export const {
   Group,
   Path,
   Line,
+  Rectangle,
   Circle,
   PointText,
 } = Object.entries(PAPER).reduce((types, [key, type]) =>
