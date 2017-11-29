@@ -46,10 +46,10 @@ export default class LineTool extends PathTool<Props> {
           onMouseDrag(toolEvent);
         }}
         onMouseUp={toolEvent => {
-          const { path } = ref;
-          if (path) {
-            path.selected = false;
-            onPathAdd(path);
+          if (ref.path) {
+            ref.path.selected = false;
+            onPathAdd(ref.path);
+            ref.path = null;
           }
           onMouseUp(toolEvent);
         }}

@@ -46,6 +46,7 @@ export default class FreeformPathTool extends PathTool<Props> {
         onMouseUp={toolEvent => {
           if (ref.path) {
             onPathAdd(ref.path);
+            ref.path = null;
           }
           onMouseUp(toolEvent);
         }}

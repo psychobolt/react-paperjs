@@ -76,13 +76,14 @@ export default class RectangleTool extends PathTool<Props> {
           onMouseDrag(toolEvent);
         }}
         onMouseUp={event => {
-          const { path } = ref;
-          if (path) {
-            Object.assign(path, {
+          if (ref.path) {
+            Object.assign(ref.path, {
               selected: false,
               ...pathProps,
             });
-            onPathAdd(path);
+            onPathAdd(ref.path);
+            ref.path = null;
+            ref.start = null;
           }
           onMouseUp(event);
         }}
