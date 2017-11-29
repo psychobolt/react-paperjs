@@ -32,7 +32,7 @@ const createInstance = getTypes(TYPES);
 
 type HostContext = {};
 
-type Instance = {};
+type Instance = Object;
 
 type Fiber = {};
 
@@ -131,16 +131,10 @@ const defaultHostConfig = {
       console.log('insert child in container before child');
     },
     removeChild(parent: Instance, child: Instance) {
-      if (child instanceof Item) {
-        child.remove();
-      } else {
-        // TODO remove logger
-        console.log('remove child');
-      }
+      child.remove();
     },
     removeChildFromContainer(container: Paper, child: Instance) {
-      // TODO
-      console.log('remove from container');
+      child.remove();
     },
   },
 };
