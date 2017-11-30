@@ -66,3 +66,6 @@ flow-typed/npm
 
 # Storybook
 storybook-static
+
+# only support Yarn
+package-lock.json
