@@ -14,4 +14,5 @@ jsconfig.json
 rollup.config.*.js
 test-config.js
 yarn.lock
+package-lock.json
 *.log
