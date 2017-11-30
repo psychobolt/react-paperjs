@@ -4,7 +4,7 @@
 [![Dependencies Status](https://david-dm.org/psychobolt/react-paperjs.svg)](https://david-dm.org/psychobolt/react-paperjs)
 [![codecov](https://codecov.io/gh/psychobolt/react-paperjs/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-paperjs)
 
-React fiber renderer and component container for Paper.js.
+React fiber renderer and component container for [Paper.js](http://paperjs.org/).
 
 [DEMOS](https://psychobolt.github.io/react-paperjs)
 
