@@ -62,7 +62,7 @@ dist/*
 !dist/index.js
 
 # flow-typed
-flow-typed
+flow-typed/npm
 
 # Storybook
 storybook-static
