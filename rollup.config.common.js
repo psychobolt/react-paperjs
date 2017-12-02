@@ -13,10 +13,6 @@ export const plugins = [
   }),
   commonjs({
     include: 'node_modules/**',
-    namedExports: {
-      'node_modules/paper/dist/paper-core.js': ['PaperScope', 'Group', 'Item', 'TextItem', 'Color'],
-    },
-    ignore: ['./node/extend.js'],
   }),
   babel({
     exclude: 'node_modules/**',
@@ -26,4 +22,9 @@ export const plugins = [
 
 export default {
   input: 'src/index.js',
+  external: [
+    'paper/dist/paper-core',
+    'react',
+    'react-dom',
+  ],
 };

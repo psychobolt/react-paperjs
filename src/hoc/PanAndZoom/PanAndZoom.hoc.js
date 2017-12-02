@@ -23,7 +23,7 @@ function add(num1, num2) {
 }
 
 function callAllHandlers(handlers: EventHandler[] = []) {
-  return (event) => handlers.forEach(handler => handler && handler(event));
+  return event => handlers.forEach(handler => handler && handler(event));
 }
 
 export default (Container: any) =>
