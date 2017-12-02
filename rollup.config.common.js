@@ -16,6 +16,7 @@ export const plugins = [
     namedExports: {
       'node_modules/paper/dist/paper-core.js': ['PaperScope', 'Group', 'Item', 'TextItem', 'Color'],
     },
+    ignore: ['./node/extend.js'],
   }),
   babel({
     exclude: 'node_modules/**',
