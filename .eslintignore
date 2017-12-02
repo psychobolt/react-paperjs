@@ -1,2 +1,3 @@
-/dist/*
-/flow-typed/npm/*
+/dist
+/stories/node_modules
+/flow-typed/npm
