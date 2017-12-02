@@ -1,8 +1,11 @@
 # React Paper.js
 
 [![Build Status](https://travis-ci.org/psychobolt/react-paperjs.svg?branch=master)](https://travis-ci.org/psychobolt/react-paperjs)
-[![Dependencies Status](https://david-dm.org/psychobolt/react-paperjs.svg)](https://david-dm.org/psychobolt/react-paperjs)
 [![codecov](https://codecov.io/gh/psychobolt/react-paperjs/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-paperjs)
+
+[![Dependencies Status](https://david-dm.org/psychobolt/react-paperjs.svg)](https://david-dm.org/psychobolt/react-paperjs)
+[![Dev Dependencies Status](https://david-dm.org/psychobolt/react-paperjs/dev-status.svg)](https://david-dm.org/psychobolt/react-paperjs?type=dev)
+[![Peer Dependencies Status](https://david-dm.org/psychobolt/react-paperjs/peer-status.svg)](https://david-dm.org/psychobolt/react-paperjs?type=peer)
 
 React fiber renderer and component container for [Paper.js](http://paperjs.org/).
 
