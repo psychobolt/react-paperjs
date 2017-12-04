@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import typeof { Group, Segment } from 'paper';
+import typeof { Group as Points, Segment } from 'paper';
 
 import { Tool } from '../../Paper.types';
 import PathTool from '../shared/PathTool';
@@ -27,7 +27,7 @@ export default class PolygonTool extends PathTool<Props> {
     },
   };
 
-  points: Group;
+  points: Points;
   selectedSegment: Segment;
 
   render() {
