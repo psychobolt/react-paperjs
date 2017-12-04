@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import typeof { ToolEvent } from 'paper';
 
 import { Tool } from '../../Paper.types';
 import PathTool from '../shared/PathTool';
@@ -25,35 +26,44 @@ export default class FreeformPathTool extends PathTool<Props> {
     },
   }
 
+  onMouseDown = (toolEvent: ToolEvent) => {
+    const { pathProps, onMouseDown, paper } = this.props;
+    if (toolEvent.event.button === MOUSE_LEFT_CODE) {
+      const path = new paper.Path(pathProps);
+      this.path = path;
+    }
+    onMouseDown(toolEvent);
+  }
+
+  onMouseDrag = (toolEvent: ToolEvent) => {
+    const { onMouseDrag } = this.props;
+    if (toolEvent.event.buttons === 1) {
+      this.path.add(toolEvent.point);
+    }
+    onMouseDrag(toolEvent);
+  }
+
+  onMouseUp = (toolEvent: ToolEvent) => {
+    const { path } = this;
+    const { onMouseUp, onPathAdd } = this.props;
+    if (path) {
+      onPathAdd(path);
+      this.path = null;
+    }
+    onMouseUp(toolEvent);
+  }
+
   render() {
     const {
       pathProps, onMouseDown, onMouseDrag, onMouseUp, onPathAdd, paper, instanceRef, ...rest
     } = this.props;
-    const ref = this;
     return (
       <Tool
         ref={instanceRef}
         minDistance={10}
-        onMouseDown={toolEvent => {
-          if (toolEvent.event.button === MOUSE_LEFT_CODE) {
-            const path = new paper.Path(pathProps);
-            ref.path = path;
-            onMouseDown(toolEvent);
-          }
-        }}
-        onMouseDrag={toolEvent => {
-          if (toolEvent.event.buttons === 1) {
-            ref.path.add(toolEvent.point);
-            onMouseDrag(toolEvent);
-          }
-        }}
-        onMouseUp={toolEvent => {
-          if (ref.path) {
-            onPathAdd(ref.path);
-            ref.path = null;
-          }
-          onMouseUp(toolEvent);
-        }}
+        onMouseDown={this.onMouseDown}
+        onMouseDrag={this.onMouseDrag}
+        onMouseUp={this.onMouseUp}
         {...rest}
       />
     );
