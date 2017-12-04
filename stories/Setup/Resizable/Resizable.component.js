@@ -1,7 +1,6 @@
-// @flow
 import React from 'react';
 
-import { PaperContainer, Circle } from 'src';
+import { renderWithPaperScope, PaperContainer, Circle } from 'src';
 
 import { ref } from '../../shared';
 
@@ -18,16 +17,16 @@ export default () => (
       onResize: () => container.forceUpdate(),
     })}
   >
-    <Circle
-      ref={ref}
-      radius={30}
-      scopedProps={paper => {
-        const { x, y } = paper.view.center;
-        return {
-          center: [x, y],
-        };
-      }}
-      strokeColor="black"
-    />
+    {renderWithPaperScope(paper => {
+      const { x, y } = paper.view.center;
+      return (
+        <Circle
+          ref={ref}
+          radius={30}
+          center={[x, y]}
+          strokeColor="black"
+        />
+      );
+    })}
   </PaperContainer>
 );

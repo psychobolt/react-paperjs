@@ -27,7 +27,7 @@ Common usage with [PaperContainer](#papercontainer) and its default [renderer](#
 
 ### PaperContainer
 
-Creates a [Paper Scope](http://paperjs.org/reference/paperscope/) and populate the child context with it.
+Creates a [Paper Scope](http://paperjs.org/reference/paperscope/) and populate the child context with it. To access Paper Scope, you may use the provided [HOC](#paper-scope).
 
 All children are rendered into its canvas with [PaperRenderer](#paperrenderer) by default.
 
@@ -62,28 +62,7 @@ export default App;
 
 A work in progress beneficial library, high order components (HOC) for enhancing [PaperContainer](#papercontainer).
 
-##### with Pan And Zoom
-
-Add pan and zoom controls to Paper's view. By default, space + mouse drag to pan and mouse scroll to zoom.
-
-Example usage:
-```jsx
-import { withPanAndZoom, PaperContainer } from '@psychobolt/react-paperjs'
-
-import Scene, { options } from './Scene';
-
-const PanAndZoom = withPanAndZoom(PaperContainer);
-
-export default () => (
-  <PanAndZoom><Scene /></PanAndZoom>
-);
-```
-
-Props:
-- prepanStyle: Applied styles when view is draggable.
-- panStyle: Applied styles when view is being dragged.
-- onPanEnabled: Callback when pan is enabled.
-- onPanDisabled: Callback when pan is disabled.
+- [Pan And Zoom](#pan-and-zoom)
 
 ### PaperRenderer
 
@@ -93,10 +72,7 @@ Currently a synchronous but extensible implementation.
 
 See [src/Paper.types.js](src/Paper.types.js).
 
-##### Common Type Props
-
-- scopedProps: This is useful for accessing variables and object pointers from outside PaperJS events: ```scopedProps={paper => ({ onMouseUp: () => myScope.onMouseUp(), center: paper.view.center })}```. Scoped props overrides other existing props.
-- ...rest: Remaining props are passed into the constructor of the type instance.
+Props are passed into the constructor of the type instance.
 
 #### API
 
@@ -136,4 +112,61 @@ const App = (props) => (
 );
 
 export default App;
+```
+
+### High Order Components
+
+#### Pan And Zoom
+
+Add pan and zoom controls to Paper's view. By default, space + mouse drag to pan and mouse scroll to zoom.
+
+Example usage:
+```jsx
+import { withPanAndZoom, PaperContainer } from '@psychobolt/react-paperjs'
+
+import Scene, { options } from './Scene';
+
+const PanAndZoom = withPanAndZoom(PaperContainer);
+
+export default () => (
+  <PanAndZoom><Scene /></PanAndZoom>
+);
+```
+
+Props:
+- prepanStyle: Applied styles when view is draggable.
+- panStyle: Applied styles when view is being dragged.
+- onPanEnabled: Callback when pan is enabled.
+- onPanDisabled: Callback when pan is disabled.
+
+#### Paper Scope
+
+Injects Paper Scope as component prop 'paper'.
+
+Example usage:
+```jsx
+import React from 'react';
+
+import { PaperScope, Circle } from '@psychobolt/react-paperjs';
+
+@PaperScope
+export default class Scene {
+  render() {
+    const { paper } = this.props;
+    return <Circle fillColor="red" radius={35} center={paper.view.center} />;
+  }
+}
+```
+
+As an alternative, you can use a helper function:
+```jsx
+import React from 'react';
+
+import { renderWithPaperScope, Circle } from '@psychobolt/react-paperjs';
+
+export default class Scene {
+  render() {
+    return renderWithPaperScope(paper => <Circle fillColor="red" radius={35} center={paper.view.center} />);
+  }
+}
 ```

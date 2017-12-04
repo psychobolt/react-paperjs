@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { PaperContainer, Path, Rectangle } from 'src';
+import { renderWithPaperScope, PaperContainer, Path, Rectangle } from 'src';
 
 storiesOf('Path', module)
   .add('with PathData', () => (
@@ -14,13 +14,13 @@ storiesOf('Path', module)
   ))
   .add('Rectangle', () => (
     <PaperContainer>
-      <Rectangle
-        width={90}
-        height={60}
-        fillColor="green"
-        scopedProps={paper => ({
-          position: paper.view.center,
-        })}
-      />
+      {renderWithPaperScope(paper => (
+        <Rectangle
+          width={90}
+          height={60}
+          fillColor="green"
+          position={paper.view.center}
+        />
+      ))}
     </PaperContainer>
   ));

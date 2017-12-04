@@ -4,7 +4,8 @@ import typeof { Group, Segment } from 'paper';
 
 import { Tool } from '../../Paper.types';
 import PathTool from '../shared/PathTool';
-import ScopedProps from '../../hoc/ScopedProps';
+import PaperScope from '../../hoc/PaperScope';
+import InstanceRef from '../../hoc/InstanceRef';
 
 type Props = {
   pathProps: {
@@ -15,7 +16,8 @@ type Props = {
 const MOUSE_LEFT_CODE = 0;
 
 // $FlowFixMe
-@ScopedProps
+@InstanceRef
+@PaperScope
 export default class PolygonTool extends PathTool<Props> {
   static defaultProps = {
     ...PathTool.defaultProps,
@@ -30,18 +32,19 @@ export default class PolygonTool extends PathTool<Props> {
 
   render() {
     const {
-      pathProps, onMouseDown, onPathAdd, onSegmentAdd, onSegmentRemove, ...rest
+      pathProps, onMouseDown, onPathAdd, onSegmentAdd, onSegmentRemove, paper, instanceRef, ...rest
     } = this.props;
+    const { Path, Group, project } = paper;
     const ref = this;
     return (
       <Tool
-        ref={this.ref}
+        ref={instanceRef}
         onMouseDown={toolEvent => {
           if (toolEvent.event.button === MOUSE_LEFT_CODE) {
             if (!ref.path) {
-              const path = new this.context.paper.Path(pathProps);
-              const points = new this.context.paper.Group();
-              this.context.paper.project.layers[0].addChild(points);
+              const path = new Path(pathProps);
+              const points = new Group();
+              project.layers[0].addChild(points);
               ref.path = path;
               ref.points = points;
             }
@@ -49,7 +52,7 @@ export default class PolygonTool extends PathTool<Props> {
             if (selectedSegment == null) {
               path.add(toolEvent.point);
               const segment = path.lastSegment;
-              const bounds = new this.context.paper.Path.Circle({
+              const bounds = new Path.Circle({
                 center: toolEvent.point,
                 radius: 7,
                 fillColor: 'white',

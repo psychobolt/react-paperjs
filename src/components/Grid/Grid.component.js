@@ -2,7 +2,7 @@
 import React from 'react';
 
 import { Layer, Group, Line } from '../../Paper.types';
-import withScopedProps from '../../hoc/ScopedProps';
+import withInstanceRef from '../../hoc/InstanceRef';
 
 type Props = {
   top: number,
@@ -52,4 +52,4 @@ const Grid = ({ width, height, top = 0, left = 0, right = width, bottom = height
   );
 };
 
-export default withScopedProps(Grid);
+export default withInstanceRef(Grid);

@@ -2,7 +2,7 @@
 import type { Node } from 'react';
 import paperCore from 'paper';
 
-import withScopedProps from './hoc/ScopedProps';
+import withInstanceRef from './hoc/InstanceRef';
 
 export type Paper = typeof paperCore.PaperScope;
 
@@ -28,7 +28,11 @@ export const CONSTANTS = {
 
 export default {
   [CONSTANTS.PaperScope]: (props, paper) => new paper.PaperScope(),
-  [CONSTANTS.Tool]: (props, paper) => new paper.Tool(props),
+  [CONSTANTS.Tool]: (props, paper) => {
+    const tool = new paper.Tool(props);
+    tool.activate();
+    return tool;
+  },
   [CONSTANTS.Layer]: (props, paper) => new paper.Layer(props),
   [CONSTANTS.Group]: (props, paper) => new paper.Group(props),
   [CONSTANTS.Path]: (props, paper) => new paper.Path(props),
@@ -51,6 +55,6 @@ export const {
   Circle,
   PointText,
 } = Object.entries(PAPER).reduce((types, [key, type]) =>
-  ({ ...types, [key]: withScopedProps(type) }), {});
+  ({ ...types, [key]: withInstanceRef(type) }), {});
 
 export * from './components';

@@ -4,10 +4,8 @@ import { Group, Item, TextItem } from 'paper';
 
 import TYPES, { type PaperTypes, type Paper } from './Paper.types';
 import { diffProps, updateProps } from './Paper.component';
-import { type ScopedProps } from './Paper.container';
 
 type Props = {
-  scopedProps: ScopedProps<*>,
   pathData: string,
   children: any,
 };
@@ -116,19 +114,20 @@ const defaultHostConfig = {
     appendChild(parent: Instance, child: Instance) {
       if (parent instanceof Group && child instanceof Item) {
         parent.addChild(child);
-      } else {
-        console.log('append child to mounted parent');
       }
     },
     appendChildToContainer(container: Paper, child: Instance) {
-      console.log('append child to container');
+      if (child instanceof Group) {
+        child.addTo(container.project);
+      }
     },
     insertBefore(parent: Instance, child: Instance, beforeChild: Instance) {
       console.log('insert before child');
     },
     insertInContainerBefore(container: Paper, child: Instance, beforeChild: Instance) {
-      // TODO
-      console.log('insert child in container before child');
+      if (child instanceof Item && beforeChild instanceof Item) {
+        beforeChild.insertAbove(child);
+      }
     },
     removeChild(parent: Instance, child: Instance) {
       child.remove();

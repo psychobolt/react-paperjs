@@ -3,7 +3,8 @@ import React from 'react';
 
 import { Tool } from '../../Paper.types';
 import PathTool from '../shared/PathTool';
-import ScopedProps from '../../hoc/ScopedProps';
+import PaperScope from '../../hoc/PaperScope';
+import InstanceRef from '../../hoc/InstanceRef';
 
 type Props = {
   pathProps: {
@@ -14,7 +15,8 @@ type Props = {
 const MOUSE_LEFT_CODE = 0;
 
 // $FlowFixMe
-@ScopedProps
+@InstanceRef
+@PaperScope
 export default class FreeformPathTool extends PathTool<Props> {
   static defaultProps = {
     ...PathTool.defaultProps,
@@ -24,15 +26,17 @@ export default class FreeformPathTool extends PathTool<Props> {
   }
 
   render() {
-    const { pathProps, onMouseDown, onMouseDrag, onMouseUp, onPathAdd, ...rest } = this.props;
+    const {
+      pathProps, onMouseDown, onMouseDrag, onMouseUp, onPathAdd, paper, instanceRef, ...rest
+    } = this.props;
     const ref = this;
     return (
       <Tool
-        ref={this.ref}
+        ref={instanceRef}
         minDistance={10}
         onMouseDown={toolEvent => {
           if (toolEvent.event.button === MOUSE_LEFT_CODE) {
-            const path = new this.context.paper.Path(pathProps);
+            const path = new paper.Path(pathProps);
             ref.path = path;
             onMouseDown(toolEvent);
           }

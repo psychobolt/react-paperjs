@@ -4,7 +4,8 @@ import { typeof Point, Color } from 'paper';
 
 import { Tool } from '../../Paper.types';
 import PathTool from '../shared/PathTool';
-import ScopedProps from '../../hoc/ScopedProps';
+import PaperScope from '../../hoc/PaperScope';
+import InstanceRef from '../../hoc/InstanceRef';
 
 type Props = {
   pathProps: {
@@ -15,7 +16,8 @@ type Props = {
 const MOUSE_LEFT_CODE = 0;
 
 // $FlowFixMe
-@ScopedProps
+@InstanceRef
+@PaperScope
 export default class RectangleTool extends PathTool<Props> {
   static defaultProps = {
     ...PathTool.defaultProps,
@@ -28,15 +30,17 @@ export default class RectangleTool extends PathTool<Props> {
   start: Point;
 
   render() {
-    const { pathProps, onMouseDown, onMouseUp, onMouseDrag, onPathAdd, ...rest } = this.props;
+    const {
+      pathProps, onMouseDown, onMouseUp, onMouseDrag, onPathAdd, paper, instanceRef, ...rest
+    } = this.props;
     const ref = this;
     return (
       <Tool
-        ref={this.ref}
+        ref={instanceRef}
         onMouseDown={toolEvent => {
           if (toolEvent.event.button === MOUSE_LEFT_CODE) {
             const start = toolEvent.point;
-            const path = new this.context.paper.Path.Rectangle({
+            const path = new paper.Path.Rectangle({
               point: start,
               size: [1, 1],
               fillColor: pathProps.selectedFillColor || new Color(0.9, 0.9, 1, 0.75),

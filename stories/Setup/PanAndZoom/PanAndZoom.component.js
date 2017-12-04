@@ -1,7 +1,6 @@
-// @flow
 import React from 'react';
 
-import { withPanAndZoom, PaperContainer, Circle, Grid } from 'src';
+import { withPanAndZoom, renderWithPaperScope, PaperContainer, Circle, Grid } from 'src';
 
 import { ref } from '../../shared';
 
@@ -31,21 +30,21 @@ export default () => (
     }}
     onMount={container => container.canvas.focus()}
   >
-    <Grid
-      ref={ref}
-      width={width}
-      height={height}
-      scopedProps={paper => {
-        const { top, left, right, bottom } = paper.view.bounds;
-        return {
-          top,
-          left,
-          right,
-          bottom,
-          strokeWidth: 1 / paper.view.zoom,
-        };
-      }}
-    />
+    {renderWithPaperScope(paper => {
+      const { top, left, right, bottom } = paper.view.bounds;
+      return (
+        <Grid
+          ref={ref}
+          width={width}
+          height={height}
+          top={top}
+          left={left}
+          right={right}
+          bottom={bottom}
+          strokeWidth={1 / paper.view.zoom}
+        />
+      );
+    })}
     <Circle
       ref={ref}
       radius={35}

@@ -28,7 +28,7 @@ type ViewProps = {
   center: {} | number[],
 };
 
-export type ScopedProps<P> = (container: PaperContainer) => P;
+type ScopedProps<P> = (container: PaperContainer) => P;
 
 type NestedProps<P> = P | ScopedProps<P>;
 
