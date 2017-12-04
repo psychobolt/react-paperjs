@@ -100,7 +100,7 @@ export default class RectangleTool extends PathTool<Props> {
         ref={instanceRef}
         onMouseDown={this.onMouseDown}
         onMouseDrag={this.onMouseDrag}
-        onMouseUp={this.mouseUp}
+        onMouseUp={this.onMouseUp}
         {...rest}
       />
     );
