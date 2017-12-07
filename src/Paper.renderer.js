@@ -1,6 +1,6 @@
 // @flow
 import Reconciler from 'react-reconciler';
-import { Group, Item, TextItem } from 'paper';
+import { Group, Item, TextItem, Layer } from 'paper';
 
 import TYPES, { type PaperTypes, type Paper } from './Paper.types';
 import { diffProps, updateProps } from './Paper.component';
@@ -52,7 +52,7 @@ const defaultHostConfig = {
     } else if (parent instanceof TextItem && typeof child === 'string') {
       Object.assign(parent, { content: child });
     } else {
-      console.log('append initial child');
+      console.log('ignore append initial child');
     }
   },
   finalizeInitialChildren(instance: Instance, type: string, props: Props) {
@@ -84,10 +84,10 @@ const defaultHostConfig = {
   },
   scheduleDeferredCallback: window.requestIdleCallback,
   prepareForCommit() {
-    console.log('prepare for commit');
+    console.log('ignore prepare for commit');
   },
   resetAfterCommit() {
-    console.log('reset for commit');
+    console.log('ignore reset for commit');
   },
   useSyncScheduling: true,
   now: Date.now,
@@ -103,30 +103,52 @@ const defaultHostConfig = {
       updateProps(instance, updatePayload, type, oldProps, newProps);
     },
     commitMount(instance: Instance, type: string, newProps: Props, internalInstanceHandle: Fiber) {
-      console.log('commit mount');
+      console.log('ignore commit mount');
     },
     commitTextUpdate(textInstance: Instance, oldText: string, newText: string) {
-      console.log('commit text update');
+      console.log('ignore commit text update');
     },
     resetTextContent(instance: Instance) {
-      console.log('reset text content');
+      console.log('ignore reset text content');
     },
     appendChild(parent: Instance, child: Instance) {
       if (parent instanceof Group && child instanceof Item) {
         parent.addChild(child);
+      } else {
+        console.log('ignore append child', parent, child);
       }
     },
     appendChildToContainer(container: Paper, child: Instance) {
-      if (child instanceof Group) {
-        child.addTo(container.project);
+      if (child instanceof Item) {
+        child.remove();
+        const { layers } = container.project;
+        const lastIndex = layers.length - 1;
+        if (child instanceof Layer) {
+          child.insertBelow(layers[lastIndex]);
+        } else {
+          child.addTo(layers[lastIndex]);
+        }
+      } else {
+        console.log('ignore append child to container', child);
       }
     },
     insertBefore(parent: Instance, child: Instance, beforeChild: Instance) {
-      console.log('insert before child');
+      console.log('ignore insert before child', parent, child, beforeChild);
     },
     insertInContainerBefore(container: Paper, child: Instance, beforeChild: Instance) {
-      if (child instanceof Item && beforeChild instanceof Item) {
-        beforeChild.insertAbove(child);
+      if (child instanceof Item) {
+        child.remove();
+        const { layers } = container.project;
+        const lastIndex = layers.length - 1;
+        if (child instanceof Layer && beforeChild instanceof Item) {
+          child.insertBelow(beforeChild.parent);
+        } else if (child instanceof Layer) {
+          child.insertBelow(layers[lastIndex]);
+        } else {
+          child.addTo(layers[lastIndex]);
+        }
+      } else {
+        console.log('ignore insert in container before child', child, beforeChild);
       }
     },
     removeChild(parent: Instance, child: Instance) {

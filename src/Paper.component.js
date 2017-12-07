@@ -2,6 +2,7 @@ import _ from 'lodash';
 
 function indexProps(dictionary, props) {
   Object.entries(props).forEach(([key, value]) => {
+    if (key === 'children') return;
     const values = dictionary[key];
     if (values) {
       values.push(value);
@@ -34,9 +35,9 @@ export function diffProps(oldProps, newProps) {
  ["error", { "props": true, "ignorePropertyModificationsFor": ["instance"] }]
 */
 export function updateProps(instance, updatePayload) {
-  for (let i = 0; i < updatePayload.length; i += 2) {
-    const key = updatePayload[i];
-    const value = updatePayload[i + 1];
+  for (let i = 1; i < updatePayload.length; i += 2) {
+    const key = updatePayload[i - 1];
+    const value = updatePayload[i];
     if (key === 'center') {
       instance.position = value;
     }
