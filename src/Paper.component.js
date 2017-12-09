@@ -40,15 +40,14 @@ export function updateProps(instance, updatePayload) {
     const value = updatePayload[i];
     if (key === 'center') {
       instance.position = value;
-    }
-    if (key === 'from') {
+    } else if (key === 'from') {
       instance.firstSegment.point = value;
-    }
-    if (key === 'to') {
+    } else if (key === 'to') {
       instance.lastSegment.point = value;
-    }
-    if (key === 'strokeWidth') {
-      instance.strokeWidth = value;
+    } else if (key in instance) {
+      instance[key] = value;
+    } else {
+      console.log(`instance does not have property ${key}`, instance); // eslint-disable-line no-console
     }
   }
 }
