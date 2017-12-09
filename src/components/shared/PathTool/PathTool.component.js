@@ -4,6 +4,7 @@ import typeof { PaperScope as Paper, Path, Segment } from 'paper';
 
 import type { ToolEventHandler } from '../../../Paper.container';
 
+type PathEventHandler = (path: Path) => any
 type SegmentEventHandler = (segment: Segment | Segment[]) => any;
 
 type Props = {
@@ -11,7 +12,8 @@ type Props = {
   onMouseDown: ToolEventHandler,
   onMouseDrag: ToolEventHandler,
   onMouseUp: ToolEventHandler,
-  onPathAdd: (path: Path) => any,
+  onPathInit: PathEventHandler,
+  onPathAdd: PathEventHandler,
   onSegmentAdd: SegmentEventHandler,
   onSegmentRemove: SegmentEventHandler
 };
@@ -21,6 +23,7 @@ export default class PathTool<P> extends React.Component<P & Props> {
     onMouseDown: () => {},
     onMouseDrag: () => {},
     onMouseUp: () => {},
+    onPathInit: () => {},
     onPathAdd: () => {},
     onSegmentAdd: () => {},
     onSegmentRemove: () => {},

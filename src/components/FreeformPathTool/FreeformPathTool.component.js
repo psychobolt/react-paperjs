@@ -27,10 +27,11 @@ export default class FreeformPathTool extends PathTool<Props> {
   }
 
   onMouseDown = (toolEvent: ToolEvent) => {
-    const { pathProps, onMouseDown, paper } = this.props;
+    const { pathProps, onMouseDown, onPathInit, paper } = this.props;
     if (toolEvent.event.button === MOUSE_LEFT_CODE) {
       const path = new paper.Path(pathProps);
       this.path = path;
+      onPathInit(path);
     }
     onMouseDown(toolEvent);
   }

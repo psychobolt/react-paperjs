@@ -28,49 +28,65 @@ export default class PolygonTool extends PathTool<Props> {
   };
 
   onMouseDown = (toolEvent: ToolEvent) => {
-    const { pathProps, onMouseDown, onPathAdd, onSegmentAdd, onSegmentRemove, paper } = this.props;
     if (toolEvent.event.button === MOUSE_LEFT_CODE) {
-      const { Path, Group, project } = paper;
       if (!this.path) {
-        const path = new Path(pathProps);
-        const points = new Group();
-        project.layers[0].addChild(points);
-        this.path = path;
-        this.points = points;
+        this.onPathInit();
       }
-      const { path, points, selectedSegment } = this;
-      if (selectedSegment == null) {
-        path.add(toolEvent.point);
-        const segment = path.lastSegment;
-        const bounds = new Path.Circle({
-          center: toolEvent.point,
-          radius: 7,
-          fillColor: 'white',
-          opacity: 0,
-        });
-        bounds.on('mousedown', () => {
-          if (!path.closed && path.contains(bounds.position)) {
-            this.selectedSegment = segment;
-          }
-        });
-        points.addChild(bounds);
-        onSegmentAdd(segment, bounds);
+      if (this.selectedSegment == null) {
+        this.onSegmentAdd(toolEvent);
       } else {
-        const { index } = selectedSegment;
-        const segments = path.removeSegments(0, index);
-        const bounds = points.removeChildren(0, index);
-        if (segments.length) {
-          onSegmentRemove(segments, bounds);
-        }
-        path.closed = true;
-        path.selected = false;
-        onPathAdd(path);
-        this.path = null;
-        this.points = null;
-        this.selectedSegment = null;
+        this.onPathAdd();
       }
     }
-    onMouseDown(toolEvent);
+    this.props.onMouseDown(toolEvent);
+  }
+
+  onPathInit() {
+    const { pathProps, onPathInit, paper } = this.props;
+    const { Path, Group, project } = paper;
+    const path = new Path(pathProps);
+    const points = new Group();
+    project.layers[0].addChild(points);
+    this.path = path;
+    this.points = points;
+    onPathInit(path);
+  }
+
+  onSegmentAdd(toolEvent: ToolEvent) {
+    const { onSegmentAdd, paper } = this.props;
+    const { path, points } = this;
+    path.add(toolEvent.point);
+    const segment = path.lastSegment;
+    const bounds = new paper.Path.Circle({
+      center: toolEvent.point,
+      radius: 7,
+      fillColor: 'white',
+      opacity: 0,
+    });
+    bounds.on('mousedown', () => {
+      if (!path.closed && path.contains(bounds.position)) {
+        this.selectedSegment = segment;
+      }
+    });
+    points.addChild(bounds);
+    onSegmentAdd(segment, bounds);
+  }
+
+  onPathAdd() {
+    const { selectedSegment, path, points } = this;
+    const { onSegmentRemove, onPathAdd } = this.props;
+    const { index } = selectedSegment;
+    const segments = path.removeSegments(0, index);
+    const bounds = points.removeChildren(0, index);
+    if (segments.length) {
+      onSegmentRemove(segments, bounds);
+    }
+    path.closed = true;
+    path.selected = false;
+    onPathAdd(path);
+    this.path = null;
+    this.points = null;
+    this.selectedSegment = null;
   }
 
   points: Points;

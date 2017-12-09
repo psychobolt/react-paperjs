@@ -28,7 +28,7 @@ export default class RectangleTool extends PathTool<Props> {
   }
 
   onMouseDown = (toolEvent: ToolEvent) => {
-    const { pathProps, onMouseDown, paper } = this.props;
+    const { pathProps, onMouseDown, onPathInit, paper } = this.props;
     if (toolEvent.event.button === MOUSE_LEFT_CODE) {
       const { Path, Color } = paper;
       const start = toolEvent.point;
@@ -40,6 +40,7 @@ export default class RectangleTool extends PathTool<Props> {
       });
       this.path = path;
       this.start = start;
+      onPathInit(path);
     }
     onMouseDown(toolEvent);
   }
