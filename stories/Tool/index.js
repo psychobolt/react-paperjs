@@ -22,7 +22,7 @@ storiesOf('Tool', module)
   .add('Polygon', () => (
     <div>
       <div>
-        <p>Click anywhere to plot points and to create a path. </p>
+        <p>Click anywhere to plot points and to create a shape. </p>
         <p>Click near points to close the path and prune dangling points.</p>
       </div>
       <PaperContainer canvasProps={{ style: styles.container }}>
