@@ -79,7 +79,7 @@ export default class PolygonTool extends PathTool<Props> {
   }
 
   onPathAdd() {
-    const { selectedSegment, path } = this;
+    const { selectedSegment, path, points } = this;
     const { onSegmentRemove, onPathAdd } = this.props;
     const { index } = selectedSegment;
     const segments = path.removeSegments(0, index);
@@ -91,7 +91,9 @@ export default class PolygonTool extends PathTool<Props> {
     onPathAdd(path);
     this.path = null;
     this.selectedSegment = null;
-    this.points.remove();
+    if (points) {
+      points.remove();
+    }
   }
 
   createBounds(segment: Segment) {
