@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import typeof { Path as PathType, Group as Points, Segment, ToolEvent } from 'paper';
+import typeof { Group as Points, Segment, ToolEvent } from 'paper';
 
 import { Tool } from '../../Paper.types';
 import PathTool from '../shared/PathTool';
@@ -11,7 +11,7 @@ type Props = {
   pathProps: {
     strokeColor: string,
   },
-  path: PathType,
+  pathData: string,
 };
 
 const MOUSE_LEFT_CODE = 0;
@@ -28,15 +28,17 @@ export default class PolygonTool extends PathTool<Props> {
     },
   };
 
-  constructor(props: Props) {
-    super(props);
-    const { path } = props;
-    if (path) this.setPath(path);
-  }
-
-  componentDidUpdate() {
-    const { path } = this.props;
-    if (path) this.setPath(path);
+  componentDidUpdate(prevProps: Props) {
+    const { path, props } = this;
+    const { pathProps, pathData } = props;
+    if (path) {
+      if (prevProps.pathData !== pathData) {
+        path.pathData = pathData;
+      }
+      if (prevProps.pathProps !== pathProps) {
+        Object.assign(path, pathProps);
+      }
+    }
   }
 
   onMouseDown = (toolEvent: ToolEvent) => {
@@ -54,9 +56,11 @@ export default class PolygonTool extends PathTool<Props> {
   }
 
   onPathInit() {
-    const { pathProps, onPathInit, paper } = this.props;
+    const { pathProps, pathData, onPathInit, paper } = this.props;
     const { Path } = paper;
     const path = new Path(pathProps);
+    path.pathData = pathData;
+    path.segments.forEach(segment => this.createBounds(segment));
     this.path = path;
     onPathInit(path);
   }
@@ -108,16 +112,6 @@ export default class PolygonTool extends PathTool<Props> {
       }
     });
     this.points.addChild(bounds);
-  }
-
-  setPath(path: PathType) {
-    this.path = path;
-    if (this.points) {
-      this.points.remove();
-      this.points = null;
-    }
-    path.segments.forEach(segment => this.createBounds(segment));
-    Object.assign(path, this.props.pathProps);
   }
 
   points: Points;

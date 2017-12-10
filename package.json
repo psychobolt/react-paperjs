@@ -1,6 +1,6 @@
 {
   "name": "@psychobolt/react-paperjs",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "",
   "main": "dist/index.js",
   "repository": "https://github.com/psychobolt/react-paperjs.git",
