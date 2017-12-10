@@ -28,23 +28,23 @@ export default class PolygonTool extends PathTool<Props> {
     },
   };
 
-  componentDidUpdate(prevProps: Props) {
-    const { path, props } = this;
+  componentDidUpdate() {
+    const { path, points, props } = this;
     const { pathProps, pathData } = props;
     if (path) {
-      if (prevProps.pathData !== pathData) {
-        path.pathData = pathData;
-      }
-      if (prevProps.pathProps !== pathProps) {
-        Object.assign(path, pathProps);
-      }
+      this.setPathData(pathData);
+      Object.assign(path, pathProps);
+    } else if (points) {
+      this.pathInit();
     }
   }
 
   onMouseDown = (toolEvent: ToolEvent) => {
     if (toolEvent.event.button === MOUSE_LEFT_CODE) {
-      if (!this.path) {
-        this.onPathInit();
+      const { path } = this;
+      if (!path) {
+        this.pathInit();
+        this.props.onPathInit(path);
       }
       if (this.selectedSegment == null) {
         this.onSegmentAdd(toolEvent);
@@ -55,14 +55,19 @@ export default class PolygonTool extends PathTool<Props> {
     this.props.onMouseDown(toolEvent);
   }
 
-  onPathInit() {
-    const { pathProps, pathData, onPathInit, paper } = this.props;
+  pathInit() {
+    const { pathProps, pathData, paper } = this.props;
     const { Path } = paper;
     const path = new Path(pathProps);
+    this.path = path;
+    this.setPathData(pathData);
+  }
+
+  setPathData(pathData: string) {
+    const { path } = this;
+    this.removeBounds();
     path.pathData = pathData;
     path.segments.forEach(segment => this.createBounds(segment));
-    this.path = path;
-    onPathInit(path);
   }
 
   onSegmentAdd(toolEvent: ToolEvent) {
@@ -74,20 +79,19 @@ export default class PolygonTool extends PathTool<Props> {
   }
 
   onPathAdd() {
-    const { selectedSegment, path, points } = this;
+    const { selectedSegment, path } = this;
     const { onSegmentRemove, onPathAdd } = this.props;
     const { index } = selectedSegment;
     const segments = path.removeSegments(0, index);
     if (segments.length) {
       onSegmentRemove(segments, path);
     }
-    points.remove();
     path.closed = true;
     path.selected = false;
     onPathAdd(path);
     this.path = null;
-    this.points = null;
     this.selectedSegment = null;
+    this.points.remove();
   }
 
   createBounds(segment: Segment) {
@@ -112,6 +116,13 @@ export default class PolygonTool extends PathTool<Props> {
       }
     });
     this.points.addChild(bounds);
+  }
+
+  removeBounds() {
+    if (this.points) {
+      this.points.remove();
+      this.points = null;
+    }
   }
 
   points: Points;
