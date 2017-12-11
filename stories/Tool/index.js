@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { PaperContainer, LineTool, FreeformPathTool, PolygonTool, RectangleTool } from 'src';
+import { PaperContainer, LineTool, FreeformPathTool, PolygonTool, RectangleTool, CircleTool } from 'src';
 
 import { ref } from '../shared';
 import styles from './Tool.styles';
@@ -43,6 +43,14 @@ storiesOf('Tool', module)
       <div>Click and drag to create rectangle shapes.</div>
       <PaperContainer canvasProps={{ style: styles.container }}>
         <RectangleTool ref={ref} onPathAdd={onPathAdd} />
+      </PaperContainer>
+    </div>
+  ))
+  .add('Circle', () => (
+    <div>
+      <div>Click and drag to create circle shapes.</div>
+      <PaperContainer canvasPreops={{ style: styles.container }}>
+        <CircleTool ref={ref} onPathAdd={onPathAdd} />
       </PaperContainer>
     </div>
   ));
