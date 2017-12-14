@@ -6,10 +6,6 @@ node_js:
 cache:
   yarn: true
 
-install:
-  - yarn global add codecov
-  - yarn install
-
 script:
   - yarn eslint src
   - yarn flow
@@ -31,4 +27,4 @@ deploy:
     branch: master
 
 after_script:
-  - codecov
+  - yarn codecov
