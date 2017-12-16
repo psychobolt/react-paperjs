@@ -131,7 +131,7 @@ const defaultHostConfig = {
       console.log('ignore insert before child', parent, child, beforeChild);
     },
     insertInContainerBefore(container: Paper, child: Instance, beforeChild: Instance) {
-      if (child instanceof Item) {
+      if (child instanceof Item && beforeChild instanceof Item) {
         child.insertBelow(beforeChild);
       } else {
         console.log('ignore insert in container before child', child, beforeChild);
