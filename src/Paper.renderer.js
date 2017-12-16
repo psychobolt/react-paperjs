@@ -1,6 +1,6 @@
 // @flow
 import Reconciler from 'react-reconciler';
-import { Group, Item, TextItem, Layer } from 'paper';
+import { Group, Item, TextItem } from 'paper';
 
 import TYPES, { type PaperTypes, type Paper } from './Paper.types';
 import { diffProps, updateProps } from './Paper.component';
