@@ -102,7 +102,7 @@ export default class PolygonTool extends PathTool<Props> {
     const { path, points } = this;
     if (!points) {
       this.points = new Group();
-      project.layers[0].addChild(this.points);
+      project.layers.$$metadata.addChild(this.points);
     }
     const bounds = new Path.Circle({
       center: segment.point,

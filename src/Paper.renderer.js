@@ -120,14 +120,9 @@ const defaultHostConfig = {
     },
     appendChildToContainer(container: Paper, child: Instance) {
       if (child instanceof Item) {
-        child.remove();
-        const { layers } = container.project;
-        const lastIndex = layers.length - 1;
-        if (child instanceof Layer) {
-          child.insertBelow(layers[lastIndex]);
-        } else {
-          child.addTo(layers[lastIndex]);
-        }
+        const { project } = container;
+        const { $$default } = project.layers;
+        child.addTo($$default);
       } else {
         console.log('ignore append child to container', child);
       }
@@ -137,20 +132,7 @@ const defaultHostConfig = {
     },
     insertInContainerBefore(container: Paper, child: Instance, beforeChild: Instance) {
       if (child instanceof Item) {
-        child.remove();
-        const { layers } = container.project;
-        const lastIndex = layers.length - 1;
-        if (child instanceof Layer) {
-          if (beforeChild instanceof Layer) {
-            child.insertBelow(beforeChild);
-          } else if (beforeChild instanceof Item) {
-            child.insertBelow(beforeChild.parent);
-          } else {
-            child.insertBelow(layers[lastIndex]);
-          }
-        } else {
-          child.addTo(layers[lastIndex]);
-        }
+        child.insertBelow(beforeChild);
       } else {
         console.log('ignore insert in container before child', child, beforeChild);
       }

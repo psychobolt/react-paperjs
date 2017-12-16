@@ -70,8 +70,9 @@ export default class PaperContainer extends React.Component<Props> {
     const newLayer = (options = {}) =>
       this.paper.project.addLayer(renderer.createInstance(CONSTANTS.Layer, options, this.paper));
     this.mount = () => {
-      newLayer({ name: '_metadata' });
-      newLayer().activate();
+      const layer = newLayer({ name: '$$default' });
+      newLayer({ name: '$$metadata' });
+      layer.activate();
     };
     this.update = () => {
       const { viewProps, children } = this.props;
