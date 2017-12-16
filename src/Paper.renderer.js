@@ -138,7 +138,7 @@ const defaultHostConfig = {
       const { $$default, $$metadata } = container.project.layers;
       if (child instanceof Layer && beforeChild instanceof Layer) {
         child.insertBelow(beforeChild);
-      } else if (child instanceof Layer && beforeChild instanceof Item) {
+      } else if (child instanceof Layer) {
         child.insertBelow($$metadata);
       } else if (child instanceof Item && beforeChild instanceof Layer) {
         child.addTo($$default);
