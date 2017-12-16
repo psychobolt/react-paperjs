@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { withPanAndZoom, renderWithPaperScope, PaperContainer, Circle, Grid } from 'src';
+import { withPanAndZoom, renderWithPaperScope, PaperContainer, Layer, Circle, Grid } from 'src';
 
 import { ref } from '../../shared';
 
@@ -45,12 +45,14 @@ export default () => (
         />
       );
     })}
-    <Circle
-      ref={ref}
-      radius={35}
-      strokeColor="black"
-      fillColor="white"
-      center={[width / 2, height / 2]}
-    />
+    <Layer ref={ref}>
+      <Circle
+        ref={ref}
+        radius={35}
+        strokeColor="black"
+        fillColor="white"
+        center={[width / 2, height / 2]}
+      />
+    </Layer>
   </PanAndZoom>
 );

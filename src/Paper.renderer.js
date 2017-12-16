@@ -1,6 +1,6 @@
 // @flow
 import Reconciler from 'react-reconciler';
-import { Group, Item, TextItem } from 'paper';
+import { Layer, Group, Item, TextItem } from 'paper';
 
 import TYPES, { type PaperTypes, type Paper } from './Paper.types';
 import { diffProps, updateProps } from './Paper.component';
@@ -121,8 +121,12 @@ const defaultHostConfig = {
     appendChildToContainer(container: Paper, child: Instance) {
       if (child instanceof Item) {
         const { project } = container;
-        const { $$default } = project.layers;
-        child.addTo($$default);
+        const { $$default, $$metadata } = project.layers;
+        if (child instanceof Layer) {
+          child.insertBelow($$metadata);
+        } else {
+          child.addTo($$default);
+        }
       } else {
         console.log('ignore append child to container', child);
       }
@@ -131,7 +135,14 @@ const defaultHostConfig = {
       console.log('ignore insert before child', parent, child, beforeChild);
     },
     insertInContainerBefore(container: Paper, child: Instance, beforeChild: Instance) {
-      if (child instanceof Item && beforeChild instanceof Item) {
+      const { $$default, $$metadata } = container.project.layers;
+      if (child instanceof Layer && beforeChild instanceof Layer) {
+        child.insertBelow(beforeChild);
+      } else if (child instanceof Layer && beforeChild instanceof Item) {
+        child.insertBelow($$metadata);
+      } else if (child instanceof Item && beforeChild instanceof Layer) {
+        child.addTo($$default);
+      } else if (child instanceof Item && beforeChild instanceof Item) {
         child.insertBelow(beforeChild);
       } else {
         console.log('ignore insert in container before child', child, beforeChild);

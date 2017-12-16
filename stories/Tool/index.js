@@ -49,7 +49,7 @@ storiesOf('Tool', module)
   .add('Circle', () => (
     <div>
       <div>Click and drag to create circle shapes.</div>
-      <PaperContainer canvasPreops={{ style: styles.container }}>
+      <PaperContainer canvasProps={{ style: styles.container }}>
         <CircleTool ref={ref} onPathAdd={onPathAdd} />
       </PaperContainer>
     </div>
