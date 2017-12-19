@@ -1,4 +1,7 @@
 {
     "name": "stories",
-    "version": "0.1.0"
+    "version": "0.1.0",
+    "dependencies": {
+        "re-resizable": "^4.1.2"
+    }
 }

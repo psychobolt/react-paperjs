@@ -7,7 +7,7 @@ import PanAndZoomApp from './PanAndZoom';
 storiesOf('Setup', module)
   .add('with Resize', () => (
     <div>
-      <div>The circle keeps centered, even on canvas resize.</div>
+      <div>Drag borders to resize canvas.</div>
       <ResizableApp />
     </div>
   ))
