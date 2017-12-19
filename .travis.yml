@@ -7,7 +7,7 @@ cache:
   yarn: true
 
 script:
-  - yarn eslint src
+  - yarn eslint src *.js
   - yarn flow
   - yarn test -- --coverage
   - yarn build
@@ -16,6 +16,7 @@ before_deploy:
   - cd stories/
   - yarn install
   - cd ../
+  - yarn eslint stories
   - yarn build-storybook
 
 deploy:
