@@ -32,7 +32,7 @@ storiesOf('Tool', module)
       <div>
         <p>Click start to begin.</p>
         <button>Start</button>
-        <p>Hold down shift, then left click to plot points to form a segment.</p> 
+        <p>Hold down shift, then left click to plot points to form a segment.</p>
         <p>Release shift to complete segment path.</p>
       </div>
       <PaperContainer canvasProps={{ style: styles.container }}>
