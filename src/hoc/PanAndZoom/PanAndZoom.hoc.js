@@ -9,7 +9,8 @@ type ExtendedProps = {
   panStyle: {},
   onPanEnabled: Function,
   onPanDisabled: Function,
-  onZoom: Function
+  onZoom: Function,
+  viewZoom: number,
 } & Props;
 
 type State = {
@@ -30,16 +31,25 @@ function callAllHandlers(handlers: EventHandler[] = []) {
 export default (Container: any) =>
   class PanAndScroll extends React.Component<ExtendedProps, State> {
     static defaultProps = {
+      viewZoom: 1,
       onPanEnabled: () => {},
       onPanDisabled: () => {},
       onZoom: () => {},
     };
 
-    state = {
-      draggable: false,
-      dragStart: null,
-      viewZoom: 1,
-      viewCenter: null,
+    constructor(props: ExtendedProps) {
+      super(props);
+      this.state = {
+        draggable: false,
+        dragStart: null,
+        viewZoom: props.viewZoom,
+        viewCenter: null,
+      };
+    }
+
+    componentWillReceiveProps(props: ExtendedProps) {
+      const { viewZoom } = props;
+      if (this.props.viewZoom !== viewZoom) this.setState({ viewZoom });
     }
 
     onWheel = (event: SyntheticWheelEvent<HTMLCanvasElement>) => {
