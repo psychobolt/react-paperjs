@@ -9,6 +9,7 @@ type ExtendedProps = {
   panStyle: {},
   onPanEnabled: Function,
   onPanDisabled: Function,
+  onZoom: Function
 } & Props;
 
 type State = {
@@ -31,6 +32,7 @@ export default (Container: any) =>
     static defaultProps = {
       onPanEnabled: () => {},
       onPanDisabled: () => {},
+      onZoom: () => {},
     };
 
     state = {
@@ -43,10 +45,14 @@ export default (Container: any) =>
     onWheel = (event: SyntheticWheelEvent<HTMLCanvasElement>) => {
       const { viewZoom } = this.state;
       if (event.deltaY < 0) {
-        this.setState({ viewZoom: add(viewZoom, 0.1) });
+        const level = add(viewZoom, 0.1);
+        this.setState({ viewZoom: level });
+        this.props.onZoom(level);
       }
       if (event.deltaY > 0 && viewZoom > 0.1) {
-        this.setState({ viewZoom: add(viewZoom, -0.1) });
+        const level = add(viewZoom, -0.1);
+        this.setState({ viewZoom: level });
+        this.props.onZoom(level);
       }
     }
 

@@ -28,6 +28,9 @@ export default () => (
     onPanDisabled={() => {
       console.log('Pan disabled'); // eslint-disable-line no-console
     }}
+    onZoom={level => {
+      console.log(`Zoom: ${level}`); // eslint-disable-line no-console
+    }}
     onMount={container => container.canvas.focus()}
   >
     {renderWithPaperScope(paper => {
