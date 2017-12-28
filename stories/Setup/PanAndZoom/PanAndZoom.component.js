@@ -16,6 +16,7 @@ export default () => (
       height,
       tabIndex: 0,
     }}
+    viewCenter={[0, 0]}
     prepanStyle={{
       cursor: '-webkit-grab',
     }}
@@ -54,7 +55,6 @@ export default () => (
         radius={35}
         strokeColor="black"
         fillColor="white"
-        center={[width / 2, height / 2]}
       />
     </Layer>
   </PanAndZoom>

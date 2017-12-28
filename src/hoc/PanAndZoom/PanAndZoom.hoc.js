@@ -11,6 +11,7 @@ type ExtendedProps = {
   onPanDisabled: Function,
   onZoom: Function,
   viewZoom: number,
+  viewCenter: {} | number[],
 } & Props;
 
 type State = {
@@ -43,7 +44,7 @@ export default (Container: any) =>
         draggable: false,
         dragStart: null,
         viewZoom: props.viewZoom,
-        viewCenter: null,
+        viewCenter: props.viewCenter,
       };
     }
 
