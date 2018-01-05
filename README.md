@@ -14,6 +14,7 @@ A boilerplate for building React libraries
 - [Rollup](https://rollupjs.org/) with [Babel](https://www.npmjs.com/package/rollup-plugin-babel), [SCSS](https://www.npmjs.com/package/rollup-plugin-scss) and other plugins:
     - [Node Resolve](https://www.npmjs.com/package/rollup-plugin-node-resolve)
     - [CommonJS](https://www.npmjs.com/package/rollup-plugin-commonjs)
+- [styled-components](https://www.styled-components.com/)
 - Run tests with [Jest](https://facebook.github.io/jest/)
 - Code Coverage reporting with [Codecov](https://codecov.io/)
 - Manual Testing with [Storybook](https://storybook.js.org/)

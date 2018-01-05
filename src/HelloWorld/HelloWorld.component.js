@@ -1,13 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import './HelloWorld.css';
+const Content = styled.p`
+  font-size: large
+`;
 
 const HelloWorld = () => {
   console.log('Hello World!'); // eslint-disable-line no-console
   return (
-    <p className="content">
+    <Content>
        To get started, edit <code>src/HelloWorld/HelloWorld.component.js</code> and save to reload.
-    </p>
+    </Content>
   );
 };
 
