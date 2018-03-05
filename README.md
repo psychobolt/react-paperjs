@@ -24,7 +24,7 @@ A boilerplate for building React libraries
 
 ## Setup
 
-Install the latest [Node JS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn``` or ```yarn install``` command in the root and stories directory.
+Install the latest [Node JS LTS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn``` or ```yarn install``` command in the root and stories directory.
 
 ## Installing Flow Types
 
