@@ -15,7 +15,7 @@
     "build:prod": "rollup -c rollup.config.prod.js",
     "build": "rimraf dist/index.*.* dist/*.css && npm run build:dev && npm run build:prod",
     "start": "npm run build:dev -- -w",
-    "test": "cross-env BABEL_ENV=commonjs jest",
+    "test": "cross-env BABEL_ENV=commonjs jest --passWithNoTests",
     "lint": "eslint src stories *.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
