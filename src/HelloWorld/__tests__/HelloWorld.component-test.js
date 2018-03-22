@@ -1,11 +1,22 @@
 import 'jest-styled-components';
 
 import React from 'react';
+import { isPortal, isFragment } from 'react-is';
 import { shallow } from 'enzyme';
 
 import HelloWorld from '../HelloWorld.component';
 
-test('component <HelloWorld /> should render correctly', () => {
-  const wrapper = shallow(<HelloWorld />);
-  expect(wrapper).toMatchSnapshot();
+describe('component <HelloWorld />', () => {
+  it('should render correctly', () => {
+    const wrapper = shallow(<HelloWorld />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('is not type Portal', () => {
+    expect(isPortal(<HelloWorld />)).toBeFalsy();
+  });
+
+  it('is not type Fragment', () => {
+    expect(isFragment(<HelloWorld />)).toBeFalsy();
+  });
 });
