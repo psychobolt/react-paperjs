@@ -2,8 +2,10 @@ import React from 'react';
 import { compose } from 'recompose';
 import styled from 'styled-components';
 
+import * as styles from './HelloWorld.style';
+
 const Content = styled.p`
-  font-size: large;
+  ${styles.content}
 `;
 
 const Messenger = () => console.log('Hello World!'); // eslint-disable-line no-console

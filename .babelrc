@@ -17,8 +17,7 @@
   "env": {
     "commonjs": {
       "plugins": [
-        "transform-es2015-modules-commonjs",
-        "babel-plugin-styled-components"
+        "transform-es2015-modules-commonjs"
       ]
     }
   }

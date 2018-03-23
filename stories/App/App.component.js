@@ -1,36 +1,28 @@
 // @flow
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
+import * as styles from './App.style';
 import logo from './logo.svg';
 
 type Props = {
   children: any
 };
 
-const appLogoSpin = keyframes`
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-`;
-
 const Logo = styled.img`
-  animation: ${appLogoSpin} infinite 20s linear;
-  height: 80px;
+  ${styles.logo}
 `;
 
 const Header = styled.header`
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+  ${styles.header}
 `;
 
 const Title = styled.h1`
-  font-size: 1.5em;
+  ${styles.h1}
 `;
 
 const App = styled.div`
-  text-align: center;
+  ${styles.app}
 `;
 
 export default ({ children }: Props) => (
