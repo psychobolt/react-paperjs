@@ -13,6 +13,27 @@ export const plugins = [
   }),
   commonjs({
     include: 'node_modules/**',
+    namedExports: {
+      'node_modules/react-is/index.js': [
+        'typeOf',
+        'AsyncMode',
+        'ContextConsumer',
+        'ContextProvider',
+        'Element',
+        'ForwardRef',
+        'Fragment',
+        'Portal',
+        'StrictMode',
+        'isAsyncMode',
+        'isContextConsumer',
+        'isContextProvider',
+        'isElement',
+        'isFowardRef',
+        'isFragment',
+        'isPortal',
+        'isStrictMode',
+      ],
+    },
   }),
   babel({
     exclude: 'node_modules/**',
