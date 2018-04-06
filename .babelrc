@@ -8,17 +8,21 @@
   ],
   "plugins": [
     "transform-decorators-legacy",
+    ["lodash", {"id": ["lodash", "recompose"]}],
     ["module-resolver", { 
       "root": ["./"],
       "cwd": "./",
       "alias": {
         "paper": "paper/dist/paper-core"
       }
-    }]
+    }],
+    "babel-plugin-styled-components"
   ],
   "env": {
     "commonjs": {
-      "plugins": ["transform-es2015-modules-commonjs"]
+      "plugins": [
+        "transform-es2015-modules-commonjs"
+      ]
     }
   }
 }
