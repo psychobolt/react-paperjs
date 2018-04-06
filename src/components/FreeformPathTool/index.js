@@ -1,1 +1,1 @@
-export { default } from './FreeformPathTool.component.js';
+export { default } from './FreeformPathTool.component';

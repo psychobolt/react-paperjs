@@ -56,5 +56,3 @@ export const {
   PointText,
 } = Object.entries(PAPER).reduce((types, [key, type]) =>
   ({ ...types, [key]: withInstanceRef(type) }), {});
-
-export * from './components';
