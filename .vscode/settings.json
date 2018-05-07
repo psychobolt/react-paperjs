@@ -1,8 +1,5 @@
 {
     "javascript.validate.enable": false,
     "flow.useNPMPackagedFlow": true,
-    "files.eol": "\n",
-    "stylelint.additionalDocumentSelectors": [
-        "javascript"
-    ]
+    "files.eol": "\n"
 }
