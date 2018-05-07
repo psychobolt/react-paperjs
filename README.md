@@ -53,8 +53,8 @@ This project uses two package.json structure.
 ### Library dependencies -- <root_dir>/package.json
 
 ```sh
-yarn add [package-name] --dev # for dev tools
-yarn add [package-name] # for app
+yarn add [package-name] --dev # for dev tools and libraries to be bundled
+yarn add [package-name] [--peer] # for external dependencies (Note: Include in rollup.config.common.js whenever update)
 ```
 
 ### Storybook dependencies -- <root_dir>/stories/package.json
