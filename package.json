@@ -39,10 +39,10 @@
     }
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^3.4.2",
+    "@storybook/addon-actions": "^3.4.3",
     "@storybook/addon-console": "^1.0.0",
-    "@storybook/addon-links": "^3.4.2",
-    "@storybook/react": "^3.4.2",
+    "@storybook/addon-links": "^3.4.3",
+    "@storybook/react": "^3.4.3",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-jest": "^22.4.3",
@@ -79,7 +79,7 @@
     "rimraf": "^2.6.2",
     "rollup": "^0.58.2",
     "rollup-plugin-babel": "^3.0.4",
-    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-commonjs": "^9.1.3",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-scss": "^0.4.0",
     "rollup-plugin-uglify": "^3.0.0",
