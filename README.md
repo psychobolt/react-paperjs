@@ -1,5 +1,6 @@
 # React Paper.js
 
+[![npm](https://img.shields.io/npm/v/@psychobolt/react-paperjs.svg)](https://www.npmjs.com/package/@psychobolt/react-paperjs)
 [![Build Status](https://travis-ci.org/psychobolt/react-paperjs.svg?branch=master)](https://travis-ci.org/psychobolt/react-paperjs)
 [![codecov](https://codecov.io/gh/psychobolt/react-paperjs/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-paperjs)
 
@@ -11,7 +12,7 @@ React fiber renderer and component container for [Paper.js](http://paperjs.org/)
 
 [DEMOS](https://psychobolt.github.io/react-paperjs)
 
-## Install (Coming soon)
+## Install (Experimental release)
 
 Recommended: Paper 0.11.x, React, React DOM 16.x.
 
@@ -114,7 +115,7 @@ const App = (props) => (
 export default App;
 ```
 
-### High Order Components
+### Higher-Order Components
 
 #### Pan And Zoom
 
