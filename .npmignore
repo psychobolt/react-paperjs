@@ -9,6 +9,7 @@ flow-typed
 .eslintignore
 .eslintrc.json
 .flowconfig
+.stylelintrc
 .travis.yml
 jsconfig.json
 rollup.config.*.js
