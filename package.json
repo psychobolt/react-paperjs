@@ -8,9 +8,7 @@
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "npm run build",
-    "flow-typed": "rimraf flow-typed/npm && npm run flow-typed:src && npm run flow-typed:stories",
-    "flow-typed:src": "flow-typed install -s -o --ignoreDeps peer",
-    "flow-typed:stories": "cd stories/ && flow-typed install -s -o --ignoreDeps peer --packageDir ../ || true",
+    "flow-typed": "rimraf flow-typed/npm && flow-typed install -s -o --ignoreDeps peer",
     "build:dev": "rollup -c rollup.config.dev.js -m",
     "build:prod": "rollup -c rollup.config.prod.js",
     "build": "rimraf dist/index.*.* dist/*.css && npm run build:dev && npm run build:prod",
