@@ -91,6 +91,7 @@ const defaultHostConfig = {
   },
   useSyncScheduling: true,
   now: Date.now,
+  supportsMutation: true,
   commitUpdate(
     instance: Instance,
     updatePayload: [],
