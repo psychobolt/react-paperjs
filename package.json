@@ -80,7 +80,7 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-is": "^16.4.0",
-    "react-reconciler": "^0.10.0",
+    "react-reconciler": "^0.11.0",
     "recompose": "^0.27.1",
     "rimraf": "^2.6.2",
     "rollup": "^0.59.4",

@@ -91,69 +91,64 @@ const defaultHostConfig = {
   },
   useSyncScheduling: true,
   now: Date.now,
-  mutation: {
-    commitUpdate(
-      instance: Instance,
-      updatePayload: [],
-      type: string,
-      oldProps: Props,
-      newProps: Props,
-      internalInstanceHandle: Fiber,
-    ) {
-      updateProps(instance, updatePayload, type, oldProps, newProps);
-    },
-    commitMount(instance: Instance, type: string, newProps: Props, internalInstanceHandle: Fiber) {
-      console.log('ignore commit mount');
-    },
-    commitTextUpdate(textInstance: Instance, oldText: string, newText: string) {
-      console.log('ignore commit text update');
-    },
-    resetTextContent(instance: Instance) {
-      console.log('ignore reset text content');
-    },
-    appendChild(parent: Instance, child: Instance) {
-      if (parent instanceof Group && child instanceof Item) {
-        parent.addChild(child);
-      } else {
-        console.log('ignore append child', parent, child);
-      }
-    },
-    appendChildToContainer(container: Paper, child: Instance) {
-      if (child instanceof Item) {
-        const { project } = container;
-        const { $$default, $$metadata } = project.layers;
-        if (child instanceof Layer) {
-          child.insertBelow($$metadata);
-        } else {
-          child.addTo($$default);
-        }
-      } else {
-        console.log('ignore append child to container', child);
-      }
-    },
-    insertBefore(parent: Instance, child: Instance, beforeChild: Instance) {
-      console.log('ignore insert before child', parent, child, beforeChild);
-    },
-    insertInContainerBefore(container: Paper, child: Instance, beforeChild: Instance) {
-      const { $$default, $$metadata } = container.project.layers;
-      if (child instanceof Layer && beforeChild instanceof Layer) {
-        child.insertBelow(beforeChild);
-      } else if (child instanceof Layer) {
+  commitUpdate(
+    instance: Instance,
+    updatePayload: [],
+    type: string,
+    oldProps: Props,
+    newProps: Props,
+    internalInstanceHandle: Fiber,
+  ) {
+    updateProps(instance, updatePayload, type, oldProps, newProps);
+  },
+  commitTextUpdate(textInstance: Instance, oldText: string, newText: string) {
+    console.log('ignore commit text update');
+  },
+  resetTextContent(instance: Instance) {
+    console.log('ignore reset text content');
+  },
+  appendChild(parent: Instance, child: Instance) {
+    if (parent instanceof Group && child instanceof Item) {
+      parent.addChild(child);
+    } else {
+      console.log('ignore append child', parent, child);
+    }
+  },
+  appendChildToContainer(container: Paper, child: Instance) {
+    if (child instanceof Item) {
+      const { project } = container;
+      const { $$default, $$metadata } = project.layers;
+      if (child instanceof Layer) {
         child.insertBelow($$metadata);
-      } else if (child instanceof Item && beforeChild instanceof Layer) {
-        child.addTo($$default);
-      } else if (child instanceof Item && beforeChild instanceof Item) {
-        child.insertBelow(beforeChild);
       } else {
-        console.log('ignore insert in container before child', child, beforeChild);
+        child.addTo($$default);
       }
-    },
-    removeChild(parent: Instance, child: Instance) {
-      child.remove();
-    },
-    removeChildFromContainer(container: Paper, child: Instance) {
-      child.remove();
-    },
+    } else {
+      console.log('ignore append child to container', child);
+    }
+  },
+  insertBefore(parent: Instance, child: Instance, beforeChild: Instance) {
+    console.log('ignore insert before child', parent, child, beforeChild);
+  },
+  insertInContainerBefore(container: Paper, child: Instance, beforeChild: Instance) {
+    const { $$default, $$metadata } = container.project.layers;
+    if (child instanceof Layer && beforeChild instanceof Layer) {
+      child.insertBelow(beforeChild);
+    } else if (child instanceof Layer) {
+      child.insertBelow($$metadata);
+    } else if (child instanceof Item && beforeChild instanceof Layer) {
+      child.addTo($$default);
+    } else if (child instanceof Item && beforeChild instanceof Item) {
+      child.insertBelow(beforeChild);
+    } else {
+      console.log('ignore insert in container before child', child, beforeChild);
+    }
+  },
+  removeChild(parent: Instance, child: Instance) {
+    child.remove();
+  },
+  removeChildFromContainer(container: Paper, child: Instance) {
+    child.remove();
   },
 };
 /* eslint-enable no-console, no-unused-vars */

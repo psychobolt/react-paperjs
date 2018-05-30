@@ -1,5 +1,6 @@
 # React Paper.js
 
+[![Stability](https://img.shields.io/badge/Stability-Experimental-Orange.svg)](https://nodejs.org/api/documentation.html#documentation_stability_index)
 [![npm](https://img.shields.io/npm/v/@psychobolt/react-paperjs.svg)](https://www.npmjs.com/package/@psychobolt/react-paperjs)
 [![Build Status](https://travis-ci.org/psychobolt/react-paperjs.svg?branch=master)](https://travis-ci.org/psychobolt/react-paperjs)
 [![codecov](https://codecov.io/gh/psychobolt/react-paperjs/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-paperjs)
@@ -12,7 +13,7 @@ React fiber renderer and component container for [Paper.js](http://paperjs.org/)
 
 [DEMOS](https://psychobolt.github.io/react-paperjs)
 
-## Install (Experimental release)
+## Install
 
 Recommended: Paper 0.11.x, React, React DOM 16.x.
 
