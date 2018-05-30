@@ -1,5 +1,5 @@
 import { minify } from 'uglify-es';
-import uglify from 'rollup-plugin-uglify';
+import { uglify } from 'rollup-plugin-uglify';
 
 import config, { plugins } from './rollup.config.common';
 
