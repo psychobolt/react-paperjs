@@ -45,6 +45,7 @@ export type Props = {
   canvasProps: NestedProps<CanvasProps>,
   viewProps: NestedProps<ViewProps>,
   renderer: typeof PaperRenderer,
+  className: string,
   children: any,
 };
 
@@ -113,7 +114,13 @@ export default class PaperContainer extends React.Component<Props> {
   paper: Paper;
 
   render() {
-    const { canvasProps } = this.props;
-    return <canvas {...getProps(this, canvasProps)} ref={ref => { this.canvas = ref; }} />;
+    const { className, canvasProps } = this.props;
+    return (
+      <canvas
+        className={className}
+        {...getProps(this, canvasProps)}
+        ref={ref => { this.canvas = ref; }}
+      />
+    );
   }
 }

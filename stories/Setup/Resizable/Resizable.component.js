@@ -1,10 +1,15 @@
 import React from 'react';
 import Resizable from 're-resizable';
+import styled from 'styled-components';
 
 import { renderWithPaperScope, PaperContainer, Circle } from 'src';
 
 import { ref } from '../../shared';
-import styles from './Resizable.style';
+import * as styles from './Resizable.style';
+
+const Container = styled(Resizable)`
+  ${styles.container}
+`;
 
 export default class extends React.Component {
   state = {
@@ -22,7 +27,7 @@ export default class extends React.Component {
 
   render() {
     return (
-      <Resizable style={styles.container} defaultSize={{ width: 'calc(100% - 10px)' }} onResizeStop={this.onResizeStop}>
+      <Container defaultSize={{ width: 'calc(100% - 10px)' }} onResizeStop={this.onResizeStop}>
         <PaperContainer
           ref={this.setContainer}
           canvasProps={{
@@ -51,7 +56,7 @@ export default class extends React.Component {
             );
           })}
         </PaperContainer>
-      </Resizable>
+      </Container>
     );
   }
 }

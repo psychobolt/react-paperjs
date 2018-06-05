@@ -73,6 +73,10 @@ Props to be passed to the [View](http://paperjs.org/reference/view/).
 
 Callback on container mount.
 
+##### `className?: string`
+
+Canvas element class attribute.
+
 ### Paper
 
 Refer supported Paper [types](src/Paper.types.js). All props are passed to the type constructor.
