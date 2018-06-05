@@ -47,6 +47,5 @@ export default {
     'paper/dist/paper-core',
     'react',
     'react-dom',
-    'styled-components',
   ],
 };

@@ -58,6 +58,9 @@ const defaultHostConfig = {
   finalizeInitialChildren(instance: Instance, type: string, props: Props) {
     return true;
   },
+  commitMount(instance: Instance, type: string, newProps: Props, internalInstanceHandle: Fiber) {
+    console.log('ignore commit mount');
+  },
   prepareUpdate(
     instance: Instance,
     type: string,

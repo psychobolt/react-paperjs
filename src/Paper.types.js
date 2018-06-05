@@ -1,13 +1,32 @@
 // @flow
-import type { Node } from 'react';
+import type { Node, ComponentType } from 'react';
 import paperCore from 'paper';
 
 import withInstanceRef from './hoc/InstanceRef';
 
-export type Paper = typeof paperCore.PaperScope;
+export type Paper = {
+  PaperScope: typeof paperCore.PaperScope,
+  Tool: typeof paperCore.Tool,
+  Layer: typeof paperCore.Layer,
+  Group: typeof paperCore.Group,
+  Path: typeof paperCore.Path,
+  PointText: typeof paperCore.PointText,
+  container: Object,
+  project: Object,
+  view: Object,
+  setup: (canvas: HTMLCanvasElement) => void
+};
 
 export type PaperTypes = {
   [string]: (props: any, scope: Paper, children: Node) => any
+};
+
+export type Types = {
+  [type: string]: (props?: {}, paper: Paper) => Object
+};
+
+export type Components = {
+  [key: string]: ComponentType<any>
 };
 
 const PAPER = {
@@ -26,7 +45,7 @@ export const CONSTANTS = {
   ...PAPER,
 };
 
-export default {
+const TYPES: Types = {
   [CONSTANTS.PaperScope]: (props, paper) => new paper.PaperScope(),
   [CONSTANTS.Tool]: (props, paper) => {
     const tool = new paper.Tool(props);
@@ -45,6 +64,11 @@ export default {
   }),
 };
 
+export default TYPES;
+
+const components: Components = Object.entries(PAPER).reduce((types, [key, type]) =>
+  ({ ...types, [key]: withInstanceRef(type) }), {});
+
 export const {
   Tool,
   Layer,
@@ -54,5 +78,4 @@ export const {
   Rectangle,
   Circle,
   PointText,
-} = Object.entries(PAPER).reduce((types, [key, type]) =>
-  ({ ...types, [key]: withInstanceRef(type) }), {});
+} = components;

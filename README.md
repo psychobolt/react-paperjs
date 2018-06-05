@@ -11,11 +11,9 @@
 
 React fiber renderer and component container for [Paper.js](http://paperjs.org/).
 
-[DEMOS](https://psychobolt.github.io/react-paperjs)
-
 ## Install
 
-Recommended: Paper 0.11.x, React, React DOM 16.x.
+> Recommended: Paper 0.11.x, React, React DOM 16.x.
 
 ```sh
 npm install --save @psychobolt/react-paperjs
@@ -23,15 +21,9 @@ npm install --save @psychobolt/react-paperjs
 yarn add @psychobolt/react-paperjs
 ```
 
-## Usage
+## Examples
 
-Common usage with [PaperContainer](#papercontainer) and its default [renderer](#paperrenderer).
-
-### PaperContainer
-
-Creates a [Paper Scope](http://paperjs.org/reference/paperscope/) and populate the child context with it. To access Paper Scope, you may use the provided [HOC](#paper-scope).
-
-All children are rendered into its canvas with [PaperRenderer](#paperrenderer) by default.
+There are several [demos](https://psychobolt.github.io/react-paperjs). Also check out their [sources](stories). Here is one to get you started:
 
 ```jsx
 import React from 'react';
@@ -53,42 +45,53 @@ const App = (props) => (
 export default App;
 ```
 
+## Components
+
+Common usage with [PaperContainer](#papercontainer) and its default [renderer](#paperrenderer).
+
+### PaperContainer
+
+Creates a [Paper Scope](http://paperjs.org/reference/paperscope/) and populates the child context with it. To access Paper Scope, you may use the provided [HOC](#paper-scope).
+
+All children are rendered into its canvas with [PaperRenderer](#paperrenderer) by default.
+
 #### Props
 
-- renderer: [PaperRenderer](#paperrenderer) (default)
-- canvasProps: Props to be passed to ```<canvas>```. Can be a function or a object literal - ```(container) => ({}) | {}```.
-- viewProps: Props to be passed to the [View](http://paperjs.org/reference/view/). Can be a function or a object literal - ```(container) => ({}) | {}```.
-- onMount: Callback on container mount - ```(container) => myCallback(container)```
+##### `renderer?: Renderer`
 
-#### Container Add-ons
+The default is [PaperRenderer](#paperrenderer). You can [extend](#extension-example) and pass in your own.
 
-A work in progress beneficial library, high order components (HOC) for enhancing [PaperContainer](#papercontainer).
+##### `canvasProps?: {} | (container) => ({})`
 
-- [Pan And Zoom](#pan-and-zoom)
+Props to be passed to ```<canvas>```. 
+
+##### `viewProps?: {} | (container) => ({})`
+
+Props to be passed to the [View](http://paperjs.org/reference/view/).
+
+##### `onMount?: (container) => myCallback(container)`
+
+Callback on container mount.
+
+### Paper
+
+Refer supported Paper [types](src/Paper.types.js). All props are passed to the type constructor.
+
+## API
 
 ### PaperRenderer
 
 Currently a synchronous but extensible implementation.
 
-#### Supported Types:
+#### Members
 
-See [src/Paper.types.js](src/Paper.types.js).
-
-Props are passed into the constructor of the type instance.
-
-#### API
-
-##### defaultHostConfig
+##### `defaultHostConfig: {}`
 
 The host config that is passed into React Reconciler by default. __This should not be mutated.__ Instead, extend [PaperRenderer](#paperrenderer) with a ```getHostConfig``` function.
 
-##### defaultTypes
+##### `defaultTypes: { [type: string]: (props: {}, paper: Paper) => Object}`
 
 A mapping of types with their instance factory method. __This should not be mutated.__ Instead, extend [PaperRenderer](#paperrenderer) with a ```getInstanceFactory``` function.
-
-##### reconciler
-
-Access to React Fiber reconciler API.
 
 #### Extension Example
 
@@ -116,30 +119,9 @@ const App = (props) => (
 export default App;
 ```
 
-### Higher-Order Components
+The above code adds a custom Component Type to the renderer's instance factory. Then the component can be rendered inside the container.
 
-#### Pan And Zoom
-
-Add pan and zoom controls to Paper's view. By default, space + mouse drag to pan and mouse scroll to zoom.
-
-Example usage:
-```jsx
-import { withPanAndZoom, PaperContainer } from '@psychobolt/react-paperjs'
-
-import Scene, { options } from './Scene';
-
-const PanAndZoom = withPanAndZoom(PaperContainer);
-
-export default () => (
-  <PanAndZoom><Scene /></PanAndZoom>
-);
-```
-
-Props:
-- prepanStyle: Applied styles when view is draggable.
-- panStyle: Applied styles when view is being dragged.
-- onPanEnabled: Callback when pan is enabled.
-- onPanDisabled: Callback when pan is disabled.
+## Higher-order Components
 
 #### Paper Scope
 
