@@ -27,7 +27,7 @@ There are several [demos](https://psychobolt.github.io/react-paperjs). Also chec
 
 ```jsx
 import React from 'react';
-import PaperContainer, { Circle, Layer } from '@psychobolt/react-paperjs'
+import { PaperContainer, Circle, Layer } from '@psychobolt/react-paperjs'
 
 const Shapes = () => <Circle center={[120, 50]} radius={35} fillColor="#00FF00" />;
 
