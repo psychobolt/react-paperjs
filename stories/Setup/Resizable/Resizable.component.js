@@ -15,7 +15,6 @@ export default class extends React.Component {
   onResizeStop = (event, direction, refToElement) => {
     const width = refToElement.clientWidth;
     const height = refToElement.clientHeight;
-    this.setState({ width: `${width}px`, height: `${height}px` });
     Object.assign(this.container.paper.view.viewSize, { width, height });
   }
 
@@ -34,7 +33,10 @@ export default class extends React.Component {
             },
           }}
           viewProps={container => ({
-            onResize: () => container.forceUpdate(),
+            onResize: () => {
+              const { width, height } = container.paper.view.viewSize;
+              this.setState({ width: `${width}px`, height: `${height}px` });
+            },
           })}
         >
           {renderWithPaperScope(paper => {
