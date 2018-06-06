@@ -135,7 +135,7 @@ Example usage:
 ```jsx
 import React from 'react';
 
-import { renderWithPaperScope as PaperScope, Circle } from '@psychobolt/react-paperjs';
+import { PaperScope, Circle } from '@psychobolt/react-paperjs';
 
 @PaperScope
 export default class Scene {
