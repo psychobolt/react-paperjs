@@ -1,17 +1,15 @@
 import React from 'react';
-import { PaperScope } from 'paper';
-import PropTypes from 'prop-types';
 
-const contextTypes = { paper: PropTypes.instanceOf(PaperScope).isRequired };
+export const PaperScopeContext = React.createContext({});
 
-export const renderWithPaperScope = render => {
-  const Container = (props, context) => render(context.paper);
-  Container.contextTypes = contextTypes;
-  return <Container />;
-};
+export const renderWithPaperScope = render => (
+  <PaperScopeContext.Consumer>
+    {({ paper }) => render(paper)}
+  </PaperScopeContext.Consumer>
+);
 
-export default WrappedComponent => {
-  const Container = (props, context) => <WrappedComponent {...props} paper={context.paper} />;
-  Container.contextTypes = contextTypes;
-  return Container;
-};
+export default WrappedComponent => props => (
+  <PaperScopeContext.Consumer>
+    {({ paper }) => <WrappedComponent {...props} paper={paper} />}
+  </PaperScopeContext.Consumer>
+);

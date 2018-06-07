@@ -1,1 +1,2 @@
-export { default, renderWithPaperScope } from './PaperScope.hoc';
+export * from './PaperScope.hoc';
+export { default } from './PaperScope.hoc';

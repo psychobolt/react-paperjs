@@ -51,9 +51,7 @@ Common usage with [PaperContainer](#papercontainer) and its default [renderer](#
 
 ### PaperContainer
 
-Creates a [Paper Scope](http://paperjs.org/reference/paperscope/) and populates the child context with it. To access Paper Scope, you may use the provided [HOC](#paper-scope).
-
-All children are rendered into its canvas with [PaperRenderer](#paperrenderer) by default.
+Provide and creates [Paper Scope](http://paperjs.org/reference/paperscope/) context. To access Paper Scope, you may use the provided [HOC](#paper-scope). All children are rendered into its canvas with [PaperRenderer](#paperrenderer) by default.
 
 #### Props
 

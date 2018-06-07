@@ -14,7 +14,7 @@ export type Paper = {
   container: Object,
   project: Object,
   view: Object,
-  setup: (canvas: HTMLCanvasElement) => void
+  setup: (canvas: mixed) => void
 };
 
 export type PaperTypes = {

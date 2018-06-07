@@ -12,24 +12,26 @@ const Container = styled(Resizable)`
 `;
 
 export default class extends React.Component {
-  state = {
-    width: styles.canvas.width,
-    height: styles.canvas.height,
+  constructor(props) {
+    super(props);
+    this.state = {
+      width: styles.canvas.width,
+      height: styles.canvas.height,
+    };
+    this.container = React.createRef();
   }
 
   onResizeStop = (event, direction, refToElement) => {
     const width = refToElement.clientWidth;
     const height = refToElement.clientHeight;
-    Object.assign(this.container.paper.view.viewSize, { width, height });
+    Object.assign(this.container.current.props.paper.view.viewSize, { width, height });
   }
-
-  setContainer = container => { this.container = container; };
 
   render() {
     return (
       <Container defaultSize={{ width: 'calc(100% - 10px)' }} onResizeStop={this.onResizeStop}>
         <PaperContainer
-          ref={this.setContainer}
+          ref={this.container}
           canvasProps={{
             resize: 'true',
             style: {
@@ -39,7 +41,7 @@ export default class extends React.Component {
           }}
           viewProps={container => ({
             onResize: () => {
-              const { width, height } = container.paper.view.viewSize;
+              const { width, height } = container.props.paper.view.viewSize;
               this.setState({ width: `${width}px`, height: `${height}px` });
             },
           })}
