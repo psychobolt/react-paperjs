@@ -21,12 +21,10 @@ export default class PaperProvider extends React.Component<Props> {
     super(props);
     const Renderer = props.renderer;
     this.renderer = new Renderer();
-    this.ctx = { paper: this.renderer.createInstance(CONSTANTS.PaperScope, {}, paper) };
+    this.paper = this.renderer.createInstance(CONSTANTS.PaperScope, {}, paper);
   }
 
-  ctx: {
-    paper: Paper
-  };
+  paper: Paper
   renderer: PaperRenderer;
 
   render() {
@@ -36,9 +34,9 @@ export default class PaperProvider extends React.Component<Props> {
         {...rest}
         ref={this.props.innerRef}
         renderer={this.renderer}
-        paper={this.ctx.paper}
+        paper={this.paper}
       >
-        <PaperScopeContext.Provider value={this.ctx}>
+        <PaperScopeContext.Provider value={this.paper}>
           {this.props.children}
         </PaperScopeContext.Provider>
       </Canvas>
