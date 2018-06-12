@@ -9,10 +9,15 @@ import { PaperScopeContext } from './hoc/PaperScope';
 
 type Props = {
   renderer: typeof PaperRenderer,
-  innerRef: Object
+  innerRef: Object,
+  mergeProps: () => any,
 } & ChildProps;
 
-export default class PaperProvider extends React.Component<Props> {
+type State = {
+  paper: Paper,
+};
+
+export default class PaperProvider extends React.Component<ChildProps & Props, State> {
   static defaultProps = {
     renderer: PaperRenderer,
   }
@@ -21,10 +26,12 @@ export default class PaperProvider extends React.Component<Props> {
     super(props);
     const Renderer = props.renderer;
     this.renderer = new Renderer();
-    this.paper = this.renderer.createInstance(CONSTANTS.PaperScope, {}, paper);
+    this.state = {
+      paper: this.renderer.createInstance(CONSTANTS.PaperScope, {}, paper),
+      mergeProps: props.mergeProps || (mergeProps => this.setState(mergeProps(props))),
+    };
   }
 
-  paper: Paper
   renderer: PaperRenderer;
 
   render() {
@@ -32,13 +39,11 @@ export default class PaperProvider extends React.Component<Props> {
     return (
       <Canvas
         {...rest}
-        ref={this.props.innerRef}
+        {...this.state}
+        ref={innerRef}
         renderer={this.renderer}
-        paper={this.paper}
       >
-        <PaperScopeContext.Provider value={this.paper}>
-          {this.props.children}
-        </PaperScopeContext.Provider>
+        <PaperScopeContext.Provider value={this.state}>{children}</PaperScopeContext.Provider>
       </Canvas>
     );
   }

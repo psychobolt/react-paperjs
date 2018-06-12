@@ -9,8 +9,7 @@ import { type Paper, CONSTANTS } from './Paper.types';
 /* eslint-disable no-use-before-define */
 
 type CanvasProps = {
-  onWheel: (event: SyntheticWheelEvent<HTMLCanvasElement>) => any,
-  style: {}
+  onWheel: (event: SyntheticWheelEvent<HTMLCanvasElement>) => any
 };
 
 export type EventHandler = (event: Event) => any;
@@ -28,20 +27,20 @@ type ViewProps = {
   center: {} | number[],
 };
 
-type ScopedProps<P> = (container: Canvas) => P;
+type ScopedProps<P> = (paper: Paper) => P;
 
 type NestedProps<P> = P | ScopedProps<P>;
 
-export function getProps<P>(container: Canvas, props: NestedProps<P>) {
+export function getProps<P>(paper: Paper, props: NestedProps<P>) {
   if (typeof props === 'function') {
     const scopedProps = (props: ScopedProps<P>);
-    return scopedProps(container);
+    return scopedProps(paper);
   }
   return props || {};
 }
 
 export type Props = {
-  onMount: (container: {}) => void,
+  onMount: (paper: Paper) => void,
   canvasProps: NestedProps<CanvasProps>,
   viewProps: NestedProps<ViewProps>,
   paper: Paper,
@@ -65,14 +64,15 @@ export class Canvas extends React.Component<Props> {
   }
 
   componentDidMount() {
+    const { paper, onMount } = this.props;
     if (this.canvas.current) {
-      this.props.paper.setup(this.canvas.current);
+      paper.setup(this.canvas.current);
       const layer = this.newLayer({ name: '$$default' });
       this.newLayer({ name: '$$metadata' });
       layer.activate();
       this.update();
     }
-    this.props.onMount(this);
+    onMount(paper);
   }
 
   componentDidUpdate() {
@@ -85,7 +85,7 @@ export class Canvas extends React.Component<Props> {
 
   update = () => {
     const { paper, viewProps, renderer, children } = this.props;
-    Object.assign(paper.view, getProps(this, viewProps));
+    Object.assign(paper.view, getProps(paper, viewProps));
     renderer.reconciler.updateContainer(children, this.mountNode, this);
   };
 
@@ -99,8 +99,8 @@ export class Canvas extends React.Component<Props> {
   canvas: React.Ref<'canvas'>;
 
   render() {
-    const { className, canvasProps } = this.props;
-    return <canvas className={className} {...getProps(this, canvasProps)} ref={this.canvas} />;
+    const { className, canvasProps, paper } = this.props;
+    return <canvas className={className} {...getProps(paper, canvasProps)} ref={this.canvas} />;
   }
 }
 

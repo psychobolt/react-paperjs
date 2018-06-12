@@ -57,17 +57,17 @@ Provide and creates [Paper Scope](http://paperjs.org/reference/paperscope/) cont
 
 ##### `renderer?: Renderer`
 
-The default is [PaperRenderer](#paperrenderer). You can [extend](#extension-example) and pass in your own.
+The default is [PaperRenderer](#paperrenderer). Alternatively, you can [extend](#extension-example) and pass in your own.
 
-##### `canvasProps?: {} | (container) => ({})`
+##### `canvasProps?: {} | (paper) => ({})`
 
-Props to be passed to ```<canvas>```. 
+Props to be passed to ```<canvas>```. Alternatively, you can provide a function that returns new props.
 
-##### `viewProps?: {} | (container) => ({})`
+##### `viewProps?: {} | (paper) => ({})`
 
-Props to be passed to the [View](http://paperjs.org/reference/view/).
+Props to be passed to the [View](http://paperjs.org/reference/view/). Alternatively, you can provide a function that returns new props.
 
-##### `onMount?: (container) => myCallback(container)`
+##### `onMount?: (paper) => myCallback(paper)`
 
 Callback on container mount.
 

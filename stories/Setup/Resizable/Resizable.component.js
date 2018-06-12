@@ -39,9 +39,9 @@ export default class extends React.Component {
               height: this.state.height,
             },
           }}
-          viewProps={container => ({
+          viewProps={paper => ({
             onResize: () => {
-              const { width, height } = container.props.paper.view.viewSize;
+              const { width, height } = paper.view.viewSize;
               this.setState({ width: `${width}px`, height: `${height}px` });
             },
           })}
