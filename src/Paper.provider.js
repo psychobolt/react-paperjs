@@ -28,7 +28,7 @@ export default class PaperProvider extends React.Component<ChildProps & Props, S
     this.renderer = new Renderer();
     this.state = {
       paper: this.renderer.createInstance(CONSTANTS.PaperScope, {}, paper),
-      mergeProps: props.mergeProps || (mergeProps => this.setState(mergeProps(props))),
+      mergeProps: props.mergeProps || (mergeProps => this.setState(mergeProps(this.state, props))),
     };
   }
 
