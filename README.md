@@ -18,7 +18,7 @@ A boilerplate for building React libraries
 - [styled-components](https://www.styled-components.com/) with [default](https://www.styled-components.com/docs/tooling#stylelint) [stylelint](https://stylelint.io/) support
 - Run tests with [Jest](https://facebook.github.io/jest/)
 - Code Coverage reporting with [Codecov](https://codecov.io/)
-- Manual Testing with [Storybook](https://storybook.js.org/)
+- Dev sandbox and documentation with [Storybook](https://storybook.js.org/)
 - Structural and interaction testing with [Enzyme](https://github.com/airbnb/enzyme)
 - Type checking with [Flow](https://flow.org)
 - JS style check with [ESLint](http://eslint.org/) using [AirBnb style guide](https://github.com/airbnb/javascript)

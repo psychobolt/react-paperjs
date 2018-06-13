@@ -84,6 +84,7 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-scss": "^0.4.0",
     "rollup-plugin-uglify": "^4.0.0",
+    "storybook-readme": "^3.3.0",
     "styled-components": "^3.3.0",
     "stylelint": "^9.2.1",
     "stylelint-config-standard": "^18.2.0",
