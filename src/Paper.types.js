@@ -1,8 +1,6 @@
 // @flow
-import type { Node, ComponentType } from 'react';
+import * as React from 'react';
 import paperCore from 'paper';
-
-import withInstanceRef from './hoc/InstanceRef';
 
 export type Paper = {
   PaperScope: typeof paperCore.PaperScope,
@@ -26,7 +24,7 @@ export type Types = {
 };
 
 export type Components = {
-  [key: string]: ComponentType<any>
+  [key: string]: React.ComponentType<any>
 };
 
 const PAPER = {
@@ -66,8 +64,11 @@ const TYPES: Types = {
 
 export default TYPES;
 
-const components: Components = Object.entries(PAPER).reduce((types, [key, type]) =>
-  ({ ...types, [key]: withInstanceRef(type) }), {});
+const components: Components = Object.entries(PAPER).reduce((types, [key, Type]) => ({
+  ...types,
+  // $FlowFixMe
+  [key]: React.forwardRef((props, ref) => <Type ref={ref} {...props} />),
+}), {});
 
 export const {
   Tool,

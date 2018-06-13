@@ -1,3 +1,1 @@
-export const ref = instanceRef => {
-  if (instanceRef !== null) console.log(instanceRef.instance); // eslint-disable-line no-console
-};
+export const ref = instanceRef => console.log(instanceRef); // eslint-disable-line no-console
