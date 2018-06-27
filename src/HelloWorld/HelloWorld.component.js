@@ -12,7 +12,11 @@ const Messenger = () => console.log('Hello World!'); // eslint-disable-line no-c
 
 const HelloWorld = () => (
   <Content>
-      To get started, edit <code>src/HelloWorld/HelloWorld.component.js</code> and save to reload.
+    {'To get started, edit '}
+    <code>
+      src/HelloWorld/HelloWorld.component.js
+    </code>
+    {' and save to reload.'}
   </Content>
 );
 
