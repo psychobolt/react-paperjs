@@ -3,7 +3,7 @@ import * as React from 'react';
 import { typeof KeyEvent, typeof MouseEvent, typeof ToolEvent, typeof Event } from 'paper';
 
 import PaperRenderer from './Paper.renderer';
-import PaperProvider from './Paper.provider';
+import PaperProvider from './Paper.provider'; // eslint-disable-line import/no-cycle
 import { type Paper, CONSTANTS } from './Paper.types';
 
 /* eslint-disable no-use-before-define */
@@ -40,7 +40,7 @@ export function getProps<P>(paper: Paper, props: NestedProps<P>) {
 }
 
 export type Props = {
-  onMount: (paper: Paper) => void,
+  onMount?: (paper: Paper) => void,
   canvasProps: NestedProps<CanvasProps>,
   viewProps: NestedProps<ViewProps>,
   paper: Paper,
@@ -72,7 +72,9 @@ export class Canvas extends React.Component<Props> {
       layer.activate();
       this.update();
     }
-    onMount(paper);
+    if (onMount) {
+      onMount(paper);
+    }
   }
 
   componentDidUpdate() {
@@ -80,7 +82,8 @@ export class Canvas extends React.Component<Props> {
   }
 
   componentWillUnmount() {
-    this.props.renderer.reconciler.updateContainer(null, this.mountNode, this);
+    const { renderer } = this.props;
+    renderer.reconciler.updateContainer(null, this.mountNode, this);
   }
 
   update = () => {
@@ -96,6 +99,7 @@ export class Canvas extends React.Component<Props> {
   }
 
   mountNode: any;
+
   canvas: React.Ref<'canvas'>;
 
   render() {

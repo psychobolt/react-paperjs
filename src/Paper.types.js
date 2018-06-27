@@ -15,12 +15,8 @@ export type Paper = {
   setup: (canvas: mixed) => void
 };
 
-export type PaperTypes = {
-  [string]: (props: any, scope: Paper, children: Node) => any
-};
-
 export type Types = {
-  [type: string]: (props?: {}, paper: Paper) => Object
+  [type: string]: (props: {}, paper: Paper, children?: Node) => Object
 };
 
 export type Components = {

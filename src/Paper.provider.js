@@ -3,7 +3,7 @@ import React from 'react';
 import paper from 'paper';
 
 import PaperRenderer from './Paper.renderer';
-import { Canvas, type Props as ChildProps } from './Paper.container';
+import { Canvas, type Props as ChildProps } from './Paper.container'; // eslint-disable-line import/no-cycle
 import { type Paper, CONSTANTS } from './Paper.types';
 import { PaperScopeContext } from './hoc/PaperScope';
 
@@ -28,7 +28,8 @@ export default class PaperProvider extends React.Component<ChildProps & Props, S
     this.renderer = new Renderer();
     this.state = {
       paper: this.renderer.createInstance(CONSTANTS.PaperScope, {}, paper),
-      mergeProps: props.mergeProps || (mergeProps => this.setState(mergeProps(this.state, props))),
+      mergeProps: props.mergeProps
+        || (mergeProps => this.setState(state => mergeProps(state, props))),
     };
   }
 
@@ -43,7 +44,9 @@ export default class PaperProvider extends React.Component<ChildProps & Props, S
         ref={innerRef}
         renderer={this.renderer}
       >
-        <PaperScopeContext.Provider value={this.state}>{children}</PaperScopeContext.Provider>
+        <PaperScopeContext.Provider value={this.state}>
+          {children}
+        </PaperScopeContext.Provider>
       </Canvas>
     );
   }

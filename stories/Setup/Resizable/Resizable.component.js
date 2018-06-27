@@ -28,21 +28,19 @@ export default class extends React.Component {
   }
 
   render() {
+    const { width, height } = this.state;
     return (
       <Container defaultSize={{ width: 'calc(100% - 10px)' }} onResizeStop={this.onResizeStop}>
         <PaperContainer
           ref={this.container}
           canvasProps={{
             resize: 'true',
-            style: {
-              width: this.state.width,
-              height: this.state.height,
-            },
+            style: { width, height },
           }}
           viewProps={paper => ({
             onResize: () => {
-              const { width, height } = paper.view.viewSize;
-              this.setState({ width: `${width}px`, height: `${height}px` });
+              const { width: vWidth, height: vHeight } = paper.view.viewSize;
+              this.setState({ width: `${vWidth}px`, height: `${vHeight}px` });
             },
           })}
         >

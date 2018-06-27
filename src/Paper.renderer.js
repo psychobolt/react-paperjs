@@ -2,7 +2,7 @@
 import Reconciler from 'react-reconciler';
 import { Layer, Group, Item, TextItem } from 'paper';
 
-import TYPES, { type PaperTypes, type Paper } from './Paper.types';
+import TYPES, { type Types, type Paper } from './Paper.types';
 import { diffProps, updateProps } from './Paper.component';
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 
 type CreateInstance = (type: string, props: Props, paper: Paper) => any;
 
-export function getTypes(instanceFactory: PaperTypes): CreateInstance {
+export function getTypes(instanceFactory: Types): CreateInstance {
   return (type: string, { children, pathData, ...rest }: Props, paper: Paper) => {
     const TYPE = instanceFactory[type];
     let instance;
@@ -72,7 +72,8 @@ const defaultHostConfig = {
     return diffProps(oldProps, newProps);
   },
   shouldSetTextContent(type: string, props: Props) {
-    return typeof props.children === 'string';
+    const { children } = props;
+    return typeof children === 'string';
   },
   shouldDeprioritizeSubtree(type: string, props: Props) {
     return false;
@@ -159,9 +160,13 @@ const defaultHostConfig = {
 
 export default class PaperRenderer {
   defaultHostConfig = defaultHostConfig;
+
   defaultTypes = TYPES;
+
   reconciler: any;
+
   createInstance: createInstance;
+
 
   constructor() {
     const instanceFactory = this.getInstanceFactory();
