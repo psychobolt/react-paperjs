@@ -1,9 +1,8 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import paper from 'paper';
 
 import PaperRenderer from './Paper.renderer';
-import { Canvas, type Props as ChildProps } from './Paper.container'; // eslint-disable-line import/no-cycle
 import { type Paper, CONSTANTS } from './Paper.types';
 import { PaperScopeContext } from './hoc/PaperScope';
 
@@ -11,13 +10,15 @@ type Props = {
   renderer: typeof PaperRenderer,
   innerRef: Object,
   mergeProps: () => any,
-} & ChildProps;
+  children: React.Node
+};
 
 type State = {
   paper: Paper,
 };
 
-export default class PaperProvider extends React.Component<ChildProps & Props, State> {
+export default (Container: React.ComponentType<any>) => class PaperProvider
+  extends React.Component<Props, State> {
   static defaultProps = {
     renderer: PaperRenderer,
   }
@@ -38,7 +39,7 @@ export default class PaperProvider extends React.Component<ChildProps & Props, S
   render() {
     const { innerRef, children, ...rest } = this.props;
     return (
-      <Canvas
+      <Container
         {...rest}
         {...this.state}
         ref={innerRef}
@@ -47,7 +48,7 @@ export default class PaperProvider extends React.Component<ChildProps & Props, S
         <PaperScopeContext.Provider value={this.state}>
           {children}
         </PaperScopeContext.Provider>
-      </Canvas>
+      </Container>
     );
   }
-}
+};

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { typeof KeyEvent, typeof MouseEvent, typeof ToolEvent, typeof Event } from 'paper';
 
 import PaperRenderer from './Paper.renderer';
-import PaperProvider from './Paper.provider'; // eslint-disable-line import/no-cycle
+import PaperProvider from './Paper.provider'; // eslint-disable-line no-unused-vars
 import { type Paper, CONSTANTS } from './Paper.types';
 
 /* eslint-disable no-use-before-define */
@@ -51,7 +51,9 @@ export type Props = {
 
 /* eslint-enable no-use-before-define */
 
-export class Canvas extends React.Component<Props> {
+// $FlowFixMe
+@PaperProvider
+class PaperContainer extends React.Component<Props> {
   static defaultProps = {
     onMount: () => {},
   };
@@ -109,4 +111,4 @@ export class Canvas extends React.Component<Props> {
 }
 
 // $FlowFixMe
-export default React.forwardRef((props, ref) => <PaperProvider {...props} innerRef={ref} />);
+export default React.forwardRef((props, ref) => <PaperContainer {...props} innerRef={ref} />);
