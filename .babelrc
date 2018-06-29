@@ -7,6 +7,7 @@
     "react"
   ],
   "plugins": [
+    "transform-decorators-legacy",
     ["lodash", {"id": ["lodash", "recompose"]}],
     ["module-resolver", { 
       "root": ["./"],
