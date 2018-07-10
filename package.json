@@ -16,7 +16,7 @@
     "test": "cross-env BABEL_ENV=commonjs jest --passWithNoTests",
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint ./src/**/*.js",
-    "lint:js": "eslint src stories *.js",
+    "lint:js": "eslint .storybook src stories *.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
