@@ -93,7 +93,6 @@ const defaultHostConfig = {
   resetAfterCommit() {
     console.log('ignore reset for commit');
   },
-  useSyncScheduling: true,
   now: Date.now,
   supportsMutation: true,
   commitUpdate(
