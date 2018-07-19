@@ -25,6 +25,7 @@ export default {
   external: [
     'react',
     'react-dom',
+    'react-is',
     'styled-components',
   ],
 };
