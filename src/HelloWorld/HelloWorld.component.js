@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import * as styles from './HelloWorld.style';
 
-const Content = styled.p`
+export const Content = styled.p`
   ${styles.content}
 `;
 

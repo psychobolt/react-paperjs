@@ -2,10 +2,12 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import App from 'stories/App';
-import HelloWorld from './HelloWorld.component';
+import index, { HelloWorld } from 'dist';
 
-storiesOf('HelloWorld', module).add('with App', () => (
-  <App>
-    <HelloWorld />
-  </App>
-));
+storiesOf('HelloWorld', module)
+  .add('with App', () => (
+    <App>
+      <HelloWorld />
+    </App>
+  ))
+  .add('default import', index());

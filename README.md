@@ -42,7 +42,7 @@ During development,
 ```sh
 # watch and build new source changes
 yarn start
-# or serve *.stories.js files and manually test on the Storyboard app
+# or serve *.stories.js files and manually test on the Storyboard app (optionally run command above in parallel)
 yarn storyboard
 ```
 
