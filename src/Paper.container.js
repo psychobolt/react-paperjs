@@ -1,53 +1,18 @@
 // @flow
 import * as React from 'react';
-import { typeof KeyEvent, typeof MouseEvent, typeof ToolEvent, typeof Event } from 'paper';
 
 import PaperRenderer from './Paper.renderer';
-import PaperProvider from './Paper.provider'; // eslint-disable-line no-unused-vars
+import PaperProvider, { type Props as ProviderProps } from './Paper.provider'; // eslint-disable-line no-unused-vars
 import { type Paper, CONSTANTS } from './Paper.types';
 
 /* eslint-disable no-use-before-define */
 
-type CanvasProps = {
-  onWheel: (event: SyntheticWheelEvent<HTMLCanvasElement>) => any
-};
-
-export type EventHandler = (event: Event) => any;
-export type KeyEventHandler = (event: KeyEvent) => any;
-export type MouseEventHandler = (event: MouseEvent) => any;
-export type ToolEventHandler = (event: ToolEvent) => any;
-
-type ViewProps = {
-  onKeyDown: KeyEventHandler,
-  onKeyUp: KeyEventHandler,
-  onMouseDown: MouseEventHandler,
-  onMouseDrag: MouseEventHandler,
-  onMouseUp: MouseEventHandler,
-  zoom: number,
-  center: {} | number[],
-};
-
-type ScopedProps<P> = (paper: Paper) => P;
-
-type NestedProps<P> = P | ScopedProps<P>;
-
-export function getProps<P>(paper: Paper, props: NestedProps<P>) {
-  if (typeof props === 'function') {
-    const scopedProps = (props: ScopedProps<P>);
-    return scopedProps(paper);
-  }
-  return props || {};
-}
-
 export type Props = {
   onMount?: (paper: Paper) => void,
-  canvasProps: NestedProps<CanvasProps>,
-  viewProps: NestedProps<ViewProps>,
   paper: Paper,
   renderer: PaperRenderer,
   className: string,
-  children: any,
-};
+} & ProviderProps;
 
 /* eslint-enable no-use-before-define */
 
@@ -90,7 +55,7 @@ class PaperContainer extends React.Component<Props> {
 
   update = () => {
     const { paper, viewProps, renderer, children } = this.props;
-    Object.assign(paper.view, getProps(paper, viewProps));
+    Object.assign(paper.view, viewProps);
     renderer.reconciler.updateContainer(children, this.mountNode, this);
   };
 
@@ -105,8 +70,8 @@ class PaperContainer extends React.Component<Props> {
   canvas: React.Ref<'canvas'>;
 
   render() {
-    const { className, canvasProps, paper } = this.props;
-    return <canvas className={className} {...getProps(paper, canvasProps)} ref={this.canvas} />;
+    const { className, canvasProps } = this.props;
+    return <canvas className={className} {...canvasProps} ref={this.canvas} />;
   }
 }
 
