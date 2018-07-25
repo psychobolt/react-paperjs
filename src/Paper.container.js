@@ -7,10 +7,11 @@ import { type Paper, CONSTANTS } from './Paper.types';
 
 /* eslint-disable no-use-before-define */
 
-export type Props = {
-  onMount?: (paper: Paper) => void,
+type Props = {
   paper: Paper,
   renderer: PaperRenderer,
+  canvasProps: {},
+  viewProps: {},
   className: string,
 } & ProviderProps;
 

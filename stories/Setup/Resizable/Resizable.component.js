@@ -2,7 +2,7 @@ import React from 'react';
 import Resizable from 're-resizable';
 import styled from 'styled-components';
 
-import { renderWithPaperScope, PaperContainer, Circle } from 'src';
+import { renderWithPaperScope, PaperContainer, Circle } from 'dist';
 
 import { ref } from '../../shared';
 import * as styles from './Resizable.style';

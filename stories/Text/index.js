@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { PaperContainer, PointText } from 'src';
+import { PaperContainer, PointText } from 'dist';
 
 import { ref } from '../shared';
 

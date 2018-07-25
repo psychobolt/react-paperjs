@@ -36,11 +36,14 @@ export type Props = {
   viewProps: NestedProps<ViewProps>,
   canvasProps: NestedProps<CanvasProps>,
   mergeProps: () => any,
+  onMount?: (paper: Paper) => void,
   children: React.Node
 };
 
 type State = {
   paper: Paper,
+  viewProps?: NestedProps<ViewProps>,
+  canvasProps?: NestedProps<CanvasProps>
 };
 
 export function getProps<P>(scope: Paper, props: NestedProps<P>) {
