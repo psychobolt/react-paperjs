@@ -89,8 +89,8 @@ export default (Container: React.ComponentType<any>) => class PaperProvider
       <Container
         {...rest}
         {...state}
-        viewProps={this.mergeViewProps(viewProps, viewState, state.paper)}
-        canvasProps={this.mergeCanvasProps(canvasProps, canvasState, state.paper)}
+        viewProps={this.mergeViewProps(viewState, viewProps, state.paper)}
+        canvasProps={this.mergeCanvasProps(canvasState, canvasProps, state.paper)}
         ref={innerRef}
         renderer={this.renderer}
       >
