@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withNotes } from '@storybook/addon-notes';
 
 import App from 'stories/App';
-import index, { HelloWorld } from 'dist';
+import index, { HelloWorld } from 'src';
 
 storiesOf('HelloWorld', module)
   .add('with App', () => (

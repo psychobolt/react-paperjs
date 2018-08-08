@@ -2,7 +2,7 @@
   "name": "react-rollup-boilerplate",
   "version": "0.1.0",
   "description": "A boilerplate for building React libraries",
-  "main": "dist/index.js",
+  "main": "./index.js",
   "repository": "https://github.com/psychobolt/react-rollup-boilerplate.git",
   "author": "psychobolt",
   "license": "MIT",

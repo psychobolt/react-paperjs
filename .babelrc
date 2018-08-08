@@ -11,7 +11,10 @@
     ["lodash", {"id": ["lodash", "recompose"]}],
     ["module-resolver", { 
       "root": ["./"],
-      "cwd": "./"
+      "cwd": "./",
+      "alias": {
+        "^src$": "./"
+      }
     }],
     "babel-plugin-styled-components"
   ],
