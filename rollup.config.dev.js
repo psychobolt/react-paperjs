@@ -6,6 +6,7 @@ export default {
     file: 'dist/index.dev.js',
     format: 'cjs',
     exports: 'named',
+    sourcemap: 'inline',
   },
   plugins: plugins.concat([
     // add additional plugins here

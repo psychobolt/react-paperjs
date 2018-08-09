@@ -9,7 +9,7 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "flow-typed": "rimraf flow-typed/npm && flow-typed install -s -o --ignoreDeps peer",
-    "build:dev": "rollup -c rollup.config.dev.js -m",
+    "build:dev": "rollup -c rollup.config.dev.js",
     "build:prod": "rollup -c rollup.config.prod.js",
     "build": "rimraf dist/index.*.* dist/*.css && npm run build:dev && npm run build:prod",
     "start": "npm run build:dev -- -w",
