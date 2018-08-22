@@ -1,6 +1,6 @@
 // @flow
 import Reconciler from 'react-reconciler';
-import { Layer, Group, Item, TextItem } from 'paper';
+import { Layer, Group, Item, TextItem, Tool } from 'paper';
 
 import TYPES, { type Types, type Paper } from './Paper.types';
 import { diffProps, updateProps } from './Paper.component';
@@ -52,14 +52,14 @@ const defaultHostConfig = {
     } else if (parent instanceof TextItem && typeof child === 'string') {
       Object.assign(parent, { content: child });
     } else {
-      console.log('ignore append initial child');
+      // console.log('ignore append initial child');
     }
   },
   finalizeInitialChildren(instance: Instance, type: string, props: Props) {
     return true;
   },
   commitMount(instance: Instance, type: string, newProps: Props, internalInstanceHandle: Fiber) {
-    console.log('ignore commit mount');
+    // console.log('ignore commit mount');
   },
   prepareUpdate(
     instance: Instance,
@@ -88,10 +88,10 @@ const defaultHostConfig = {
   },
   scheduleDeferredCallback: window.requestIdleCallback,
   prepareForCommit() {
-    console.log('ignore prepare for commit');
+    // console.log('ignore prepare for commit');
   },
   resetAfterCommit() {
-    console.log('ignore reset for commit');
+    // console.log('ignore reset for commit');
   },
   now: Date.now,
   supportsMutation: true,
@@ -106,16 +106,16 @@ const defaultHostConfig = {
     updateProps(instance, updatePayload, type, oldProps, newProps);
   },
   commitTextUpdate(textInstance: Instance, oldText: string, newText: string) {
-    console.log('ignore commit text update');
+    // console.log('ignore commit text update');
   },
   resetTextContent(instance: Instance) {
-    console.log('ignore reset text content');
+    // console.log('ignore reset text content');
   },
   appendChild(parent: Instance, child: Instance) {
     if (parent instanceof Group && child instanceof Item) {
       parent.addChild(child);
     } else {
-      console.log('ignore append child', parent, child);
+      // console.log('ignore append child', parent, child);
     }
   },
   appendChildToContainer(container: Paper, child: Instance) {
@@ -127,12 +127,14 @@ const defaultHostConfig = {
       } else {
         child.addTo($$default);
       }
+    } else if (child instanceof Tool) {
+      child.activate();
     } else {
-      console.log('ignore append child to container', child);
+      // console.log('ignore append child to container', child);
     }
   },
   insertBefore(parent: Instance, child: Instance, beforeChild: Instance) {
-    console.log('ignore insert before child', parent, child, beforeChild);
+    // console.log('ignore insert before child', parent, child, beforeChild);
   },
   insertInContainerBefore(container: Paper, child: Instance, beforeChild: Instance) {
     const { $$default, $$metadata } = container.project.layers;
@@ -145,14 +147,16 @@ const defaultHostConfig = {
     } else if (child instanceof Item && beforeChild instanceof Item) {
       child.insertBelow(beforeChild);
     } else {
-      console.log('ignore insert in container before child', child, beforeChild);
+      // console.log('ignore insert in container before child', child, beforeChild);
     }
   },
   removeChild(parent: Instance, child: Instance) {
     child.remove();
   },
   removeChildFromContainer(container: Paper, child: Instance) {
-    child.remove();
+    if (child instanceof Object) {
+      child.remove();
+    }
   },
 };
 /* eslint-enable no-console, no-unused-vars */

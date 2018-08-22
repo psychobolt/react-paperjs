@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { PaperContainer, PointText } from 'dist';
+import { PointText } from 'src';
 
-import { ref } from '../shared';
+import { Mountable as PaperContainer, ref } from '../shared';
 
 storiesOf('Text', module)
   .add('PointText', () => (

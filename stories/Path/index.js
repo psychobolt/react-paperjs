@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { renderWithPaperScope, PaperContainer, Path, Rectangle } from 'dist';
+import { renderWithPaperScope, PaperContainer, Path, Rectangle } from 'src';
 
 storiesOf('Path', module)
   .add('with PathData', () => (

@@ -41,11 +41,7 @@ export const CONSTANTS = {
 
 const TYPES: Types = {
   [CONSTANTS.PaperScope]: (props, paper) => new paper.PaperScope(),
-  [CONSTANTS.Tool]: (props, paper) => {
-    const tool = new paper.Tool(props);
-    tool.activate();
-    return tool;
-  },
+  [CONSTANTS.Tool]: (props, paper) => new paper.Tool(props),
   [CONSTANTS.Layer]: (props, paper) => new paper.Layer(props),
   [CONSTANTS.Group]: (props, paper) => new paper.Group(props),
   [CONSTANTS.Path]: (props, paper) => new paper.Path(props),

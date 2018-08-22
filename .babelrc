@@ -13,7 +13,6 @@
       "root": ["./"],
       "cwd": "./",
       "alias": {
-        "^src$": "./",
         "paper": "paper/dist/paper-core"
       }
     }],
