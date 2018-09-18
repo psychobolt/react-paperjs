@@ -10,7 +10,7 @@ import four from './images/four.svg';
 import five from './images/five.svg';
 
 export default () => (
-  <React.Fragment>
+  <>
     <div className="menu-container">
       <div className="menu">
         <div className="date">
@@ -64,5 +64,5 @@ export default () => (
       <div className="footer-item footer-two" />
       <div className="footer-item footer-three" />
     </div>
-  </React.Fragment>
+  </>
 );

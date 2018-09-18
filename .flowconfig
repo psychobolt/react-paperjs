@@ -2,3 +2,6 @@
 module.system.node.resolve_dirname=node_modules
 module.system.node.resolve_dirname=src
 module.system.node.resolve_dirname=stories
+
+[ignore]
+.*/node_modules/config-chain/test/broken.json
