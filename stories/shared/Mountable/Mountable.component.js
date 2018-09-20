@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { PaperContainer } from 'src';
+import { PaperContainer } from '@psychobolt/react-paperjs';
 
 type Props = {
   mount?: boolean,

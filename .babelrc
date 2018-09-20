@@ -46,6 +46,7 @@
         "root": ["./"],
         "cwd": "./",
         "alias": {
+          "@psychobolt/react-paperjs": "./",
           "paper": "paper/dist/paper-core"
         }
       }

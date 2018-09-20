@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { PointText } from 'src';
+import { PointText } from '@psychobolt/react-paperjs';
 
 import { Mountable as PaperContainer, ref } from '../shared';
 

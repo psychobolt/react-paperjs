@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { PaperContainer, Circle, Layer } from 'src';
+import { PaperContainer, Circle, Layer } from '@psychobolt/react-paperjs';
 
 import { ref } from '../shared';
 
