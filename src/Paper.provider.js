@@ -36,7 +36,6 @@ export type Props = {
   viewProps: NestedProps<ViewProps>,
   canvasProps: NestedProps<CanvasProps>,
   mergeProps: () => any,
-  onMount?: (paper: Paper) => void,
   children: React.Node
 };
 

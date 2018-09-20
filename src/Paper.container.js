@@ -12,6 +12,7 @@ type Props = {
   renderer: PaperRenderer,
   canvasProps: {},
   viewProps: {},
+  onMount?: (paper: Paper) => void,
   className: string,
 } & ProviderProps;
 
