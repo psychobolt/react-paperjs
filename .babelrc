@@ -1,27 +1,61 @@
 {
   "presets": [
-    ["env", {
-      "modules": false
-    }],
-    "stage-0",
-    "react"
+    [
+      "@babel/preset-env",
+      {
+        "modules": false
+      }
+    ],
+    "@babel/preset-react",
+    "@babel/preset-flow"
   ],
   "plugins": [
-    "transform-decorators-legacy",
-    ["lodash", {"id": ["lodash", "recompose"]}],
-    ["module-resolver", { 
-      "root": ["./"],
-      "cwd": "./",
-      "alias": {
-        "paper": "paper/dist/paper-core"
+    "@babel/plugin-proposal-export-default-from",
+
+    "@babel/plugin-proposal-optional-chaining",
+    "@babel/plugin-proposal-nullish-coalescing-operator",
+    "@babel/plugin-proposal-do-expressions",
+
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
       }
-    }],
+    ],
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/plugin-proposal-numeric-separator",
+    "@babel/plugin-proposal-throw-expressions",
+
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
+    "@babel/plugin-proposal-json-strings",
+
+    [
+      "lodash",
+      {
+        "id": ["lodash", "recompose"]
+      }
+    ],
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "cwd": "./",
+        "alias": {
+          "paper": "paper/dist/paper-core"
+        }
+      }
+    ],
     "babel-plugin-styled-components"
   ],
   "env": {
     "commonjs": {
       "plugins": [
-        "transform-es2015-modules-commonjs"
+        "@babel/plugin-transform-modules-commonjs"
       ]
     }
   }
