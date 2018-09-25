@@ -5,13 +5,15 @@ coverage
 stories
 !dist
 flow-typed
-.babelrc
+packages
 .eslintignore
 .eslintrc.json
 .flowconfig
 .stylelintrc
 .travis.yml
+babel.config.js
 jsconfig.json
+lerna.json
 rollup.config.*.js
 test-config.js
 yarn.lock

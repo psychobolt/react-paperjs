@@ -2,7 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "dist": ["./index"]
+      "react-rollup-boilerplate/*": ["./src/*"],
+      "default-import": ["./packages/default-import/index.js"],
+      "default-import/*": ["./packages/default-import/*"],
     }
   }
 }

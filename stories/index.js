@@ -3,7 +3,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
-import { withNotes } from '@storybook/addon-notes';
 import { Button, Welcome } from '@storybook/react/demo';
 import { doc } from 'storybook-readme';
 
@@ -28,4 +27,6 @@ storiesOf('Button', module)
     </Button>));
 
 storiesOf('Layout', module)
-  .add('Flexbox', withNotes('This is a example based on the flexbox example from the "HTML & CSS Is Hard" online book. - https://internetingishard.com/html-and-css/flexbox/')(() => <Flexbox />));
+  .add('Flexbox', () => <Flexbox />, {
+    notes: 'This is a example based on the flexbox example from the "HTML & CSS Is Hard" online book. - https://internetingishard.com/html-and-css/flexbox/',
+  });

@@ -7,7 +7,7 @@
 [![Build Status](https://travis-ci.org/psychobolt/react-rollup-boilerplate.svg?branch=master)](https://travis-ci.org/psychobolt/react-rollup-boilerplate)
 [![codecov](https://codecov.io/gh/psychobolt/react-rollup-boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-rollup-boilerplate)
 
-A boilerplate for building React libraries
+A boilerplate for building React libraries.
 
 ## Included
 
@@ -16,6 +16,7 @@ A boilerplate for building React libraries
     - [Node Resolve](https://www.npmjs.com/package/rollup-plugin-node-resolve)
     - [CommonJS](https://www.npmjs.com/package/rollup-plugin-commonjs)
 - [styled-components](https://www.styled-components.com/) with [default](https://www.styled-components.com/docs/tooling#stylelint) [stylelint](https://stylelint.io/) support
+- Monorepo support with [Lerna](https://lernajs.io)
 - Run tests with [Jest](https://facebook.github.io/jest/)
 - Code Coverage reporting with [Codecov](https://codecov.io/)
 - Dev sandbox and documentation with [Storybook](https://storybook.js.org/)
@@ -25,7 +26,7 @@ A boilerplate for building React libraries
 
 ## Setup
 
-Install the latest [Node JS LTS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn``` or ```yarn install``` command in the root and stories directory.
+Install the latest [Node JS LTS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn bootstrap``` command in the root project directory.
 
 ## Installing Flow Types
 
@@ -49,9 +50,24 @@ yarn storyboard
 ## Including NPM packages
 
 ```sh
-yarn add [package-name] --dev # for dev tools, story dependencies, libraries to be bundled
-yarn add [package-name] [--peer] # for external dependencies (Note: Include in rollup.config.common.js whenever update)
+yarn add <package-name> --dev # for dev tools, story dependencies, libraries to be bundled
+yarn add <package-name> [--peer] # for external dependencies (Note: Include in externals from rollup.config.common.js whenever update)
+yarn lerna add <package-name> [--dev] [--peer] [packages/<target-package-name>] # Add/link a package to a sub-package. See section: Including sub-packages
 ```
+
+## Including local packages
+
+This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configurations out of the box. By default, local packages are [independently](./lerna.json#L6) versioned. You may import your own repos with Lerna or create your own sub-packages using NPM. See Lerna's offical [readme](https://github.com/lerna/lerna#readme) for a configuration and usage guide.
+
+```sh
+yarn lerna import <path-to-external-repository> # import a repository to packages/
+# or 
+mkdir packages/<my-package> && npm init
+```
+
+> By default, the ```lerna.json``` defines the parent package at the [root](./lerna.json#L3). You may opt-out of this configuration manually, by removing its settings and any alias references to its directory or package. 
+
+> You can also give alias to source files of the packages in order to work with Visual Studio Code's Intellisense. See [jsconfig.json](./jsonconfig.json) and [usage](https://code.visualstudio.com/docs/languages/jsconfig#_using-webpack-aliases).
 
 ## Static Types
 
@@ -65,7 +81,7 @@ yarn flow # performs type checking on files
 yarn lint # runs linter to detect any style issues (css & js)
 yarn lint:css # lint only css
 yarn lint:js # lint only js
-yarn lint:js --fix # tries to fix js lint issues
+yarn lint:js --fix # attempts to fix js lint issues
 ```
 
 ## Test
@@ -74,6 +90,8 @@ yarn lint:js --fix # tries to fix js lint issues
 yarn test # runs functional/unit tests using Jest
 yarn test --coverage # with coverage
 ```
+
+> You can also inspect tests in debug mode within Visual Studio Code.
 
 ## Build
 

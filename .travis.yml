@@ -6,6 +6,9 @@ node_js:
 cache:
   yarn: true
 
+install:
+  - yarn bootstrap
+
 script:
   - yarn lint
   - yarn flow-typed
