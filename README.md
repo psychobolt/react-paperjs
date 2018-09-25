@@ -62,7 +62,7 @@ This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configuration
 ```sh
 yarn lerna import <path-to-external-repository> # import a repository to packages/
 # or 
-mkdir packages/<my-package> && npm init
+mkdir packages/<my-package> && cd <my-package> && npm init
 ```
 
 > By default, the ```lerna.json``` defines the parent package at the [root](./lerna.json#L3). You may opt-out of this configuration manually, by removing its settings and any alias references to its directory or package. 
