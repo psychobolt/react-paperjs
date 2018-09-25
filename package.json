@@ -60,7 +60,7 @@
     "@storybook/addon-notes": "4.0.0-alpha.22",
     "@storybook/react": "4.0.0-alpha.22",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "10.0.0",
+    "babel-eslint": "9.0.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.2",
     "babel-plugin-lodash": "^3.3.4",
