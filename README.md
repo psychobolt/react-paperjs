@@ -57,7 +57,7 @@ yarn lerna add <package-name> [--dev] [--peer] [packages/<target-package-name>] 
 
 ## Including local packages
 
-This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configurations out of the box. By default, local packages are [independently](./lerna.json#L6) versioned. You may import your own repos with Lerna or create your own sub-packages using NPM. See Lerna's offical [readme](https://github.com/lerna/lerna#readme) for a configuration and usage guide.
+This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configurations out of the box and will watch, build, serve any local packages. By default, local packages are [independently](./lerna.json#L6) versioned. You may import your own repos with Lerna or create your own sub-packages using NPM. See Lerna's offical [readme](https://github.com/lerna/lerna#readme) for a configuration and usage guide.
 
 ```sh
 yarn lerna import <path-to-external-repository> # import a repository to packages/
