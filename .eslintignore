@@ -1,4 +1,4 @@
 !/.storybook
-/dist
+**/dist
 /stories/node_modules
 /flow-typed/npm

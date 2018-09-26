@@ -6,6 +6,12 @@ node_js:
 cache:
   yarn: true
 
+before_install:
+  - yarn global add lerna
+
+install:
+  - yarn bootstrap
+
 script:
   - yarn lint
   - yarn flow-typed
