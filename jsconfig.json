@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@psychobolt/react-paperjs/*": ["./src/*"],
+      "@psychobolt/react-paperjs": ["./src/index.js"],
     }
   }
 }
