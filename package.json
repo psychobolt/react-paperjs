@@ -28,7 +28,7 @@
     ],
     "collectCoverageFrom": [
       "src/**/*.js",
-      "!src/**/(index|*.stories).js"
+      "!src/**/(index|*.stories|stories).js"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
