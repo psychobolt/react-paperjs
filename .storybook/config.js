@@ -1,9 +1,7 @@
 import '@storybook/addon-console';
-import { configure, setAddon, addDecorator } from '@storybook/react';
+import { configure, addDecorator } from '@storybook/react';
 import { withNotes } from '@storybook/addon-notes';
-import chaptersAddon from 'react-storybook-addon-chapters';
 
-setAddon(chaptersAddon);
 addDecorator(withNotes);
 
 const reqMain = require.context('../stories', true, /\.?stories\.js$/);
