@@ -2,8 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "react-rollup-boilerplate": ["./src/index.js"],
-      "default-import": ["./packages/default-import/index.js"],
+      // List aliases here, for example:
+      // "default-export": ["./packages/default-export/src/index.js"],
     }
   }
 }

@@ -45,9 +45,6 @@ module.exports = {
       {
         root: ['./'],
         cwd: './',
-        alias: {
-          '^react-rollup-boilerplate$': './',
-        },
       },
     ],
     'babel-plugin-styled-components',

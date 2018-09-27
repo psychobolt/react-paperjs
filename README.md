@@ -57,13 +57,17 @@ yarn lerna add <package-name> [--dev] [--peer] [packages/<target-package-name>] 
 
 ## Including local packages
 
-This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configurations out of the box and will watch, build, serve any local packages. By default, local packages are [independently](./lerna.json#L6) versioned. You may import your own repos with Lerna or create your own sub-packages using NPM. See Lerna's offical [readme](https://github.com/lerna/lerna#readme) for a configuration and usage guide.
+This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configurations out of the box and will watch, build, serve any local packages. Each package should have ```src/index.js``` entry file.
+
+By default, local packages are [independently](./lerna.json#L6) versioned. You may import your own repos with Lerna or create your own sub-packages using NPM:
 
 ```sh
 yarn lerna import <path-to-external-repository> # import a repository to packages/
 # or 
 mkdir packages/<my-package> && cd <my-package> && npm init
 ```
+
+See Lerna's offical [readme](https://github.com/lerna/lerna#readme) for a configuration and usage guide.
 
 > By default, the ```lerna.json``` defines the parent package at the [root](./lerna.json#L3). You may opt-out of this configuration manually, by removing its settings and any alias references to its directory or package. 
 

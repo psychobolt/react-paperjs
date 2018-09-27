@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import index from './index';
+import index from './src';
 
-storiesOf('default-export', module)
-  .add('default import', () => {
+storiesOf('packages/default-export', module)
+  .add('default', () => {
     index();
     return <div />;
   }, {

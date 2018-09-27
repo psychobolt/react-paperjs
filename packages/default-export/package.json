@@ -2,7 +2,7 @@
   "name": "default-export",
   "version": "0.0.1",
   "description": "Dummy package",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "repository": "https://github.com/psychobolt/react-rollup-boilerplate/",
   "author": "psychobolt",
   "license": "MIT"
