@@ -45,10 +45,6 @@ module.exports = {
       {
         root: ['./'],
         cwd: './',
-        alias: {
-          '@psychobolt/react-paperjs': './',
-          paper: 'paper/dist/paper-core',
-        },
       },
     ],
     'babel-plugin-styled-components',

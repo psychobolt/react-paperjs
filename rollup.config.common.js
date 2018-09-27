@@ -39,7 +39,7 @@ export const configs = fs.readdirSync(PACKAGES_RESOLVE).reduce((collection, name
       ...collection,
       [pathname]: {
         ...config,
-        input: path.resolve(PACKAGES_RESOLVE, name, 'index.js'),
+        input: path.resolve(PACKAGES_RESOLVE, name, 'src', 'index.js'),
       },
     };
   }
