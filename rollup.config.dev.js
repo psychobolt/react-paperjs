@@ -10,6 +10,7 @@ function getConfig(pathname, base) {
     output: {
       file: path.resolve(dist, 'index.dev.js'),
       format: 'cjs',
+      exports: 'named',
       sourcemap: 'inline',
     },
     plugins: [
