@@ -11,8 +11,7 @@ function getConfig(pathname, base) {
     ...base,
     output: {
       file: path.resolve(dist, 'index.prod.js'),
-      format: 'amd',
-      exports: 'named',
+      format: 'cjs',
     },
     plugins: [
       scss({

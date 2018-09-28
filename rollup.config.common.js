@@ -9,10 +9,7 @@ const ROOT_RESOLVE = path.resolve();
 const PACKAGES_RESOLVE = path.resolve('packages');
 
 export const plugins = [
-  resolve({
-    browser: true,
-    preferBuiltins: true,
-  }),
+  resolve(),
   commonjs({
     include: 'node_modules/**',
   }),
