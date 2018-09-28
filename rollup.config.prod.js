@@ -12,6 +12,7 @@ function getConfig(pathname, base) {
     output: {
       file: path.resolve(dist, 'index.prod.js'),
       format: 'cjs',
+      exports: 'named',
     },
     plugins: [
       scss({
