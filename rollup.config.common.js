@@ -8,18 +8,17 @@ const ROOT_RESOLVE = path.resolve();
 
 const PACKAGES_RESOLVE = path.resolve('packages');
 
-export const plugins = [
-  resolve(),
-  commonjs({
-    include: 'node_modules/**',
-  }),
-  babel({
-    exclude: 'node_modules/**',
-  }),
-];
-
 const config = {
   input: path.resolve(ROOT_RESOLVE, 'src', 'index.js'),
+  plugins: [
+    resolve(),
+    commonjs({
+      include: 'node_modules/**',
+    }),
+    babel({
+      exclude: 'node_modules/**',
+    }),
+  ],
   external: [
     'paper/dist/paper-core',
     'react',
