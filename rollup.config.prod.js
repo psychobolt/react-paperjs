@@ -3,7 +3,7 @@ import { minify } from 'uglify-es';
 import scss from 'rollup-plugin-scss';
 import { uglify } from 'rollup-plugin-uglify';
 
-import { configs, plugins } from './rollup.config.common';
+import { configs } from './rollup.config.common';
 
 function getConfig(pathname, base) {
   const dist = path.resolve(pathname, 'dist');
@@ -18,7 +18,7 @@ function getConfig(pathname, base) {
       scss({
         output: path.resolve(dist, 'styles.prod.css'),
       }),
-      ...plugins,
+      ...base.plugins,
       uglify({}, minify),
     ],
   };

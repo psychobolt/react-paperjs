@@ -1,7 +1,7 @@
 import path from 'path';
 import scss from 'rollup-plugin-scss';
 
-import { configs, plugins } from './rollup.config.common';
+import { configs } from './rollup.config.common';
 
 function getConfig(pathname, base) {
   const dist = path.resolve(pathname, 'dist');
@@ -18,7 +18,7 @@ function getConfig(pathname, base) {
         output: path.resolve(dist, 'styles.dev.css'),
         sourceMapEmbed: true,
       }),
-      ...plugins,
+      ...base.plugins,
     ],
   };
 }
