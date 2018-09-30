@@ -5,7 +5,7 @@ module.exports = (baseConfig, env, defaultConfig) => ({
   resolve: {
     ...defaultConfig.resolve,
     alias: {
-      '@psychobolt/react-paperjs': path.resolve(__dirname, '../'),
+      '@psychobolt/react-paperjs': path.resolve(__dirname, '../dist'),
     },
   },
   module: {
@@ -26,7 +26,7 @@ module.exports = (baseConfig, env, defaultConfig) => ({
       {
         test: /\.jsx?$/,
         include: require('path').resolve('./'), // eslint-disable-line global-require
-        exclude: /(node_modules|dist)/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
       },
     ],

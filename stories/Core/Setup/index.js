@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import ResizableApp from './Resizable';
 
-storiesOf('Setup', module)
+storiesOf('Core/Setup', module)
   .add('with Resize', () => (
     <div>
       <div>

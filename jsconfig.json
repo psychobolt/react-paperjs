@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@psychobolt/react-paperjs": ["./src/index.js"],
+      "@psychobolt/react-paperjs-editor": ["./packages/react-paperjs-editor/src/index.js"],
     }
   }
 }

@@ -5,7 +5,7 @@ import { PaperContainer, Circle, Layer } from '@psychobolt/react-paperjs';
 
 import { ref } from '../shared';
 
-storiesOf('Layer', module)
+storiesOf('Core/Layer', module)
   .add('2 Layers with Default', () => {
     const Shapes = () => (
       <Circle ref={ref} center={[120, 50]} radius={35} fillColor="#00FF00" />

@@ -16,7 +16,11 @@
     },
     "settings": {
         "import/resolver": {
-            "babel-module": {}
+            "babel-module": {
+                "alias": {
+                    "@psychobolt/react-paperjs": "./src/index.js"
+                }
+            }
         }
     }
 }

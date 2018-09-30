@@ -1,4 +1,4 @@
-import '@storybook/addon-console';
+// import '@storybook/addon-console';
 import { configure, addDecorator } from '@storybook/react';
 import { withNotes } from '@storybook/addon-notes';
 

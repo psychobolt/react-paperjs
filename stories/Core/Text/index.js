@@ -5,7 +5,7 @@ import { PointText } from '@psychobolt/react-paperjs';
 
 import { Mountable as PaperContainer, ref } from '../shared';
 
-storiesOf('Text', module)
+storiesOf('Core/Text', module)
   .add('PointText', () => (
     <PaperContainer canvasProps={{ width: 516, height: 100 }}>
       <PointText

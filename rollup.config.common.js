@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import alias from 'rollup-plugin-alias';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
@@ -11,15 +12,19 @@ const PACKAGES_RESOLVE = path.resolve('packages');
 const config = {
   input: path.resolve(ROOT_RESOLVE, 'src', 'index.js'),
   plugins: [
+    alias({
+      paper: 'paper/dist/paper-core',
+    }),
     resolve(),
     commonjs({
       include: 'node_modules/**',
     }),
     babel({
-      exclude: 'node_modules/**',
+      exclude: ['node_modules/**'],
     }),
   ],
   external: [
+    '@psychobolt/react-paperjs',
     'paper/dist/paper-core',
     'react',
     'react-dom',

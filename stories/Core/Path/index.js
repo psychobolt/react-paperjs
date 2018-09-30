@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import { renderWithPaperScope, PaperContainer, Path, Rectangle } from '@psychobolt/react-paperjs';
 
-storiesOf('Path', module)
+storiesOf('Core/Path', module)
   .add('with PathData', () => (
     <PaperContainer>
       <Path
