@@ -2,10 +2,11 @@ __mocks__
 .storybook
 .vscode
 coverage
-stories
-!dist
+!/dist
 flow-typed
 packages
+stories
+storybook-static
 .eslintignore
 .eslintrc.json
 .flowconfig
