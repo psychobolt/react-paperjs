@@ -8,8 +8,7 @@ import HelloWorld from '../HelloWorld.component';
 
 describe('component <HelloWorld />', () => {
   it('should render correctly', () => {
-    const wrapper = shallow(<HelloWorld />);
-    expect(wrapper).toMatchSnapshot();
+    shallow(<HelloWorld />);
   });
 
   it('is not type Portal', () => {
