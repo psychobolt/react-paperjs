@@ -112,6 +112,9 @@
     "stylelint-processor-styled-components": "^1.4.0",
     "uglify-es": "^3.3.9"
   },
+  "resolutions": {
+    "@lerna/publish": "3.3.2"
+  },
   "dependencies": {
     "react-is": "^16.5.2"
   },
