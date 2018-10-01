@@ -5,9 +5,9 @@
 [![Build Status](https://travis-ci.org/psychobolt/react-paperjs.svg?branch=master)](https://travis-ci.org/psychobolt/react-paperjs)
 [![codecov](https://codecov.io/gh/psychobolt/react-paperjs/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-paperjs)
 
-[![Dependencies Status](https://david-dm.org/psychobolt/react-paperjs-editor.svg)](https://david-dm.org/psychobolt/react-paperjs-editor)
-[![Dev Dependencies Status](https://david-dm.org/psychobolt/react-paperjs-editor/dev-status.svg)](https://david-dm.org/psychobolt/react-paperjs-editor?type=dev)
-[![Peer Dependencies Status](https://david-dm.org/psychobolt/react-paperjs-editor/peer-status.svg)](https://david-dm.org/psychobolt/react-paperjs-editor?type=peer)
+[![Dependencies Status](https://david-dm.org/psychobolt/react-paperjs/status.svg?path=packages/react-paperjs-editor)](https://david-dm.org/psychobolt/react-paperjs?path=packages/react-paperjs-editor)
+[![Dev Dependencies Status](https://david-dm.org/psychobolt/react-paperjs/dev-status.svg?path=packages/react-paperjs-editor)](https://david-dm.org/psychobolt/react-paperjs?path=packages/react-paperjs-editor&type=dev)
+[![Peer Dependencies Status](https://david-dm.org/psychobolt/react-paperjs/peer-status.svg?path=packages/react-paperjs-editor)](https://david-dm.org/psychobolt/react-paperjs?path=packages/react-paperjs-editor&type=peer)
 
 A library of common editor components for [React Paper.js](https://github.com/psychobolt/react-paperjs)
 
@@ -23,7 +23,7 @@ yarn add @psychobolt/react-paperjs @psychobolt/react-paperjs-editor
 
 ## Examples
 
-There are several [demos](https://psychobolt.github.io/react-paperjs-editor). Also check out their [sources](stories).
+There are several [demos](https://psychobolt.github.io/react-paperjs). Also check out their [sources](stories).
 
 ## Components
 

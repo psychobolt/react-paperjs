@@ -7,6 +7,12 @@
     "author": "psychobolt",
     "license": "MIT",
     "peerDependencies": {
-        "@psychobolt/react-paperjs": "^0.0.54"
+        "paper": "^0.11.5",
+        "react": "^16.5.2",
+        "react-dom": "^16.5.2",
+        "@psychobolt/react-paperjs": "^0.0.55"
+    },
+    "dependencies": {
+        "react-is": "^16.5.2"
     }
 }
