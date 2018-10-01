@@ -1,5 +1,4 @@
 import path from 'path';
-import scss from 'rollup-plugin-scss';
 
 import { configs } from './rollup.config.common';
 
@@ -14,10 +13,6 @@ function getConfig(pathname, base) {
       sourcemap: 'inline',
     },
     plugins: [
-      scss({
-        output: path.resolve(dist, 'styles.dev.css'),
-        sourceMapEmbed: true,
-      }),
       ...base.plugins,
     ],
   };

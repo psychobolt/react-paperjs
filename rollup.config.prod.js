@@ -1,6 +1,5 @@
 import path from 'path';
 import { minify } from 'uglify-es';
-import scss from 'rollup-plugin-scss';
 import { uglify } from 'rollup-plugin-uglify';
 
 import { configs } from './rollup.config.common';
@@ -15,9 +14,6 @@ function getConfig(pathname, base) {
       exports: 'named',
     },
     plugins: [
-      scss({
-        output: path.resolve(dist, 'styles.prod.css'),
-      }),
       ...base.plugins,
       uglify({}, minify),
     ],
