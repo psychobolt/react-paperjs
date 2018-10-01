@@ -28,7 +28,7 @@ A boilerplate for building React libraries.
 
 ## Setup
 
-Install the latest [Node JS LTS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn bootstrap``` command in the root project directory.
+Install the latest [Node JS LTS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn [install] && yarn bootstrap``` commands in the root project directory.
 
 ## Installing Flow Types
 
