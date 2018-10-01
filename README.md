@@ -43,10 +43,7 @@ yarn flow-typed
 
 During development,
 ```sh
-# watch and build new source changes
-yarn start
-# or serve *.stories.js files and manually test on the Storyboard app (optionally run command above in parallel)
-yarn storyboard
+yarn start # watch, build, and serves packages
 ```
 
 ## Including NPM packages
@@ -66,7 +63,7 @@ By default, local packages are [independently](./lerna.json#L6) versioned. You m
 ```sh
 yarn lerna import <path-to-external-repository> # import a repository to packages/
 # or 
-mkdir packages/<my-package> && cd <my-package> && npm init
+mkdir packages/<my-package> && cd <my-package> && yarn init
 ```
 
 See Lerna's offical [readme](https://github.com/lerna/lerna#readme) for a configuration and usage guide.
@@ -99,8 +96,12 @@ yarn test --coverage # with coverage
 
 > You can also inspect tests in debug mode within Visual Studio Code.
 
-## Build
+## Other scripts
 
 ```sh
-yarn build # builds sources at src/
+yarn build # builds all packages
+yarn build:dev [--environment PACKAGES:<*,package-name>] # builds sources for development, optionally provide environment variable to specify local package(s) e.g. yarn build:dev --environment PACKAGES:default-export,package-* (glob pattern supported)
+yarn build:prod [--environment PACKAGES:<*,package-name>] # builds sources for production
+yarn watch [--environment PACKAGES:<*,package-name>]# watches dev builds
+yarn dist # builds all packages and publishes to npm
 ```

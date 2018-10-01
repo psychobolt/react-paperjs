@@ -7,20 +7,21 @@
   "author": "psychobolt",
   "license": "MIT",
   "scripts": {
-    "prepublishOnly": "npm run build",
     "flow-typed": "rimraf flow-typed/npm && flow-typed install -s -o --ignoreDeps peer",
     "build:dev": "rollup -c rollup.config.dev.js",
     "build:prod": "rollup -c rollup.config.prod.js",
     "clean": "rimraf dist/index.*.* dist/*.css packages/*/dist/index.*.* packages/*/dist/*.css",
-    "build": "npm run clean && npm run build:dev && npm run build:prod",
-    "start": "npm run build:dev -- -w",
+    "build": "npm run clean && npm run build:dev -- --environment PACKAGES:* && npm run build:prod -- --environment PACKAGES:*",
+    "watch": "npm run build:dev -- --w",
+    "start": "concurrently \"npm:watch -- --environment PACKAGES:*\" \"npm:storybook\"",
     "test": "cross-env BABEL_ENV=commonjs jest --passWithNoTests",
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint ./src/**/*.js",
     "lint:js": "eslint .storybook src stories *.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "dist": "npm run build && lerna publish"
   },
   "jest": {
     "setupFiles": [
@@ -68,6 +69,7 @@
     "babel-plugin-styled-components": "^1.7.1",
     "cash-true": "^0.0.2",
     "codecov": "^3.1.0",
+    "concurrently": "^4.0.1",
     "cross-env": "^5.2.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
@@ -86,6 +88,7 @@
     "jest": "^23.6.0",
     "jest-styled-components": "^6.2.1",
     "lerna": "^3.4.0",
+    "minimatch": "^3.0.4",
     "prop-types": "^15.6.2",
     "raf": "^3.4.0",
     "react": "^16.5.2",
