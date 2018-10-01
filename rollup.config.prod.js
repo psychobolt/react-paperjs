@@ -20,4 +20,4 @@ function getConfig(pathname, base) {
   };
 }
 
-export default Object.entries(configs).map(([pathname, config]) => getConfig(pathname, config));
+export default configs.map(([pathname, config]) => getConfig(pathname, config));
