@@ -23,7 +23,7 @@ yarn add @psychobolt/react-paperjs @psychobolt/react-paperjs-editor
 
 ## Examples
 
-There are several [demos](https://psychobolt.github.io/react-paperjs). Also check out their [sources](stories).
+There are several [demos](https://psychobolt.github.io/react-paperjs/?selectedKind=packages%2Freact-paperjs-editor%2FSetup&selectedStory=with%20Pan%20and%20Zoom&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel. Also check out their [sources](stories).
 
 ## Components
 

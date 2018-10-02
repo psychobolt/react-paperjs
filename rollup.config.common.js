@@ -37,7 +37,10 @@ const config = {
 };
 
 export const configs = Object.entries(
-  fs.readdirSync(PACKAGES_RESOLVE).reduce((collection, name) => {
+  (fs.existsSync(PACKAGES_RESOLVE)
+    ? fs.readdirSync(PACKAGES_RESOLVE)
+    : []
+  ).reduce((collection, name) => {
     const pathname = path.resolve(PACKAGES_RESOLVE, name);
     if (fs.statSync(pathname).isDirectory()
       && INCLUDES.some(pattern => minimatch(pathname, `${PACKAGES_RESOLVE}/${pattern}`))) {
