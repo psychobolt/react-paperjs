@@ -1516,6 +1516,13 @@
     universal-user-agent "^2.0.0"
     url-template "^2.0.8"
 
+"@psychobolt/react-paperjs-editor@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@psychobolt/react-paperjs-editor/-/react-paperjs-editor-0.0.9.tgz#ba6b5e4c941729017e12f69e0709d43b5ee04223"
+  integrity sha512-L2+Dv/VPxBCd7W5hKQ5yZYU6OC4OTm/08xXGsIagqpQsSs1ea2uzFxjh/pgZcW3ucc10tbRQQ3kCRAGKqYFvrQ==
+  dependencies:
+    react-is "^16.5.2"
+
 "@storybook/addon-actions@^4.0.0-alpha.23":
   version "4.0.0-alpha.23"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-4.0.0-alpha.23.tgz#6cced9449711963dcfff98fec77c998be78399c3"
