@@ -120,7 +120,6 @@
     "@lerna/publish": "3.3.2"
   },
   "dependencies": {
-    "@lerna/publish": "3.4.0",
     "react-is": "^16.5.2"
   },
   "peerDependencies": {
