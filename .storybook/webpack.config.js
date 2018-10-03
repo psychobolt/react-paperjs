@@ -23,6 +23,7 @@ module.exports = (baseConfig, env, defaultConfig) => ({
       },
       {
         test: /\.jsx?$/,
+        exclude: /node_modules/,
         loader: 'source-map-loader',
         enforce: 'pre',
       },
