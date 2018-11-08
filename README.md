@@ -70,7 +70,7 @@ See Lerna's offical [readme](https://github.com/lerna/lerna#readme) for a config
 
 > By default, the ```lerna.json``` defines the parent package at the [root](./lerna.json#L3). You may opt-out of this configuration manually, by removing its settings and any alias references to its directory or package. 
 
-> You can also give alias to source files of the packages in order to work with Visual Studio Code's Intellisense. See [jsconfig.json](./jsonconfig.json) and [usage](https://code.visualstudio.com/docs/languages/jsconfig#_using-webpack-aliases).
+> You can also give alias to source files of the packages in order to work with Visual Studio Code's Intellisense. See [jsconfig.json](./jsconfig.json) and [usage](https://code.visualstudio.com/docs/languages/jsconfig#_using-webpack-aliases).
 
 ## Static Types
 
