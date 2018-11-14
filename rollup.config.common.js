@@ -9,7 +9,9 @@ const ROOT_RESOLVE = path.resolve();
 
 const PACKAGES_RESOLVE = path.resolve('packages');
 
-export const INCLUDES = process.env.PACKAGES.split(/\s*,\s*/);
+const ALL_PACKAGES = '*';
+
+export const INCLUDES = process.env.PACKAGES ? process.env.PACKAGES.split(/\s*,\s*/) : [];
 
 const config = {
   input: path.resolve(ROOT_RESOLVE, 'src', 'index.js'),
@@ -47,9 +49,12 @@ export const configs = Object.entries(
       };
     }
     return collection;
-  }, {
-    [ROOT_RESOLVE]: config,
-  }),
+  }, {}),
 );
+
+if ((INCLUDES.length === 0 || INCLUDES.includes(ALL_PACKAGES))
+    && fs.statSync(config.input).isFile()) {
+  configs.push([ROOT_RESOLVE, config]);
+}
 
 export default config;
