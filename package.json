@@ -92,6 +92,7 @@
     "prop-types": "^15.6.2",
     "raf": "^3.4.1",
     "react": "^16.6.3",
+    "react-cache": "^2.0.0-alpha.1",
     "react-dom": "^16.6.3",
     "recompose": "^0.30.0",
     "rimraf": "^2.6.2",

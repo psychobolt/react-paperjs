@@ -1441,7 +1441,7 @@
     config-chain "^1.1.11"
     pify "^3.0.0"
 
-"@lerna/npm-dist-tag@^3.3.0", "@lerna/npm-dist-tag@^3.6.0":
+"@lerna/npm-dist-tag@^3.3.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@lerna/npm-dist-tag/-/npm-dist-tag-3.6.0.tgz#8f8c8567810bd9ee1c1277a71b57cec1acc101f4"
   integrity sha512-qX6IfQPX9Tum1LRjvjgj/yr2FYbc9dfHyeh7RI9zJ8pGncWbksBmnMcvoxF0Eu4+d7MjjIGfEnIp9LIl4MHSIA==
@@ -1461,7 +1461,7 @@
     signal-exit "^3.0.2"
     write-pkg "^3.1.0"
 
-"@lerna/npm-publish@^3.3.1", "@lerna/npm-publish@^3.6.0":
+"@lerna/npm-publish@^3.3.1":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@lerna/npm-publish/-/npm-publish-3.6.0.tgz#8981a9744779c55955a8c4249fe6b44a0485f9d3"
   integrity sha512-k4yF8ursajoGRlJeRh7xdeGN0HV/ALt5qImUnpTliux0213jqxA0YigiD8WSaXpvSqxSFyvh38DbJhhy9q+NuQ==
@@ -1556,36 +1556,6 @@
     fs-extra "^7.0.0"
     npm-package-arg "^6.0.0"
     npmlog "^4.1.2"
-    p-finally "^1.0.0"
-    p-map "^1.2.0"
-    p-pipe "^1.2.0"
-    p-reduce "^1.0.0"
-    semver "^5.5.0"
-
-"@lerna/publish@3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@lerna/publish/-/publish-3.6.0.tgz#7985b8c549c83114180e99a9e291e8b82db57aac"
-  integrity sha512-F2bT96ZS7NJfid6T4a6TSanpVUQ4VOuhjPBPX2hagt5gnocm7lluvAFR7dl/cbEgmKIg2zJQnfAPTYjrtxXMVg==
-  dependencies:
-    "@lerna/batch-packages" "^3.6.0"
-    "@lerna/check-working-tree" "^3.6.0"
-    "@lerna/child-process" "^3.3.0"
-    "@lerna/collect-updates" "^3.6.0"
-    "@lerna/command" "^3.6.0"
-    "@lerna/describe-ref" "^3.6.0"
-    "@lerna/get-npm-exec-opts" "^3.6.0"
-    "@lerna/npm-conf" "^3.4.1"
-    "@lerna/npm-dist-tag" "^3.6.0"
-    "@lerna/npm-publish" "^3.6.0"
-    "@lerna/output" "^3.6.0"
-    "@lerna/prompt" "^3.6.0"
-    "@lerna/run-lifecycle" "^3.6.0"
-    "@lerna/run-parallel-batches" "^3.0.0"
-    "@lerna/validation-error" "^3.6.0"
-    "@lerna/version" "^3.6.0"
-    fs-extra "^7.0.0"
-    libnpm "^2.0.1"
-    npm-registry-fetch "^3.8.0"
     p-finally "^1.0.0"
     p-map "^1.2.0"
     p-pipe "^1.2.0"
@@ -10444,6 +10414,11 @@ rc@^1.2.7:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+react-cache@^2.0.0-alpha.1:
+  version "2.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/react-cache/-/react-cache-2.0.0-alpha.1.tgz#4c119188248bc988a61268458bc18bd845f2ec19"
+  integrity sha512-dDJVVGvxAlZE/dMxDXaxU5ZfcE4fbaSmJVFrCTi6dYWXDp7YjCsnywkpEYG6IURVW+eJrCydAIDcW0FADw0/5w==
 
 react-dev-utils@^6.1.0:
   version "6.1.1"

@@ -1,0 +1,22 @@
+* { box-sizing: border-box; }
+
+:root {
+  --color-pageTextDark: #000;
+
+  --color-pageText: #333;
+
+  --color-pageBg: #fff;
+
+  --color-buttonBg: #f7f7f7;
+  --color-buttonBorder: #e7e7e7;
+
+  --pt: 8px;
+}
+
+body {
+  margin: 0;
+  padding: calc(var(--pt) * 4);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  color: var(--color-pageText);
+  background-color: var(--color-pageBg);
+}
