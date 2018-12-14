@@ -1,5 +1,4 @@
 module.exports = (baseConfig, env, defaultConfig) => ({
-  ...baseConfig,
   ...defaultConfig,
   module: {
     ...defaultConfig.module,
