@@ -33,5 +33,5 @@ storiesOf('Layout', module)
 
 storiesOf('React Suspense', module)
   .add('User Page', () => <UserPage />, {
-    notes: 'This is a example utilizes React\'s Suspense and Cache - https://github.com/facebook/react/blob/master/fixtures/unstable-async/suspense/src/components/UserPage.js',
+    notes: 'This is a example utilizes React\'s Suspense and Cache. Similar to example from https://github.com/facebook/react/blob/master/fixtures/unstable-async/suspense/src/components/UserPage.js',
   });

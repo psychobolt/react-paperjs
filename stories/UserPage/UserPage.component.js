@@ -1,34 +1,32 @@
 import './styles.css';
-import React from 'react';
+import React, { Suspense } from 'react';
+import { unstable_createResource as createResource } from 'react-cache';
 import styled from 'styled-components';
 
+import { fetchContributors } from './api';
 import Details from './Details';
 import Repositories from './Repositories';
+import Spinner, { SIZES } from './Spinner';
 import * as styles from './UserPage.style';
 
-const user = {
-  name: 'psychobolt',
-  image: 'https://avatars2.githubusercontent.com/u/560721?s=460&v=4',
-};
-
-const repos = [
-  {
-    name: 'react-rollup-boilerplate',
-    url: 'https://github.com/psychobolt/react-rollup-boilerplate',
-    description: 'A boilerplate for building React libraries.',
-  },
-  {
-    name: 'react-regl',
-    url: 'https://github.com/psychobolt/react-regl',
-    description: 'React Fiber renderer and component container for Regl.',
-  },
-];
+const UserDetailsResource = createResource(fetchContributors);
 
 const Container = styled.div`${styles.container}`;
 
+const Contributors = () => {
+  const users = UserDetailsResource.read();
+  return users.map(user => (
+    <Container key={user.name}>
+      <Details image={user.image} name={user.name} />
+      <Suspense fallback={<Spinner size={SIZES.Medium} />}>
+        <Repositories id={user.name} />
+      </Suspense>
+    </Container>
+  ));
+};
+
 export default () => (
-  <Container>
-    <Details image={user.image} name={user.name} />
-    <Repositories repos={repos} />
-  </Container>
+  <Suspense fallback={<Spinner size={SIZES.Large} />}>
+    <Contributors />
+  </Suspense>
 );
