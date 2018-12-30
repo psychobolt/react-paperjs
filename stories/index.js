@@ -24,7 +24,8 @@ storiesOf('Button', module)
       <span role="img" aria-label="emojis">
         😀 😎 👍 💯
       </span>
-    </Button>));
+    </Button>
+  ));
 
 storiesOf('Layout', module)
   .add('Flexbox', () => <Flexbox />, {
