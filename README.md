@@ -51,7 +51,7 @@ yarn start # watch, build, and serves packages
 ```sh
 yarn add <package-name> --dev # for dev tools, story dependencies, libraries to be bundled
 yarn add <package-name> [--peer] # for external dependencies (Note: Include in externals from rollup.config.common.js whenever update)
-yarn lerna add <package-name> [--dev] [--peer] [packages/<target-package-name>] # Add/link a package to a sub-package. See section: Including sub-packages
+yarn lerna add <package-name> [--dev] [packages/<target-package-name>] # Add/link a package to a sub-package. See section: Including sub-packages
 ```
 
 ## Including local packages

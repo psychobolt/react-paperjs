@@ -5,13 +5,14 @@ import styled from 'styled-components';
 
 import { fetchContributors } from './api';
 import Details from './Details';
-import Repositories from './Repositories';
 import Spinner, { SIZES } from './Spinner';
 import * as styles from './UserPage.style';
 
 const UserDetailsResource = createResource(fetchContributors);
 
 const Container = styled.div`${styles.container}`;
+
+const Repositories = React.lazy(() => import('./Repositories'));
 
 const Contributors = () => {
   const users = UserDetailsResource.read();

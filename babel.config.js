@@ -34,6 +34,7 @@ module.exports = {
     ],
     '@babel/plugin-proposal-json-strings',
     // Custom
+    '@babel/plugin-syntax-dynamic-import',
     [
       'lodash',
       {
