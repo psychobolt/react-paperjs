@@ -1,5 +1,4 @@
-import React from 'react';
-import { compose } from 'recompose';
+import React, { Suspense } from 'react';
 import styled from 'styled-components';
 
 import * as styles from './HelloWorld.style';
@@ -8,16 +7,17 @@ export const Content = styled.p`
   ${styles.content}
 `;
 
-const Messenger = () => console.log('Hello World!'); // eslint-disable-line no-console
+const Messenger = React.lazy(() => import('./Messenger'));
 
-const HelloWorld = () => (
-  <Content>
-    {'To get started, edit '}
-    <code>
-      src/HelloWorld/HelloWorld.component.js
-    </code>
-    {' and save to reload.'}
-  </Content>
+export default () => (
+  <Suspense fallback={<p>Waiting for message...</p>}>
+    <Content>
+      {'To get started, edit '}
+      <code>
+        src/HelloWorld/HelloWorld.component.js
+      </code>
+      {' and save to reload.'}
+    </Content>
+    <Messenger />
+  </Suspense>
 );
-
-export default compose(HelloWorld, Messenger);

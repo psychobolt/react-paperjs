@@ -10,7 +10,7 @@
     "flow-typed": "rimraf flow-typed/npm && flow-typed install -s -o --ignoreDeps peer",
     "build:dev": "rollup -c rollup.config.dev.js",
     "build:prod": "rollup -c rollup.config.prod.js",
-    "clean": "rimraf dist/index.*.* dist/*.css packages/*/dist/index.*.* packages/*/dist/*.css",
+    "clean": "rimraf dist/index.*.* dist/chunk-*.js dist/*.css packages/*/dist/index.*.* packages/*/dist/chunk-*.js packages/*/dist/*.css",
     "build": "npm run clean && npm run build:dev -- --environment PACKAGES:* && npm run build:prod -- --environment PACKAGES:*",
     "watch": "npm run build:dev -- --w",
     "start": "concurrently \"npm:watch -- --environment PACKAGES:*\" \"npm:storybook\"",
