@@ -51,9 +51,10 @@ module.exports = {
     'babel-plugin-styled-components',
   ],
   env: {
-    commonjs: {
+    test: {
       plugins: [
         '@babel/plugin-transform-modules-commonjs',
+        'dynamic-import-node',
       ],
     },
   },
