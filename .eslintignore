@@ -1,4 +1,5 @@
 !/.storybook
+/coverage
 **/dist
-/stories/node_modules
 /flow-typed/npm
+/storybook-static

@@ -17,7 +17,7 @@
     "test": "jest --passWithNoTests",
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint ./src/**/*.js",
-    "lint:js": "eslint .storybook src stories *.js",
+    "lint:js": "eslint \"**/*.js\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "bootstrap": "lerna bootstrap",
@@ -28,8 +28,8 @@
       "./test-config.js"
     ],
     "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/**/(index|*.stories|stories).js"
+      "(src|packages)/**/*.js",
+      "!(src|packages)/**/(index|*.stories|stories).js"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
