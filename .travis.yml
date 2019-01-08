@@ -16,7 +16,7 @@ install:
 
 script:
   - yarn lint
-  - yarn flow-typed
+  - yarn flow-typed-install
   - yarn flow
   - yarn test -- --coverage
   - yarn build

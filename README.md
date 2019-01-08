@@ -30,15 +30,6 @@ A boilerplate for building React libraries.
 
 Install the latest [Node JS LTS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn [install] && yarn bootstrap``` commands in the root project directory.
 
-## Installing Flow Types
-
-Install flowtypes using the package script:
-```sh
-yarn flow-typed
-```
-
-> It is advised to run the script whenever NPM packages are installed.
-
 ## Local development
 
 During development,
@@ -51,14 +42,14 @@ yarn start # watch, build, and serves packages
 ```sh
 yarn add <package-name> --dev # for dev tools, story dependencies, libraries to be bundled
 yarn add <package-name> [--peer] # for external dependencies (Note: Include in externals from rollup.config.common.js whenever update)
-yarn lerna add <package-name> [--dev] [packages/<target-package-name>] # Add/link a package to a sub-package. See section: Including sub-packages
+yarn lerna add <package-name> [--dev] packages/<target-package-name>] # Add/link a package to a sub-package. See section: Including sub-packages
 ```
 
 ## Including local packages
 
-This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configurations out of the box and will watch, build, serve any local packages. Each package should have ```src/index.js``` entry file.
+This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configurations out of the box and will watch, build, serve any local packages. Each package should have ```src/index.js``` entry file. Additionally, it may include a ```stories.js``` file at its root to include stories.
 
-By default, local packages are [independently](./lerna.json#L6) versioned. You may import your own repos with Lerna or create your own sub-packages using NPM:
+By default, local packages are [independently](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/lerna.json#L6) versioned. You may import your own repos with Lerna or create your own sub-packages using NPM:
 
 ```sh
 yarn lerna import <path-to-external-repository> # import a repository to packages/
@@ -68,13 +59,19 @@ mkdir packages/<my-package> && cd <my-package> && yarn init
 
 See Lerna's offical [readme](https://github.com/lerna/lerna#readme) for a configuration and usage guide.
 
-> By default, the ```lerna.json``` defines the parent package at the [root](./lerna.json#L3). You may opt-out of this configuration manually, by removing its settings and any alias references to its directory or package. 
+> You can also give alias to source files of the packages in order to work with Visual Studio Code's Intellisense. See [jsconfig.json](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/jsconfig.json) and [usage](https://code.visualstudio.com/docs/languages/jsconfig#_using-webpack-aliases).
 
-> You can also give alias to source files of the packages in order to work with Visual Studio Code's Intellisense. See [jsconfig.json](./jsconfig.json) and [usage](https://code.visualstudio.com/docs/languages/jsconfig#_using-webpack-aliases).
+## Main Package
+
+By default, the ```lerna.json``` defines the mainå package at the [root](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/lerna.json#L3). You may opt-out of this configuration manually, by removing its settings and any alias references to its directory or package. 
+
+> Note, the main package has one limitation: it cannot include any non-published packages.
 
 ## Static Types
 
 ```sh
+yarn flow-typed-install # clean & install flow definitions
+yarn flow-typed-update # downloads and updates new flow definitions
 yarn flow # performs type checking on files
 ```
 

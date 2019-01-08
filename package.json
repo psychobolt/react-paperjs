@@ -7,7 +7,8 @@
   "author": "psychobolt",
   "license": "MIT",
   "scripts": {
-    "flow-typed": "rimraf flow-typed/npm && flow-typed install -s -o --ignoreDeps peer",
+    "flow-typed-update": "lerna exec -- flow-typed update -s -i peer -p \\$LERNA_ROOT_PATH",
+    "flow-typed-install": "rimraf flow-typed/npm && npm run flow-typed-update",
     "build:dev": "rollup -c rollup.config.dev.js",
     "build:prod": "rollup -c rollup.config.prod.js",
     "clean": "rimraf dist/index.*.* dist/chunk-*.js dist/*.css packages/*/dist/index.*.* packages/*/dist/chunk-*.js packages/*/dist/*.css",
