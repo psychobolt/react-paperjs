@@ -21,7 +21,7 @@
     "lint:js": "eslint \"**/*.js\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna exec -- yarn install && lerna bootstrap",
     "dist": "npm run build && lerna publish"
   },
   "jest": {

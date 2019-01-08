@@ -28,7 +28,7 @@ A boilerplate for building React libraries.
 
 ## Setup
 
-Install the latest [Node JS LTS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn [install] && yarn bootstrap``` commands in the root project directory.
+Install the latest [Node JS LTS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn bootstrap``` command in the root project directory.
 
 ## Local development
 
@@ -42,7 +42,7 @@ yarn start # watch, build, and serves packages
 ```sh
 yarn add <package-name> --dev # for dev tools, story dependencies, libraries to be bundled
 yarn add <package-name> [--peer] # for external dependencies (Note: Include in externals from rollup.config.common.js whenever update)
-yarn lerna add <package-name> [--dev] packages/<target-package-name>] # Add/link a package to a sub-package. See section: Including sub-packages
+yarn lerna add <package-name> [--dev] packages/<target-package-name>] # Add/link a package to all or specific local package(s). See section: Including local packages
 ```
 
 ## Including local packages
