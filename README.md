@@ -63,7 +63,7 @@ See Lerna's offical [readme](https://github.com/lerna/lerna#readme) for a config
 
 ## Main Package
 
-By default, the ```lerna.json``` defines the mainå package at the [root](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/lerna.json#L3). You may opt-out of this configuration manually, by removing its settings and any alias references to its directory or package. 
+By default, the ```lerna.json``` defines the main package at the [root](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/lerna.json#L3). You may opt-out of this configuration manually, by removing its settings and any alias references to its directory or package. 
 
 > Note, the main package has one limitation: it cannot include any non-published packages.
 
