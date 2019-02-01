@@ -26,6 +26,7 @@ module.exports = {
     '@babel/plugin-proposal-numeric-separator',
     '@babel/plugin-proposal-throw-expressions',
     // Stage 3
+    '@babel/plugin-syntax-dynamic-import',
     [
       '@babel/plugin-proposal-class-properties',
       {
@@ -34,7 +35,6 @@ module.exports = {
     ],
     '@babel/plugin-proposal-json-strings',
     // Custom
-    '@babel/plugin-syntax-dynamic-import',
     [
       'lodash',
       {
