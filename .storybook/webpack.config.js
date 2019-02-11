@@ -10,7 +10,7 @@ module.exports = (baseConfig, env, defaultConfig) => ({
       {
         test: /\.jsx?$/,
         include: require('path').resolve('./'), // eslint-disable-line global-require
-        exclude: /(node_modules|dist)/,
+        exclude: /(node_modules|dist|cjs|umd)/,
         loader: 'babel-loader',
       },
       {
