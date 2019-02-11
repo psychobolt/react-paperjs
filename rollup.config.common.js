@@ -11,7 +11,20 @@ const PACKAGES_RESOLVE = path.resolve('packages');
 
 const ALL_PACKAGES = '*';
 
-export const INCLUDES = process.env.PACKAGES ? process.env.PACKAGES.split(/\s*,\s*/) : [];
+const EXCLUDES = ['react-cache'];
+let INCLUDES = [];
+if (process.env.PACKAGES) {
+  INCLUDES = process.env.PACKAGES.split(/\s*,\s*/).filter(pattern => {
+    if (pattern.startsWith('!')) {
+      EXCLUDES.push(pattern.substring(1));
+      return false;
+    }
+    return true;
+  });
+  if (EXCLUDES.length > 0 && INCLUDES.length === 0) {
+    INCLUDES = [ALL_PACKAGES];
+  }
+}
 
 const config = {
   input: path.resolve(ROOT_RESOLVE, 'src', 'index.js'),
@@ -39,7 +52,8 @@ export const configs = Object.entries(
   ).reduce((collection, name) => {
     const pathname = path.resolve(PACKAGES_RESOLVE, name);
     if (fs.statSync(pathname).isDirectory()
-      && INCLUDES.some(pattern => minimatch(pathname, `${PACKAGES_RESOLVE}/${pattern}`))) {
+      && (INCLUDES.some(pattern => minimatch(pathname, `${PACKAGES_RESOLVE}/${pattern}`))
+      && !EXCLUDES.some(pattern => minimatch(pathname, `${PACKAGES_RESOLVE}/${pattern}`)))) {
       return {
         ...collection,
         [pathname]: {

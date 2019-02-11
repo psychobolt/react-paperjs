@@ -1,4 +1,4 @@
-import path from 'path';
+const path = require('path');
 
 module.exports = (baseConfig, env, defaultConfig) => ({
   ...defaultConfig,
@@ -11,7 +11,7 @@ module.exports = (baseConfig, env, defaultConfig) => ({
       )),
       {
         test: /\.jsx?$/,
-        include: path.resolve('./'), // eslint-disable-line global-require
+        include: path.resolve('./'),
         exclude: /(node_modules|dist|cjs|umd)/,
         loader: 'babel-loader',
       },
