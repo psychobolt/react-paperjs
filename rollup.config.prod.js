@@ -17,11 +17,11 @@ function getConfig(pathname, base) {
       exports: 'named',
     },
     plugins: [
+      ...base.plugins,
       postcss({
         extract: path.resolve(dist, 'styles.prod.css'),
         minimize: true,
       }),
-      ...base.plugins,
       uglify({}, minify),
     ],
   };

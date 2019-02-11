@@ -16,11 +16,11 @@ function getConfig(pathname, base) {
       sourcemap: 'inline',
     },
     plugins: [
+      ...base.plugins,
       postcss({
         extract: path.resolve(dist, 'styles.dev.css'),
         sourceMap: true,
       }),
-      ...base.plugins,
     ],
   };
 }
