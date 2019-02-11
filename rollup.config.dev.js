@@ -1,5 +1,5 @@
 import path from 'path';
-import scss from 'rollup-plugin-scss';
+import postcss from 'rollup-plugin-postcss';
 
 import { configs } from './rollup.config.common';
 
@@ -16,9 +16,9 @@ function getConfig(pathname, base) {
       sourcemap: 'inline',
     },
     plugins: [
-      scss({
-        output: path.resolve(dist, 'styles.dev.css'),
-        sourceMapEmbed: true,
+      postcss({
+        extract: path.resolve(dist, 'styles.dev.css'),
+        sourceMap: true,
       }),
       ...base.plugins,
     ],

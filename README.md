@@ -12,7 +12,7 @@ A boilerplate for building React libraries.
 ## Included
 
 - [React](https://reactjs.org/) with [recompose](https://github.com/acdlite/recompose)
-- [Rollup](https://rollupjs.org/) with [Babel](https://www.npmjs.com/package/rollup-plugin-babel), [SCSS](https://www.npmjs.com/package/rollup-plugin-scss) and other plugins:
+- [Rollup](https://rollupjs.org/) with [Babel](https://www.npmjs.com/package/rollup-plugin-babel), [SCSS](https://www.npmjs.com/package/rollup-plugin-postcss) and other plugins:
     - [Node Resolve](https://www.npmjs.com/package/rollup-plugin-node-resolve)
     - [CommonJS](https://www.npmjs.com/package/rollup-plugin-commonjs)
     - [Uglify](https://www.npmjs.com/package/rollup-plugin-uglify)
