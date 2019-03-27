@@ -1,12 +1,12 @@
 const path = require('path');
 
-module.exports = (baseConfig, env, defaultConfig) => ({
-  ...defaultConfig,
+module.exports = ({ config }) => ({
+  ...config,
   module: {
-    ...defaultConfig.module,
+    ...config.module,
     rules: [
       // Temp fix for issue: https://github.com/storybooks/storybook/issues/3346
-      ...defaultConfig.module.rules.filter(rule => !(
+      ...config.module.rules.filter(rule => !(
         (rule.use && rule.use.length && rule.use.find(({ loader }) => loader === 'babel-loader'))
       )),
       {
