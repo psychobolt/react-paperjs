@@ -1,4 +1,4 @@
 [options]
 module.system.node.resolve_dirname=node_modules
-module.system.node.resolve_dirname=src
-module.system.node.resolve_dirname=stories
+module.system.node.resolve_dirname=packages/node_modules
+esproposal.optional_chaining=enable
