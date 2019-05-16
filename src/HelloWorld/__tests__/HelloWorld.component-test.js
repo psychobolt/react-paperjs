@@ -2,13 +2,13 @@ import 'jest-styled-components';
 
 import React from 'react';
 import { isPortal, isFragment } from 'react-is';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import HelloWorld from '../HelloWorld.component';
 
 describe('component <HelloWorld />', () => {
   it('should render correctly', () => {
-    shallow(<HelloWorld />);
+    mount(<HelloWorld />);
   });
 
   it('is not type Portal', () => {
