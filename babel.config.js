@@ -26,6 +26,7 @@ module.exports = {
     '@babel/plugin-proposal-numeric-separator',
     '@babel/plugin-proposal-throw-expressions',
     // Stage 3
+    '@babel/plugin-syntax-dynamic-import',
     [
       '@babel/plugin-proposal-class-properties',
       {
@@ -45,14 +46,18 @@ module.exports = {
       {
         root: ['./'],
         cwd: './',
+        alias: {
+          'react-cache': './packages/react-cache', // See: https://github.com/facebook/react/issues/14780#issuecomment-461861948
+        },
       },
     ],
     'babel-plugin-styled-components',
   ],
   env: {
-    commonjs: {
+    test: {
       plugins: [
         '@babel/plugin-transform-modules-commonjs',
+        'dynamic-import-node-sync',
       ],
     },
   },

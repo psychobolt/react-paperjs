@@ -10,9 +10,6 @@
         "args": ["--runInBand"],
         "cwd": "${workspaceRoot}",
         "runtimeArgs": ["--nolazy"],
-        "env": {
-            "BABEL_ENV": "commonjs"
-        },
         "console": "integratedTerminal",
         "sourceMaps": true
       }

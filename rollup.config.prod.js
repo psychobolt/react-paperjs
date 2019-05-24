@@ -9,7 +9,9 @@ function getConfig(pathname, base) {
   return {
     ...base,
     output: {
-      file: path.resolve(dist, 'index.prod.js'),
+      dir: dist,
+      entryFileNames: '[name].prod.js',
+      chunkFileNames: '[name]-[hash].prod.js',
       format: 'cjs',
       exports: 'named',
     },

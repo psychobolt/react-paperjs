@@ -1,5 +1,10 @@
 {
     "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "legacyDecorators": true
+        }
+    },
     "extends": ["airbnb", "plugin:flowtype/recommended"],
     "plugins": ["flowtype", "jest"],
     "rules": {
@@ -7,8 +12,10 @@
         "no-confusing-arrow": ["error", {"allowParens": true}],
         "arrow-parens": ["error", "as-needed"],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/no-multi-comp": 0,
         "import/prefer-default-export": 0,
-        "object-curly-newline": ["error", { "consistent": true }]
+        "object-curly-newline": ["error", { "consistent": true }],
+        "no-bitwise": ["error", { "int32Hint": true }]
     },
     "env": {
         "jest/globals": true,

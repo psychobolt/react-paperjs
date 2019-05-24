@@ -1,4 +1,7 @@
 !/.storybook
+/coverage
+/packages/*/node_modules
+/packages/react-cache
 **/dist
-/stories/node_modules
 /flow-typed/npm
+/storybook-static
