@@ -13,12 +13,10 @@ A library of common editor components for [React Paper.js](https://github.com/ps
 
 ## Install
 
-> Recommended: Paper 0.11.x, React, React DOM 16.x.
-
 ```sh
-npm install --save @psychobolt/react-paperjs @psychobolt/react-paperjs-editor
+npm install --save @psychobolt/react-paperjs-editor
 # or
-yarn add @psychobolt/react-paperjs @psychobolt/react-paperjs-editor
+yarn add @psychobolt/react-paperjs-editor
 ```
 
 ## Examples

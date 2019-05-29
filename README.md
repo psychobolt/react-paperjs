@@ -13,7 +13,7 @@ React fiber renderer and component container for [Paper.js](http://paperjs.org/)
 
 ## Install
 
-> Recommended: Paper 0.11.x, React, React DOM 16.x.
+> Recommended: Paper 0.12.x, React, React DOM 16.x.
 
 ```sh
 npm install --save @psychobolt/react-paperjs
