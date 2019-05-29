@@ -1,10 +1,37 @@
-# Default Export
+# React Paper.js Editor
 
-[![Dependencies Status](https://david-dm.org/psychobolt/react-rollup-boilerplate/status.svg?path=packages/default-export)](https://david-dm.org/psychobolt/react-rollup-boilerplate?path=packages/default-export)
-[![Dev Dependencies Status](https://david-dm.org/psychobolt/react-rollup-boilerplate/dev-status.svg?path=packages/default-export)](https://david-dm.org/psychobolt/react-rollup-boilerplate?path=packages/default-export&type=dev)
-[![Peer Dependencies Status](https://david-dm.org/psychobolt/react-rollup-boilerplate/peer-status.svg?path=packages/default-export)](https://david-dm.org/psychobolt/react-rollup-boilerplate?path=packages/default-export&type=peer)
+[![Stability](https://img.shields.io/badge/Stability-Experimental-Orange.svg)](https://nodejs.org/api/documentation.html#documentation_stability_index)
+[![npm](https://img.shields.io/npm/v/@psychobolt/react-paperjs-editor.svg)](https://www.npmjs.com/package/@psychobolt/react-paperjs-editor)
+[![Build Status](https://travis-ci.org/psychobolt/react-paperjs.svg?branch=master)](https://travis-ci.org/psychobolt/react-paperjs)
+[![codecov](https://codecov.io/gh/psychobolt/react-paperjs/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-paperjs)
 
-[![Build Status](https://travis-ci.org/psychobolt/react-rollup-boilerplate.svg?branch=master)](https://travis-ci.org/psychobolt/react-rollup-boilerplate)
-[![codecov](https://codecov.io/gh/psychobolt/react-rollup-boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-rollup-boilerplate)
+[![Dependencies Status](https://david-dm.org/psychobolt/react-paperjs/status.svg?path=packages/react-paperjs-editor)](https://david-dm.org/psychobolt/react-paperjs?path=packages/react-paperjs-editor)
+[![Dev Dependencies Status](https://david-dm.org/psychobolt/react-paperjs/dev-status.svg?path=packages/react-paperjs-editor)](https://david-dm.org/psychobolt/react-paperjs?path=packages/react-paperjs-editor&type=dev)
+[![Peer Dependencies Status](https://david-dm.org/psychobolt/react-paperjs/peer-status.svg?path=packages/react-paperjs-editor)](https://david-dm.org/psychobolt/react-paperjs?path=packages/react-paperjs-editor&type=peer)
 
-Example package that exports a simple React component.
+A library of common editor components for [React Paper.js](https://github.com/psychobolt/react-paperjs)
+
+## Install
+
+> Recommended: Paper 0.11.x, React, React DOM 16.x.
+
+```sh
+npm install --save @psychobolt/react-paperjs @psychobolt/react-paperjs-editor
+# or
+yarn add @psychobolt/react-paperjs @psychobolt/react-paperjs-editor
+```
+
+## Examples
+
+There are several [demos](https://psychobolt.github.io/react-paperjs/?selectedKind=packages%2Freact-paperjs-editor). Also check out their [sources](https://github.com/psychobolt/react-paperjs/blob/master/stories/packages/react-paperjs-editor).
+
+## Components
+
+- [CircleTool](https://github.com/psychobolt/react-paperjs/blob/master/packages/react-paperjs-editor/src/components/CircleTool/CircleTool.md)
+- [FreeformPathTool](https://github.com/psychobolt/react-paperjs/blob/master/packages/react-paperjs-editor/src/components/FreeformPathTool/FreeformPathTool.md)
+- [Grid](https://github.com/psychobolt/react-paperjs/blob/master/packages/react-paperjs-editor/src/components/Grid/Grid.md)
+- [LineTool](https://github.com/psychobolt/react-paperjs/blob/master/packages/react-paperjs-editor/src/components/LineTool/LineTool.md)
+- [PanAndZoom](https://github.com/psychobolt/react-paperjs/blob/master/packages/react-paperjs-editor/src/components/PanAndZoom/PanAndZoom.md)
+- [PolygonTool](https://github.com/psychobolt/react-paperjs/blob/master/packages/react-paperjs-editor/src/components/PolygonTool/PolygonTool.md)
+- [RectangleTool](https://github.com/psychobolt/react-paperjs/blob/master/packages/react-paperjs-editor/src/components/RectangleTool/RectangleTool.md)
+- [SegmentPathTool](https://github.com/psychobolt/react-paperjs/blob/master/packages/react-paperjs-editor/src/components/SegmentPathTool/SegmentPathTool.md)

@@ -47,6 +47,7 @@ module.exports = {
         root: ['./'],
         cwd: './',
         alias: {
+          '^@psychobolt/(?!react-paperjs$)(.+)': './packages/\\1',
           'react-cache': './packages/react-cache', // See: https://github.com/facebook/react/issues/14780#issuecomment-461861948
         },
       },

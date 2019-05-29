@@ -23,7 +23,7 @@ yarn add @psychobolt/react-paperjs
 
 ## Examples
 
-There are several [demos](https://psychobolt.github.io/react-paperjs). Also check out their [sources](stories). Here is one to get you started:
+There are several [demos](https://psychobolt.github.io/react-paperjs). Also check out their [sources](https://github.com/psychobolt/react-paperjs/blob/master/stories). Here is one to get you started:
 
 ```jsx
 import React from 'react';
@@ -77,7 +77,7 @@ Canvas element class attribute.
 
 ### Paper
 
-Refer supported Paper [types](src/Paper.types.js). All props are passed to the type constructor.
+Refer supported Paper [types](https://github.com/psychobolt/react-paperjs/blob/master/src/Paper.types.js). All props are passed to the type constructor.
 
 ## API
 

@@ -41,7 +41,6 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@psychobolt/react-paperjs-editor": "^0.0.9",
     "@storybook/addon-actions": "^5.0.11",
     "@storybook/addon-console": "^1.1.0",
     "@storybook/addon-links": "^5.0.11",

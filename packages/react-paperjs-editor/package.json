@@ -1,16 +1,15 @@
 {
-    "name": "@psychobolt/react-paperjs-editor",
-    "version": "0.0.9",
-    "description": "A library of common editor components for React Paper.js",
-    "main": "./dist/index.js",
-    "repository": "https://github.com/psychobolt/react-paperjs-editor.git",
-    "author": "psychobolt",
-    "license": "MIT",
-    "peerDependencies": {
-        "paper": "^0.12.0"
-    },
-    "dependencies": {
-        "@psychobolt/react-paperjs": "^0.0.55",
-        "react-is": "^16.5.2"
-    }
+  "name": "@psychobolt/react-paperjs-editor",
+  "version": "0.0.9",
+  "description": "A library of common editor components for React Paper.js",
+  "main": "./dist/index.js",
+  "repository": "https://github.com/psychobolt/react-paperjs-editor.git",
+  "author": "psychobolt",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@psychobolt/react-paperjs": "^0.0.55"
+  }
 }
