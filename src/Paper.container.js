@@ -25,6 +25,10 @@ class PaperContainer extends React.Component<Props> {
     onMount: () => {},
   };
 
+  mountNode: any;
+
+  canvas: { current: null | HTMLCanvasElement };
+
   constructor(props: Props) {
     super(props);
     const { renderer, paper } = this.props;
@@ -61,15 +65,11 @@ class PaperContainer extends React.Component<Props> {
     renderer.reconciler.updateContainer(children, this.mountNode, this);
   };
 
-  newLayer(options: {} = {}) {
+  newLayer(options = {}) {
     const { paper, renderer } = this.props;
     return paper.project
       .addLayer(renderer.createInstance(CONSTANTS.Layer, options, paper));
   }
-
-  mountNode: any;
-
-  canvas: React.Ref<'canvas'>;
 
   render() {
     const { className, canvasProps } = this.props;

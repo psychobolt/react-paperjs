@@ -1,9 +1,11 @@
 // @flow
 import * as React from 'react';
-import { Tool, PaperScope } from '@psychobolt/react-paperjs';
+import * as ReactPaperJS from '@psychobolt/react-paperjs';
 import typeof { Group as Points, Segment, ToolEvent, Tool as ToolType } from 'paper';
 
 import PathTool from '../shared/PathTool';
+
+const { Tool, PaperScope } = ReactPaperJS;
 
 type Props = {
   pathProps: {

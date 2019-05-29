@@ -1,6 +1,8 @@
 // @flow
 import * as React from 'react';
-import { Layer, Group, Line } from '@psychobolt/react-paperjs';
+import * as ReactPaperJS from '@psychobolt/react-paperjs';
+
+const { Layer, Group, Line } = ReactPaperJS;
 
 type Props = {
   top: number,

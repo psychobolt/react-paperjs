@@ -1,7 +1,10 @@
 // @flow
-import React from 'react';
-import { PaperScope, getProps, type Paper, type EventHandler } from '@psychobolt/react-paperjs';
+import * as React from 'react';
+import * as ReactPaperJS from '@psychobolt/react-paperjs';
+import type { Paper, EventHandler } from '@psychobolt/react-paperjs';
 import type { KeyEvent, MouseEvent } from 'paper';
+
+const { PaperScope, getProps } = ReactPaperJS;
 
 type Props = {
   onPanEnabled?: () => any,

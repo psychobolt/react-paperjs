@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import type { ToolEventHandler } from '@psychobolt/react-paperjs';
 import typeof { PaperScope as Paper, Path, Segment, KeyEvent } from 'paper';
 

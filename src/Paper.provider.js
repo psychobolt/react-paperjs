@@ -31,12 +31,12 @@ type ScopedProps<P> = (paper: Paper) => P;
 type NestedProps<P> = P | ScopedProps<P>;
 
 export type Props = {
-  renderer: typeof PaperRenderer,
+  renderer?: typeof PaperRenderer,
   innerRef: Object,
   viewProps: NestedProps<ViewProps>,
   canvasProps: NestedProps<CanvasProps>,
   mergeProps: () => any,
-  children: React.Node
+  children?: React.Node
 };
 
 type State = {
@@ -45,10 +45,9 @@ type State = {
   canvasProps?: NestedProps<CanvasProps>
 };
 
-export function getProps<P>(scope: Paper, props: NestedProps<P>) {
+export function getProps(scope: Paper, props: NestedProps<any>) {
   if (typeof props === 'function') {
-    const scopedProps = (props: ScopedProps<P>);
-    return scopedProps(scope);
+    return props(scope);
   }
   return props || {};
 }
@@ -66,11 +65,12 @@ export default (Container: React.ComponentType<any>) => class PaperProvider
 
   static defaultProps = {
     renderer: PaperRenderer,
+    children: null,
   }
 
   constructor(props: Props) {
     super(props);
-    const Renderer = props.renderer;
+    const { renderer: Renderer = PaperRenderer } = props;
     this.renderer = new Renderer();
     this.state = {
       paper: this.renderer.createInstance(CONSTANTS.PaperScope, {}, paper),

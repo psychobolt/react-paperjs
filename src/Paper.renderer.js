@@ -6,8 +6,8 @@ import TYPES, { type Types, type Paper } from './Paper.types';
 import { diffProps, updateProps } from './Paper.component';
 
 type Props = {
-  pathData: string,
-  children: any,
+  pathData?: string,
+  children?: any,
 };
 
 type CreateInstance = (type: string, props: Props, paper: Paper) => any;
@@ -168,7 +168,7 @@ export default class PaperRenderer {
 
   reconciler: any;
 
-  createInstance: createInstance;
+  createInstance: CreateInstance;
 
 
   constructor() {

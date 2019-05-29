@@ -1,3 +1,4 @@
+// @flow
 export * from './Paper.types';
 export * from './hoc';
 export * from './Paper.provider';

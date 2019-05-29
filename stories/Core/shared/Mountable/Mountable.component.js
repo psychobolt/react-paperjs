@@ -1,12 +1,12 @@
 // @flow
 import * as React from 'react';
-import styled from 'styled-components';
+import * as ReactPaperJS from '@psychobolt/react-paperjs';
 
-import { PaperContainer } from '@psychobolt/react-paperjs';
+const { PaperContainer } = ReactPaperJS;
 
 type Props = {
   mount?: boolean,
-  children: React.ReactNode,
+  children: React.Node,
   className: string,
 };
 
@@ -14,7 +14,7 @@ type State = {
   mount?: boolean
 }
 
-class Mountable extends React.Component<Props, State> {
+export default class Mountable extends React.Component<Props, State> {
   static defaultProps = {
     mount: true,
   }
@@ -45,7 +45,3 @@ class Mountable extends React.Component<Props, State> {
     );
   }
 }
-
-export default styled(Mountable)`
-  /* empty */
-`;

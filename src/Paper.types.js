@@ -56,7 +56,7 @@ const TYPES: Types = {
 
 export default TYPES;
 
-const components: Components = Object.entries(PAPER).reduce((types, [key, Type]) => ({
+export const components: Components = Object.entries(PAPER).reduce((types, [key, Type]) => ({
   ...types,
   // $FlowFixMe
   [key]: React.forwardRef((props, ref) => <Type ref={ref} {...props} />),
