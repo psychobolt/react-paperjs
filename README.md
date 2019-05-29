@@ -47,7 +47,7 @@ yarn lerna add <package-name> [--dev] packages/<target-package-name>] # Add/link
 
 ## Including local packages
 
-This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configurations out of the box and will watch, build, serve any local packages. Each package should have ```src/index.js``` entry file. Additionally, it may include ```stories.js``` or ```*.stories.js``` files to include stories.
+This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configurations out of the box and will watch, build, serve any local packages. Each package should have ```src/index.js``` entry file.
 
 By default, local packages are [independently](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/lerna.json#L6) versioned. You may import your own repos with Lerna or create your own sub-packages using NPM:
 
