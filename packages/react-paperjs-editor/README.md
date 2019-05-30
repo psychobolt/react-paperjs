@@ -21,7 +21,7 @@ yarn add @psychobolt/react-paperjs-editor
 
 ## Examples
 
-There are several [demos](https://psychobolt.github.io/react-paperjs/?selectedKind=packages%2Freact-paperjs-editor). Also check out their [sources](https://github.com/psychobolt/react-paperjs/blob/master/stories/packages/react-paperjs-editor).
+There are several [demos](https://psychobolt.github.io/react-paperjs/?path=/story/packages-react-paperjs-editor-setup). Also check out their [sources](https://github.com/psychobolt/react-paperjs/blob/master/stories/packages/react-paperjs-editor).
 
 ## Components
 
