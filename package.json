@@ -6,6 +6,9 @@
   "repository": "https://github.com/psychobolt/react-paperjs.git",
   "author": "psychobolt",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "flow-typed-update": "lerna exec -- flow-typed update -s -i peer -p \\$LERNA_ROOT_PATH",
     "flow-typed-install": "rimraf flow-typed/npm && npm run flow-typed-update",
@@ -64,7 +67,7 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-react-app": "^4.0.1",
-    "eslint-import-resolver-babel-module": "5.1.0",
+    "eslint-import-resolver-babel-module": "5.0.1",
     "eslint-plugin-flowtype": "^3.9.1",
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-jest": "^22.6.4",
@@ -86,11 +89,11 @@
     "react-reconciler": "^0.20.4",
     "recompose": "^0.30.0",
     "rimraf": "^2.6.3",
-    "rollup": "1.12.5",
+    "rollup": "1.13.0",
     "rollup-plugin-alias": "^1.5.1",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^10.0.0",
-    "rollup-plugin-node-resolve": "^5.0.0",
+    "rollup-plugin-node-resolve": "^5.0.1",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-uglify": "^6.0.2",
     "source-map-loader": "^0.2.4",
