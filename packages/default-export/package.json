@@ -6,6 +6,9 @@
   "repository": "https://github.com/psychobolt/react-rollup-boilerplate/",
   "author": "psychobolt",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0"

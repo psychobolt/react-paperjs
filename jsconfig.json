@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       // List aliases here, for example:
-      // "default-export": ["./packages/default-export/src/index.js"],
+      "default-export": ["./packages/default-export/src/index.js"],
     }
   }
 }
