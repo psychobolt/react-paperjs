@@ -16,6 +16,9 @@ const Repositories = React.lazy(() => import('./Repositories'));
 
 const Contributors = () => {
   const users = UserDetailsResource.read();
+  if (process.env.NODE_ENV === 'development') {
+    console.log('DEVELOPMENT mode enabled');
+  }
   return users.map(user => (
     <Container key={user.name}>
       <Details image={user.image} name={user.name} />
