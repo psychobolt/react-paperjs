@@ -17,7 +17,7 @@ const Repositories = React.lazy(() => import('./Repositories'));
 const Contributors = () => {
   const users = UserDetailsResource.read();
   if (process.env.NODE_ENV === 'development') {
-    console.log('DEVELOPMENT mode enabled');
+    console.log('DEVELOPMENT mode enabled'); // eslint-disable-line no-console
   }
   return users.map(user => (
     <Container key={user.name}>
