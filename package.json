@@ -10,7 +10,7 @@
     "access": "public"
   },
   "scripts": {
-    "flow-typed-update": "lerna exec -- flow-typed update -s -i peer -p \\$LERNA_ROOT_PATH",
+    "flow-typed-update": "cross-env BABEL_ENV=commonjs babel-node flow-typed-update.js",
     "flow-typed-install": "rimraf flow-typed/npm && npm run flow-typed-update",
     "build:dev": "rollup -c rollup.config.dev.js",
     "build:prod": "rollup -c rollup.config.prod.js",
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/plugin-proposal-do-expressions": "^7.2.0",
@@ -61,6 +62,7 @@
     "codecov": "^3.5.0",
     "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
+    "cross-spawn": "^6.0.5",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
