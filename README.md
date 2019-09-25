@@ -101,20 +101,23 @@ A mapping of types with their instance factory method. __This should not be muta
 import React from 'React';
 import { PaperContainer, PaperRenderer } from '@psychobolt/react-paperjs'
 
-import MyCustomStencil from './MyCustomStencil';
+import MyCustomStencil, { TYPE_NAME as MyCustomStencilComponent } from './MyCustomStencil';
 
 class MyPaperRenderer extends PaperRenderer {
   getInstanceFactory() {
     return { 
-      ...this.defaultTypes,
-      [MyCustomStencil.TYPE_NAME]: (props, paper) => new MyCustomStencil(props),
+      ...this.defaultTypes, /* 
+        refer to default types
+        see https://github.com/psychobolt/react-paperjs/blob/master/src/Paper.types.js#L42 
+      */
+      [MyCustomStencilComponent]: (props, paper) => new MyCustomStencil(props),
     };
   }
 }
 
 const App = (props) => (
    <PaperContainer renderer={MyPaperRenderer}>
-     <MyCustomStencil>
+     <MyCustomStencilComponent />
    </PaperContainer>
 );
 
