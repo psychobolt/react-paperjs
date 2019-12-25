@@ -13,10 +13,12 @@
         "arrow-parens": ["error", "as-needed"],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/jsx-props-no-spreading": 0,
+        "react/static-property-placement": [1, "static public field"],
         "react/no-multi-comp": 0,
         "import/prefer-default-export": 0,
         "object-curly-newline": ["error", { "consistent": true }],
-        "no-bitwise": ["error", { "int32Hint": true }]
+        "no-bitwise": ["error", { "int32Hint": true }],
+        "no-mixed-operators": 0
     },
     "env": {
         "jest/globals": true,
