@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import minimatch from 'minimatch';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 
 const ROOT_RESOLVE = path.resolve();
