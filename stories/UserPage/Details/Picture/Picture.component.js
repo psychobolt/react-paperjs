@@ -22,7 +22,7 @@ type Props = {
 };
 
 export default ({ source }: Props) => (
-  <Suspense maxDuration={1500} fallback={<img src={source} alt="poster" />}>
+  <Suspense fallback={<img src={source} alt="poster" />}>
     <Img src={source} alt="profile picture" />
   </Suspense>
 );

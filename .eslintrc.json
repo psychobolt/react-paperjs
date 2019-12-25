@@ -12,6 +12,7 @@
         "no-confusing-arrow": ["error", {"allowParens": true}],
         "arrow-parens": ["error", "as-needed"],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-props-no-spreading": 0,
         "react/no-multi-comp": 0,
         "import/prefer-default-export": 0,
         "object-curly-newline": ["error", { "consistent": true }],

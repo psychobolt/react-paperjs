@@ -29,9 +29,7 @@ export default ({ children }: Props) => (
   <App>
     <Header>
       <Logo src={logo} alt="logo" />
-      <Title>
-        {'Welcome to React'}
-      </Title>
+      <Title>Welcome to React</Title>
     </Header>
     {children}
   </App>

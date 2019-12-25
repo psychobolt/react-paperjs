@@ -13,24 +13,15 @@ export default () => (
   <>
     <div className="menu-container">
       <div className="menu">
-        <div className="date">
-          {'Aug 14, 2016'}
-        </div>
-        <div className="signup">
-          {'Sign Up'}
-        </div>
-        <div className="login">
-          {'Login'}
-        </div>
+        <div className="date">Aug 14, 2016</div>
+        <div className="signup">Sign Up</div>
+        <div className="login">Login</div>
       </div>
     </div>
     <div className="header-container">
       <div className="header">
         <div className="header">
-          <div className="subscribe">
-            {'Subscribe '}
-            &#9662;
-          </div>
+          <div className="subscribe">Subscribe &#9662;</div>
           <div className="logo">
             <img alt="logo" src={logo} />
           </div>
