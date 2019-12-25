@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { unstable_createResource as createResource } from 'react-cache';
-import styled from 'styled-components';
+import styled, { type StyledComponent } from 'styled-components';
 
 import { fetchUserRepositories } from '../api';
 import Repostory from './Repository';
@@ -9,7 +9,7 @@ import * as styles from './Repositories.style';
 
 const UserRepositoriesResource = createResource(fetchUserRepositories);
 
-const List = styled.ul`${styles.list}`;
+const List: StyledComponent<any, any, HTMLUListElement> = styled.ul`${styles.list}`;
 
 type Props = {
   id: string;

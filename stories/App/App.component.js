@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import styled from 'styled-components';
+import styled, { type StyledComponent } from 'styled-components';
 
 import * as styles from './App.style';
 import logo from './logo.svg';
@@ -21,7 +21,7 @@ const Title = styled.h1`
   ${styles.h1}
 `;
 
-const App = styled.div`
+const App: StyledComponent<any, any, HTMLDivElement> = styled.div`
   ${styles.app}
 `;
 
