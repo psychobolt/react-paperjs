@@ -3,13 +3,14 @@ import { PaperContainer } from '@psychobolt/react-paperjs';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 
-import { LineTool, FreeformPathTool, PolygonTool, RectangleTool, CircleTool, SegmentPathTool } from '@psychobolt/react-paperjs-editor';
+import { LineTool, FreeformPathTool, PolygonTool, RectangleTool, CircleTool, SegmentPathTool, EllipseTool } from '@psychobolt/react-paperjs-editor';
 import LineToolReadme from 'packages/react-paperjs-editor/src/components/LineTool/LineTool.md';
 import FreeformPathToolReadme from 'packages/react-paperjs-editor/src/components/FreeformPathTool/FreeformPathTool.md';
 import SegmentPathToolReadme from 'packages/react-paperjs-editor/src/components/SegmentPathTool/SegmentPathTool.md';
 import RectangleToolReadme from 'packages/react-paperjs-editor/src/components/RectangleTool/RectangleTool.md';
 import CircleToolReadme from 'packages/react-paperjs-editor/src/components/CircleTool/CircleTool.md';
 import PolygonToolReadme from 'packages/react-paperjs-editor/src/components/PolygonTool/PolygonTool.md';
+import EllipseToolReadme from 'packages/react-paperjs-editor/src/components/EllipseTool/EllipseTool.md';
 
 import { ref } from '../shared';
 import styles from './Tool.styles';
@@ -77,6 +78,16 @@ storiesOf('packages/react-paperjs-editor/Tool', module)
       </div>
       <PaperContainer canvasProps={{ style: styles.container }}>
         <CircleTool ref={ref} onPathAdd={onPathAdd} />
+      </PaperContainer>
+    </div>
+  )))
+  .add('Ellipse', withReadme(EllipseToolReadme, () => (
+    <div>
+      <div>
+        {'Click and drag to create ellipse shapes.'}
+      </div>
+      <PaperContainer canvasProps={{ style: styles.container }}>
+        <EllipseTool ref={ref} onPathAdd={onPathAdd} />
       </PaperContainer>
     </div>
   )))
