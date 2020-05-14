@@ -7,3 +7,4 @@ export { default as CircleTool } from './CircleTool';
 export { default as SegmentPathTool } from './SegmentPathTool';
 export { default as PanAndZoom } from './PanAndZoom';
 export { default as EllipseTool } from './EllipseTool';
+export { default as PathTool } from './shared/PathTool';
