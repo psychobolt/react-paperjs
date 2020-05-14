@@ -26,6 +26,7 @@ There are several [demos](https://psychobolt.github.io/react-paperjs/?path=/stor
 ## Components
 
 - [CircleTool](https://github.com/psychobolt/react-paperjs/blob/master/packages/react-paperjs-editor/src/components/CircleTool/CircleTool.md)
+- [EllipseTool](https://github.com/psychobolt/react-paperjs/blob/master/packages/react-paperjs-editor/src/components/EllipseTool/EllipseTool.md)
 - [FreeformPathTool](https://github.com/psychobolt/react-paperjs/blob/master/packages/react-paperjs-editor/src/components/FreeformPathTool/FreeformPathTool.md)
 - [Grid](https://github.com/psychobolt/react-paperjs/blob/master/packages/react-paperjs-editor/src/components/Grid/Grid.md)
 - [LineTool](https://github.com/psychobolt/react-paperjs/blob/master/packages/react-paperjs-editor/src/components/LineTool/LineTool.md)
