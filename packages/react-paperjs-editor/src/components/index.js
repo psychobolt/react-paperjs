@@ -6,3 +6,4 @@ export { default as RectangleTool } from './RectangleTool';
 export { default as CircleTool } from './CircleTool';
 export { default as SegmentPathTool } from './SegmentPathTool';
 export { default as PanAndZoom } from './PanAndZoom';
+export { default as PathTool } from './shared/PathTool';
