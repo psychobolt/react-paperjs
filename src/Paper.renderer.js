@@ -86,7 +86,12 @@ const defaultHostConfig = {
   ) {
     return text;
   },
-  scheduleDeferredCallback: window.requestIdleCallback,
+  scheduleDeferredCallback:
+    typeof window !== 'undefined'
+      ? window.requestIdleCallback
+      : function dummyRequestIdleCallback(callback, options = {}) {
+        setTimeout(callback, options.timeout);
+      },
   prepareForCommit() {
     // console.log('ignore prepare for commit');
   },
