@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import minimatch from 'minimatch';
+import builtins from 'builtin-modules';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
@@ -38,6 +39,7 @@ const config = {
     }),
   ],
   external: [
+    ...builtins,
     'react',
     'react-dom',
     'react-is',
