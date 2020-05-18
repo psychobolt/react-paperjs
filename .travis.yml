@@ -26,6 +26,7 @@ before_deploy:
 
 deploy:
   provider: pages
+  edge: true
   github_token: $GITHUB_TOKEN
   local_dir: storybook-static
   on:
