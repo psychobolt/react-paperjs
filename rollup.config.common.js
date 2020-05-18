@@ -5,7 +5,7 @@ import builtins from 'builtin-modules';
 import alias from '@rollup/plugin-alias';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 
 const ROOT_RESOLVE = path.resolve();
 

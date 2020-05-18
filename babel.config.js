@@ -38,7 +38,7 @@ module.exports = {
     [
       'lodash',
       {
-        id: ['lodash', 'recompose'],
+        id: ['lodash'],
       },
     ],
     [
