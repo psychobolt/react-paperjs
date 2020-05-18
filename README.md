@@ -162,3 +162,7 @@ export default class Scene {
 ## Extensions
 
 If you're interested in editor components for React Paper JS, you can checkout another [library](https://www.npmjs.com/package/@psychobolt/react-paperjs-editor) that's work in progress.
+
+## Development Guide
+
+Please see [DEVELOPMENT.md](DEVELOPMENT.md)

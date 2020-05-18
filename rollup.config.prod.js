@@ -1,6 +1,5 @@
 import path from 'path';
-import { minify } from 'uglify-es';
-import { uglify } from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 
 import { configs } from './rollup.config.common';
 
@@ -17,7 +16,7 @@ function getConfig(pathname, base) {
     },
     plugins: [
       ...base.plugins,
-      uglify({}, minify),
+      terser(),
     ],
   };
 }
