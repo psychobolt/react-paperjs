@@ -85,14 +85,14 @@
     "jest-styled-components": "^7.0.2",
     "lerna": "^3.21.0",
     "minimatch": "^3.0.4",
-    "paper": "^0.12.0",
+    "paper": "^0.12.4",
     "prop-types": "^15.7.2",
     "raf": "^3.4.1",
-    "re-resizable": "^4.11.0",
+    "re-resizable": "^6.4.0",
     "react": "^16.13.1",
     "react-cache": "^2.0.0-alpha.1",
     "react-dom": "^16.13.1",
-    "react-reconciler": "^0.20.4",
+    "react-reconciler": "^0.25.1",
     "recompose": "^0.30.0",
     "rimraf": "^3.0.2",
     "rollup": "2.10.3",
@@ -109,7 +109,7 @@
     "react-is": "^16.13.1"
   },
   "peerDependencies": {
-    "paper": "^0.12.0",
+    "paper": "^0.12.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }

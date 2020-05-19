@@ -75,4 +75,5 @@ class LineTool extends PathTool<Props> {
   }
 }
 
-export default React.forwardRef((props, ref) => <LineTool innerRef={ref} {...props} />);
+export default React
+  .forwardRef<Props, ToolType>((props, ref) => <LineTool innerRef={ref} {...props} />);

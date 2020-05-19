@@ -81,4 +81,5 @@ class CircleTool extends PathTool<Props> {
   }
 }
 
-export default React.forwardRef((props, ref) => <CircleTool innerRef={ref} {...props} />);
+export default React
+  .forwardRef<Props, ToolType>((props, ref) => <CircleTool innerRef={ref} {...props} />);

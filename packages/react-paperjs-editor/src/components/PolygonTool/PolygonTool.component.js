@@ -145,4 +145,5 @@ class PolygonTool extends PathTool<Props> {
   }
 }
 
-export default React.forwardRef((props, ref) => <PolygonTool innerRef={ref} {...props} />);
+export default React
+  .forwardRef<Props, ToolType>((props, ref) => <PolygonTool innerRef={ref} {...props} />);

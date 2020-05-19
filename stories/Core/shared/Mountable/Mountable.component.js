@@ -34,9 +34,7 @@ export default class Mountable extends React.Component<Props, State> {
     return (
       <div className={className}>
         <div>
-          <button type="button" onClick={this.onClick}>
-            {'Attach/Detach'}
-          </button>
+          <button type="button" onClick={this.onClick}>Attach/Detach</button>
         </div>
         <PaperContainer {...props}>
           {mounted ? children : null}

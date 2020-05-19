@@ -101,4 +101,5 @@ class SegmentPathTool extends PathTool<Props> {
   }
 }
 
-export default React.forwardRef((props, ref) => <SegmentPathTool innerRef={ref} {...props} />);
+export default React
+  .forwardRef<Props, ToolType>((props, ref) => <SegmentPathTool innerRef={ref} {...props} />);

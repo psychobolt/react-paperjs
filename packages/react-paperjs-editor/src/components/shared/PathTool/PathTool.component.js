@@ -1,14 +1,14 @@
 // @flow
 import * as React from 'react';
 import type { ToolEventHandler } from '@psychobolt/react-paperjs';
-import typeof { PaperScope as Paper, Path, Segment, KeyEvent } from 'paper';
+import typeof { PaperScope, Path, Segment, KeyEvent } from 'paper';
 
 type KeyEventHandler = (event: KeyEvent) => any
 type PathEventHandler = (path: Path) => any
 type SegmentEventHandler = (segment: Segment | Segment[]) => any;
 
 type Props = {
-  paper: Paper,
+  paper: PaperScope,
   onKeyDown: KeyEventHandler,
   onKeyUp: KeyEventHandler,
   onMouseDown: ToolEventHandler,

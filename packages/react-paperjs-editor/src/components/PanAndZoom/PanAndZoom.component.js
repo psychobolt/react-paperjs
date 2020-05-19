@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
 import * as ReactPaperJS from '@psychobolt/react-paperjs';
-import type { Paper, EventHandler } from '@psychobolt/react-paperjs';
-import type { KeyEvent, MouseEvent } from 'paper';
+import type { EventHandler } from '@psychobolt/react-paperjs';
+import type { PaperScope as PaperScopeType, KeyEvent, MouseEvent } from 'paper';
 
 const { PaperScope, getProps } = ReactPaperJS;
 
@@ -12,7 +12,7 @@ type Props = {
   onZoom?: (level: number) => any,
   zoomLevel?: number,
   center: Object | number[],
-  paper: Paper,
+  paper: PaperScopeType,
   mergeProps: (state: {}, props?: {}) => {},
   children: any,
 };
@@ -30,6 +30,7 @@ function callAllHandlers(handlers: EventHandler[] = []) {
   return event => handlers.forEach(handler => handler && handler(event));
 }
 
+// $FlowFixMe
 export default @PaperScope class PanAndScroll extends React.Component<Props, State> {
   static defaultProps = {
     zoomLevel: 1,
@@ -79,7 +80,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
       let { zoom } = state.viewProps;
       if (deltaY < 0) {
         zoom = add(zoom, 0.1);
-        onZoom(zoom);
+        if (onZoom) onZoom(zoom);
         return {
           viewProps: {
             ...props.viewProps,
@@ -90,7 +91,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
       }
       if (deltaY > 0 && zoom > 0.1) {
         zoom = add(zoom, -0.1);
-        onZoom(zoom);
+        if (onZoom) onZoom(zoom);
         return {
           viewProps: {
             ...props.viewProps,
@@ -116,7 +117,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
         },
       }));
       this.setState({ draggable: true });
-      onPanEnabled();
+      if (onPanEnabled) onPanEnabled();
     }
   }
 
@@ -132,7 +133,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
         },
       }));
       this.setState({ draggable: false });
-      onPanDisabled();
+      if (onPanDisabled) onPanDisabled();
     }
   }
 

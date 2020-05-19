@@ -22,9 +22,7 @@ function onPathAdd(path) {
 storiesOf('packages/react-paperjs-editor/Tool', module)
   .add('Line', withReadme(LineToolReadme, () => (
     <div>
-      <div>
-        {'Click and drag to draw a line'}
-      </div>
+      <div>Click and drag to draw a line</div>
       <PaperContainer canvasProps={{ style: styles.container }}>
         <LineTool ref={ref} onPathAdd={onPathAdd} />
       </PaperContainer>
@@ -32,9 +30,7 @@ storiesOf('packages/react-paperjs-editor/Tool', module)
   )))
   .add('Freeform Path', withReadme(FreeformPathToolReadme, () => (
     <div>
-      <div>
-        {'Click and drag to freeform lines.'}
-      </div>
+      <div>Click and drag to freeform lines.</div>
       <PaperContainer canvasProps={{ style: styles.container }}>
         <FreeformPathTool ref={ref} onPathAdd={onPathAdd} />
       </PaperContainer>
@@ -43,18 +39,10 @@ storiesOf('packages/react-paperjs-editor/Tool', module)
   .add('Segment Path', withReadme(SegmentPathToolReadme, () => (
     <div>
       <div>
-        <p>
-          {'Click start to begin.'}
-        </p>
-        <button type="button">
-          {'Start'}
-        </button>
-        <p>
-          {'Hold down shift, then left click to plot points to form a segment.'}
-        </p>
-        <p>
-          {'Release shift to complete segment path.'}
-        </p>
+        <p>Click start to begin.</p>
+        <button type="button">Start</button>
+        <p>Hold down shift, then left click to plot points to form a segment.</p>
+        <p>Release shift to complete segment path.</p>
       </div>
       <PaperContainer canvasProps={{ style: styles.container }}>
         <SegmentPathTool ref={ref} onPathAdd={onPathAdd} />
@@ -63,9 +51,7 @@ storiesOf('packages/react-paperjs-editor/Tool', module)
   )))
   .add('Rectangle', withReadme(RectangleToolReadme, () => (
     <div>
-      <div>
-        {'Click and drag to create rectangle shapes.'}
-      </div>
+      <div>Click and drag to create rectangle shapes.</div>
       <PaperContainer canvasProps={{ style: styles.container }}>
         <RectangleTool ref={ref} onPathAdd={onPathAdd} />
       </PaperContainer>
@@ -73,9 +59,7 @@ storiesOf('packages/react-paperjs-editor/Tool', module)
   )))
   .add('Circle', withReadme(CircleToolReadme, () => (
     <div>
-      <div>
-        {'Click and drag to create circle shapes.'}
-      </div>
+      <div>Click and drag to create circle shapes.</div>
       <PaperContainer canvasProps={{ style: styles.container }}>
         <CircleTool ref={ref} onPathAdd={onPathAdd} />
       </PaperContainer>
@@ -83,9 +67,7 @@ storiesOf('packages/react-paperjs-editor/Tool', module)
   )))
   .add('Ellipse', withReadme(EllipseToolReadme, () => (
     <div>
-      <div>
-        {'Click and drag to create ellipse shapes.'}
-      </div>
+      <div>Click and drag to create ellipse shapes.</div>
       <PaperContainer canvasProps={{ style: styles.container }}>
         <EllipseTool ref={ref} onPathAdd={onPathAdd} />
       </PaperContainer>
@@ -97,9 +79,7 @@ storiesOf('packages/react-paperjs-editor/Tool', module)
         <p>
           {'Click anywhere to plot points and to create a shape. '}
         </p>
-        <p>
-          {'Click near points to close the path and prune dangling points.'}
-        </p>
+        <p>Click near points to close the path and prune dangling points.</p>
       </div>
       <PaperContainer canvasProps={{ style: styles.container }}>
         <PolygonTool ref={ref} onPathAdd={onPathAdd} />

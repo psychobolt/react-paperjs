@@ -1,22 +1,9 @@
 // @flow
 import * as React from 'react';
-import paperCore from 'paper';
-
-export type Paper = {
-  PaperScope: typeof paperCore.PaperScope,
-  Tool: typeof paperCore.Tool,
-  Layer: typeof paperCore.Layer,
-  Group: typeof paperCore.Group,
-  Path: typeof paperCore.Path,
-  PointText: typeof paperCore.PointText,
-  container: Object,
-  project: Object,
-  view: Object,
-  setup: (canvas: mixed) => void
-};
+import typeof { PaperScope } from 'paper';
 
 export type Types = {
-  [type: string]: (props: {}, paper: Paper, children?: Node) => Object
+  [type: string]: (props: {}, paper: PaperScope, children?: Node) => Object
 };
 
 export type Components = {

@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as ReactPaperJS from '@psychobolt/react-paperjs';
 import typeof { ToolEvent, Tool as ToolType } from 'paper';
 
+
 import PathTool from '../shared/PathTool';
 
 const { Tool, PaperScope } = ReactPaperJS;
@@ -71,4 +72,5 @@ class FreeformPathTool extends PathTool<Props> {
   }
 }
 
-export default React.forwardRef((props, ref) => <FreeformPathTool innerRef={ref} {...props} />);
+export default React
+  .forwardRef<Props, ToolType>((props, ref) => <FreeformPathTool innerRef={ref} {...props} />);
