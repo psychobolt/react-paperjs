@@ -1,6 +1,6 @@
 {
   "name": "@psychobolt/react-paperjs-editor",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A library of common editor components for React Paper.js",
   "main": "./dist/index.js",
   "repository": "https://github.com/psychobolt/react-paperjs/blob/master/packages/react-paperjs-editor",
@@ -10,6 +10,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@psychobolt/react-paperjs": "^0.0.56"
+    "@psychobolt/react-paperjs": "^0.0.57"
   }
 }
