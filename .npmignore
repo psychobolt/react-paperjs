@@ -13,6 +13,8 @@ storybook-static
 .stylelintrc
 .travis.yml
 babel.config.js
+flow-typed-update.js
+jest.config.js
 jsconfig.json
 lerna.json
 rollup.config.*.js
