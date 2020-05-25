@@ -48,7 +48,10 @@ class CircleTool extends PathTool<Props> {
     const { onMouseDrag } = this.props;
     if (toolEvent.event.buttons === 1) {
       const { path } = this;
-      path.scale(toolEvent.point.getDistance(path.position) / (path.bounds.width / 2));
+      const scale = Math.abs(toolEvent.point.getDistance(path.position) / (path.bounds.width / 2));
+      if (scale > 0.1) {
+        path.scale(scale);
+      }
     }
     onMouseDrag(toolEvent);
   }

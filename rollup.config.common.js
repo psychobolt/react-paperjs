@@ -32,7 +32,9 @@ const config = {
   input: path.resolve(ROOT_RESOLVE, 'src', 'index.js'),
   plugins: [
     alias({
-      paper: 'paper/dist/paper-core',
+      entries: {
+        paper: 'paper/dist/paper-core',
+      },
     }),
     resolve(),
     commonjs({
@@ -45,7 +47,7 @@ const config = {
   external: [
     ...builtins,
     '@psychobolt/react-paperjs',
-    'paper',
+    'paper/dist/paper-core',
     'react',
     'react-dom',
     'react-is',
