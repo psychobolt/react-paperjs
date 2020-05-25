@@ -5,6 +5,38 @@ object-assign
 */
 
 /*!
+ * Paper.js v0.12.4 - The Swiss Army Knife of Vector Graphics Scripting.
+ * http://paperjs.org/
+ *
+ * Copyright (c) 2011 - 2019, Juerg Lehni & Jonathan Puckey
+ * http://scratchdisk.com/ & https://puckey.studio/
+ *
+ * Distributed under the MIT license. See LICENSE file for details.
+ *
+ * All rights reserved.
+ *
+ * Date: Sun Dec 15 21:25:00 2019 +0100
+ *
+ ***
+ *
+ * Straps.js - Class inheritance library with support for bean-style accessors
+ *
+ * Copyright (c) 2006 - 2019 Juerg Lehni
+ * http://scratchdisk.com/
+ *
+ * Distributed under the MIT license.
+ *
+ ***
+ *
+ * Acorn.js
+ * https://marijnhaverbeke.nl/acorn/
+ *
+ * Acorn is a tiny, fast JavaScript parser written in JavaScript,
+ * created by Marijn Haverbeke and released under an MIT license.
+ *
+ */
+
+/*!
  * https://github.com/es-shims/es5-shim
  * @license es5-shim Copyright 2009-2020 by contributors, MIT License
  * see https://github.com/es-shims/es5-shim/blob/master/LICENSE
