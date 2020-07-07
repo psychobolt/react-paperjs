@@ -35,7 +35,7 @@ module.exports = {
     ],
     '@babel/plugin-proposal-json-strings',
     // Custom
-    '@babel/plugin-external-helpers',
+    ...(process.env.BABEL_ENV === 'commonjs' ? [] : ['@babel/plugin-external-helpers']),
     [
       'lodash',
       {
