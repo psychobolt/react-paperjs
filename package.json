@@ -30,6 +30,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@babel/node": "^7.10.4",
+    "@babel/plugin-external-helpers": "^7.10.4",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-proposal-decorators": "^7.10.4",
     "@babel/plugin-proposal-do-expressions": "^7.10.4",
@@ -62,7 +63,6 @@
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.10.7",
-    "builtin-modules": "^3.1.0",
     "cash-true": "^0.0.2",
     "codecov": "^3.7.0",
     "concurrently": "^5.2.0",

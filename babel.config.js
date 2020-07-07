@@ -35,6 +35,7 @@ module.exports = {
     ],
     '@babel/plugin-proposal-json-strings',
     // Custom
+    '@babel/plugin-external-helpers',
     [
       'lodash',
       {
