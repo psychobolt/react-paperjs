@@ -1,3 +1,6 @@
+const isCommonJS = process.env.BABEL_ENV === 'commonjs';
+const isTest = process.env.BABEL_ENV === 'test';
+
 module.exports = {
   presets: [
     [
@@ -35,7 +38,7 @@ module.exports = {
     ],
     '@babel/plugin-proposal-json-strings',
     // Custom
-    ...(process.env.BABEL_ENV === 'commonjs' ? [] : ['@babel/plugin-external-helpers']),
+    ...(isCommonJS || isTest ? [] : ['@babel/plugin-external-helpers']),
     [
       'lodash',
       {
