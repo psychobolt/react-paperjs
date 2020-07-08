@@ -35,7 +35,7 @@ const config = {
     }),
     babel({
       exclude: 'node_modules/**',
-      babelHelpers: 'external',
+      babelHelpers: 'bundled',
     }),
   ],
   external: [
