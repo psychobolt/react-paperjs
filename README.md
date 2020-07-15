@@ -18,7 +18,7 @@ A boilerplate for building React libraries.
     - [Uglify](https://www.npmjs.com/package/rollup-plugin-uglify)
     - [Alias](https://www.npmjs.com/package/rollup-plugin-alias)
 - [styled-components](https://www.styled-components.com/) with [default](https://www.styled-components.com/docs/tooling#stylelint) [stylelint](https://stylelint.io/) support
-- Monorepo support with [Lerna](https://lernajs.io)
+- Monorepo support with [Lerna](https://lerna.js.org)
 - Run tests with [Jest](https://facebook.github.io/jest/)
 - Code Coverage reporting with [Codecov](https://codecov.io/)
 - Dev sandbox and documentation with [Storybook](https://storybook.js.org/)
