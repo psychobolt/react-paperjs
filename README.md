@@ -1,9 +1,5 @@
 # React Rollup Boilerplate
 
-[![Dependencies Status](https://david-dm.org/psychobolt/react-rollup-boilerplate.svg)](https://david-dm.org/psychobolt/react-rollup-boilerplate)
-[![Dev Dependencies Status](https://david-dm.org/psychobolt/react-rollup-boilerplate/dev-status.svg)](https://david-dm.org/psychobolt/react-rollup-boilerplate?type=dev)
-[![Peer Dependencies Status](https://david-dm.org/psychobolt/react-rollup-boilerplate/peer-status.svg)](https://david-dm.org/psychobolt/react-rollup-boilerplate?type=peer)
-
 [![Build Status](https://travis-ci.org/psychobolt/react-rollup-boilerplate.svg?branch=master)](https://travis-ci.org/psychobolt/react-rollup-boilerplate)
 [![codecov](https://codecov.io/gh/psychobolt/react-rollup-boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-rollup-boilerplate)
 

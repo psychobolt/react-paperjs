@@ -1,0 +1,7 @@
+coverage:
+  status:
+    project:
+      default:
+      default-export:
+        paths:
+          - packages/default-export
