@@ -1,12 +1,16 @@
+import projectList from './project-list';
+
 module.exports = {
-  setupFiles: [
-    './test-config.js',
-  ],
+  projects: projectList.map(({ name, location }) => ({
+    displayName: name,
+    testMatch: [`${location}/**/__tests__/**/*.js`],
+    setupFiles: [
+      '<rootDir>/test-config.js',
+    ],
+  })),
   collectCoverageFrom: [
-    '(src|packages)/**/*.js',
-    '!**/(index|*.stories|stories).js',
+    '**/src/**/*.js',
     '!**/dist/**/*',
-    '!packages/react-cache/**/*',
   ],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/__mocks__/file.mock.js',

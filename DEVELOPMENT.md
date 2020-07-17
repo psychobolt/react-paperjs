@@ -71,7 +71,7 @@ yarn test --coverage # with coverage
 
 ```sh
 yarn build # builds all packages
-yarn build:dev [--environment PACKAGES:<*,package-name>] # builds sources for development, optionally provide environment variable to specify local package(s) e.g. yarn build:dev --environment PACKAGES:default-export,package-* (glob pattern supported)
+yarn build:dev [--environment PACKAGES:<*,package-name>] # builds sources for development, optionally provide environment variable to specify local package(s) e.g. yarn build:dev --environment PACKAGES:default-export,package-* (glob pattern supported). You can provide packages from .projects
 yarn build:prod [--environment PACKAGES:<*,package-name>] # builds sources for production
 yarn watch [--environment PACKAGES:<*,package-name>]# watches dev builds
 yarn dist # builds all packages and publishes to npm

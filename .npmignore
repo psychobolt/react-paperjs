@@ -11,7 +11,6 @@ storybook-static
 .eslintrc.json
 .flowconfig
 .stylelintrc
-.travis.yml
 babel.config.js
 flow-typed-update.js
 jest.config.js
@@ -21,3 +20,4 @@ rollup.config.*.js
 test-config.js
 yarn.lock
 *.log
+*.yml
