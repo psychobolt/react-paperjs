@@ -1,7 +1,2 @@
 coverage:
-  status:
-    project:
-      default:
-      default-export:
-        paths:
-          - packages/default-export
+  strict_yaml_branch: codecov-config

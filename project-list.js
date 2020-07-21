@@ -1,11 +1,11 @@
 import fs from 'fs';
 import path from 'path';
-import minimatch from 'minimatch';
+import { isMatch } from 'micromatch';
 import { getPackagesSync } from '@lerna/project';
 
 const ROOT_RESOLVE = path.resolve();
 
-const PACKAGES = `${process.env.PACKAGES || ''} ${fs.readFileSync('.projectlist', 'utf8')}`.trim();
+const PACKAGES = (process.env.PACKAGES || `${fs.readFileSync('.projectlist', 'utf8')}`).trim();
 
 export const EXCLUDES = [];
 export const INCLUDES = [];
@@ -20,7 +20,7 @@ if (PACKAGES) {
   }));
 }
 
-const match = (strings, pattern) => strings.some(string => minimatch(string, pattern));
+const match = (strings, pattern) => strings.some(string => isMatch(string, pattern));
 
 export default getPackagesSync().filter(pkg => {
   const { name, location } = pkg;

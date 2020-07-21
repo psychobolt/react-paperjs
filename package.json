@@ -85,7 +85,7 @@
     "jest": "^26.1.0",
     "jest-styled-components": "^7.0.2",
     "lerna": "^3.22.1",
-    "minimatch": "^3.0.4",
+    "micromatch": "^4.0.2",
     "prop-types": "^15.7.2",
     "raf": "^3.4.1",
     "react": "^16.13.1",
