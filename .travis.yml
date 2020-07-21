@@ -8,6 +8,10 @@ node_js:
 cache:
   yarn: true
 
+branches:
+  except:
+  - codecov-config
+
 before_install:
   - yarn global add lerna
 
