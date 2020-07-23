@@ -66,6 +66,16 @@ yarn test # runs functional/unit tests for all packages
 
 > Configurable with .project file, supports the [PACKAGES](#packages) variable. You can also inspect all tests in debug mode within Visual Studio Code.
 
+## Coverage
+
+Coverage will be uploaded to your [codecov](https://codecov.io/) account, individually for packages by using each package's name as a [flag](https://docs.codecov.io/docs/flags). By default, coverage is configured to utilize a configuration from codecov-config branch (for [example](https://github.com/psychobolt/react-rollup-boilerplate/tree/codecov-config)). However, you may opt out that setting and configure codecov.yml in the master branch.
+
+```sh
+yarn codecov # Runs tests and upload coverage for all packages
+```
+
+> Configurable with .project file, supports the [PACKAGES](#packages) variable.
+
 ## Other scripts
 
 ```sh
