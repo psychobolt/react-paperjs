@@ -25,7 +25,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "bootstrap": "yarn install && lerna bootstrap",
-    "dist": "npm run build && lerna publish"
+    "dist": "npm run build && lerna publish",
+    "codecov": "cross-env BABEL_ENV=commonjs babel-node codecov.js"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
