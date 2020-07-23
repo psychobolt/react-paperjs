@@ -22,7 +22,7 @@ script:
   - yarn lint
   - yarn flow-typed-install
   - yarn flow
-  - yarn test -- --coverage
+  - yarn codecov
   - yarn build
 
 before_deploy:
@@ -35,6 +35,3 @@ deploy:
   local_dir: storybook-static
   on:
     branch: master
-
-after_script:
-  - yarn codecov

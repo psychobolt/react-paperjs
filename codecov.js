@@ -6,5 +6,5 @@ const spawnOptions = { stdio: 'inherit' };
 
 projectList.forEach(({ name, location }) => {
   spawn.sync('yarn', ['test', '--coverage', '--projects', location], spawnOptions);
-  spawn.sync('codecov', ['--flags', name], spawnOptions);
+  spawn.sync('codecov', ['--clear', '--flags', name], spawnOptions);
 });
