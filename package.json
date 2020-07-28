@@ -21,7 +21,7 @@
     "test": "cross-env NODE_OPTIONS=\"-r @babel/register\" BABEL_ENV=test jest --passWithNoTests",
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint ./src/**/*.js",
-    "lint:js": "eslint \"**/*.js\"",
+    "lint:js": "cross-env BABEL_ENV=commonjs eslint \"**/*.js\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "bootstrap": "yarn install && lerna bootstrap",

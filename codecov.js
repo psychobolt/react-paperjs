@@ -1,6 +1,6 @@
 import spawn from 'cross-spawn';
 
-import projectList from './project-list';
+import { projectList } from './project-list';
 
 const spawnOptions = { stdio: 'inherit' };
 

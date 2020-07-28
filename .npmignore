@@ -5,6 +5,7 @@ coverage
 !/dist
 flow-typed
 packages
+shared
 stories
 storybook-static
 .eslintignore

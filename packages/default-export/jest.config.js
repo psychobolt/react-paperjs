@@ -1,13 +1,8 @@
-import path from 'path';
+import config from 'shared/jest.config';
 
 import pkg from './package.json';
 
-const ROOT_RESOLVE = path.resolve();
-
 module.exports = {
+  ...config,
   displayName: pkg.name,
-  setupFiles: [
-    `${ROOT_RESOLVE}/test-config.js`,
-  ],
-  collectCoverageFrom: ['src/**/*.js'],
 };

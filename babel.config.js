@@ -1,3 +1,5 @@
+const { projectList } = require('./project-list');
+
 module.exports = {
   presets: [
     [
@@ -46,10 +48,12 @@ module.exports = {
       {
         root: ['./'],
         cwd: './',
-        alias: {
-          'default-export': './packages/default-export',
+        alias: projectList.reduce((aliases, { name, location }) => ({
+          ...aliases,
+          [name]: location,
+        }), {
           'react-cache': './packages/react-cache', // See: https://github.com/facebook/react/issues/14780#issuecomment-461861948
-        },
+        }),
       },
     ],
     'babel-plugin-styled-components',
