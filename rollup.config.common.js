@@ -16,7 +16,7 @@ const config = {
       include: /node_modules/,
     }),
     babel({
-      include: /node_modules/,
+      exclude: /node_modules/,
       babelHelpers: 'bundled',
     }),
   ],
