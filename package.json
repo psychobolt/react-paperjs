@@ -12,8 +12,8 @@
   "scripts": {
     "flow-typed-update": "cross-env BABEL_ENV=commonjs babel-node flow-typed-update.js",
     "flow-typed-install": "rimraf flow-typed/npm && npm run flow-typed-update",
-    "build:dev": "rollup -c rollup.config.dev.js",
-    "build:prod": "rollup -c rollup.config.prod.js",
+    "build:dev": "cross-env BABEL_ENV=rollup rollup -c rollup.config.dev.js",
+    "build:prod": "cross-env BABEL_ENV=rollup rollup -c rollup.config.prod.js",
     "clean": "rimraf dist/index.*.js dist/*-*.*.js packages/*/dist/index.*.js packages/*/dist/*-*.*.js",
     "build": "npm run clean && npm run build:dev && npm run build:prod",
     "watch": "npm run build:dev -- --w",

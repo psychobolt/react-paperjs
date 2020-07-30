@@ -1,5 +1,12 @@
 const { projectList } = require('./project-list');
 
+const aliases = process.env.BABEL_ENV === 'rollup'
+  ? {}
+  : projectList.reduce((projectAliases, { name, location }) => ({
+    ...projectAliases,
+    [name]: `${location}/${process.env.BABEL_ENV === 'test' ? 'src' : 'dist'}`,
+  }), {});
+
 module.exports = {
   presets: [
     [
@@ -48,12 +55,10 @@ module.exports = {
       {
         root: ['./'],
         cwd: './',
-        alias: projectList.reduce((aliases, { name, location }) => ({
+        alias: {
           ...aliases,
-          [name]: location,
-        }), {
           'react-cache': './packages/react-cache', // See: https://github.com/facebook/react/issues/14780#issuecomment-461861948
-        }),
+        },
       },
     ],
     'babel-plugin-styled-components',

@@ -13,14 +13,15 @@ const config = {
   plugins: [
     resolve(),
     commonjs({
-      include: 'node_modules/**',
+      include: /node_modules/,
     }),
     babel({
-      exclude: 'node_modules/**',
+      include: /node_modules/,
       babelHelpers: 'bundled',
     }),
   ],
   external: [
+    ...projectList.map(({ name }) => name),
     'react',
     'react-dom',
     'react-is',
@@ -34,7 +35,7 @@ export const configs = INCLUDES.length === 0 && fs.statSync(config.input).isFile
     ...cfg,
     [location]: {
       ...config,
-      input: path.resolve(location, 'src', 'index.js'),
+      input: `${location}/src/index.js`,
     },
   }), {}));
 
