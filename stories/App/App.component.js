@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import styled, { type StyledComponent } from 'styled-components';
 
 import * as styles from './App.style';
