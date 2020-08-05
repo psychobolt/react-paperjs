@@ -54,6 +54,7 @@
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-console": "^1.2.1",
+    "@storybook/addon-knobs": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
     "@storybook/addon-notes": "^5.3.19",
     "@storybook/react": "^5.3.19",
