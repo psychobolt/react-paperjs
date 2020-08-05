@@ -1,4 +1,5 @@
 [options]
+esproposal.export_star_as=enable
 esproposal.optional_chaining=enable
 include_warnings=true
 
