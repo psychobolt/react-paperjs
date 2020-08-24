@@ -77,7 +77,7 @@
     "eslint": "^7.6.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-react-app": "^5.2.1",
-    "eslint-import-resolver-babel-module": "5.1.2",
+    "eslint-import-resolver-babel-module": "^5.1.2",
     "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jest": "^23.20.0",
