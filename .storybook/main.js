@@ -37,7 +37,7 @@ module.exports = {
           loader: 'source-map-loader',
           enforce: 'pre',
         },
-      ]
+      ],
     },
   }),
 };
