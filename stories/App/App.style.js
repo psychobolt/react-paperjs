@@ -19,6 +19,7 @@ export const header = css`
 
 export const h1 = css`
   font-size: 1.5em;
+  display: block;
 `;
 
 export const app = css`

@@ -9,6 +9,7 @@
     "plugins": ["flowtype", "jest"],
     "rules": {
         "import/no-extraneous-dependencies": 0,
+        "import/no-webpack-loader-syntax": 0,
         "no-confusing-arrow": ["error", {"allowParens": true}],
         "arrow-parens": ["error", "as-needed"],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

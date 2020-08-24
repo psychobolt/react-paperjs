@@ -1,0 +1,18 @@
+import { Meta, Canvas, Story, Source } from '@storybook/addon-docs/blocks';
+
+import { Flexbox } from './Flexbox';
+import css from '!raw-loader!./Flexbox/Flexbox.css';
+
+<Meta title="Examples/Layout" />
+
+# Flexbox Example
+
+This is a example based on the flexbox example from the "HTML & CSS Is Hard" [online book](https://internetingishard.com/html-and-css/flexbox/).
+
+<Canvas>
+  <Story story={Flexbox} />
+</Canvas>
+
+## Flexbox.css
+
+<Source language='css' code={css} />

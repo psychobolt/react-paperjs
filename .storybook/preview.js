@@ -1,8 +1,8 @@
-import '@storybook/addon-console';
-import { addParameters, addDecorator } from '@storybook/react';
-import { addReadme } from 'storybook-readme';
+import { addDecorator } from '@storybook/react';
+import { withConsole } from '@storybook/addon-console';
 
-// workaround for issue: https://github.com/tuchk4/storybook-readme/issues/221
-addParameters({ options: { theme: {} } });
+addDecorator((storyFn, context) => withConsole()(storyFn)(context));
 
-addDecorator(addReadme);
+export const parameters = {
+  actions: { argTypesRegex: '^on[A-Z].*' },
+};

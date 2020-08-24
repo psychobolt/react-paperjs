@@ -1,1 +1,3 @@
-import './default-export';
+module.exports = [
+  './*/index.js',
+];
