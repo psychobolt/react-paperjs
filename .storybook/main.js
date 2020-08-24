@@ -25,7 +25,7 @@ module.exports = {
           if (rule.test.test('.stories.js')) {
             return {
               ...rule,
-              test: /\.jsx$/,
+              test: /\.jsx?$/,
               include: /stories/,
             };
           }
