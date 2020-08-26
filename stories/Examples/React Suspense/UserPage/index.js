@@ -1,12 +1,9 @@
-import UserPage from './UserPage.component'; // eslint-disable-line import/no-duplicates
-import code from '!raw-loader!./UserPage.component'; // eslint-disable-line import/no-duplicates
+export const UserPage = require('./UserPage.component').default; // eslint-disable-line global-require
 
 UserPage.parameters = {
   docs: {
     source: {
-      code,
+      code: require('!!raw-loader!./UserPage.component').default, // eslint-disable-line global-require
     },
   },
 };
-
-module.exports.UserPage = UserPage;

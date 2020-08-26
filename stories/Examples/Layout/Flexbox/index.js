@@ -1,12 +1,9 @@
-import Flexbox from './Flexbox.component'; // eslint-disable-line import/no-duplicates
-import code from '!!raw-loader!./Flexbox.component'; // eslint-disable-line import/no-duplicates
+export const Flexbox = require('./Flexbox.component').default; // eslint-disable-line global-require
 
 Flexbox.parameters = {
   docs: {
     source: {
-      code,
+      code: require('!!raw-loader!./Flexbox.component').default, // eslint-disable-line global-require
     },
   },
 };
-
-module.exports.Flexbox = Flexbox;
