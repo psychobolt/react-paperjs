@@ -16,6 +16,9 @@ module.exports = {
       ...config.module,
       rules: [
         ...config.module.rules.map(rule => {
+          if (rule.test.test('.md')) {
+            return {};
+          }
           if (rule.exclude && rule.exclude.test('.stories.mdx')) {
             return { ...rule, test: /\.md$/ };
           }
