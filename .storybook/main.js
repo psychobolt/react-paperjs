@@ -1,10 +1,7 @@
-const stories = require('../stories');
+const { getStories } = require('./utils');
 
 module.exports = {
-  stories: [
-    'README.md',
-    ...stories.map(path => `../stories/${path}`),
-  ],
+  stories: getStories(['../stories']),
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',

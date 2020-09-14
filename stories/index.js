@@ -1,8 +1,3 @@
-const examples = require('./Examples');
-const packages = require('./packages');
-
-module.exports = [
-  './Documentation/*.mdx',
-  ...examples.map(path => `./Examples/${path}`),
-  ...packages.map(path => `./packages/${path}`),
-];
+module.exports.Documentation = ['./*.mdx'];
+module.exports.Examples = require('./Examples');
+module.exports.packages = require('./packages');
