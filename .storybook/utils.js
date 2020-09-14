@@ -3,9 +3,7 @@ const glob = require('glob');
 const _ = require('lodash');
 const isClass = require('is-class');
 
-function isTreeLike(input) {
-  return input && !_.isFunction(input) && !_.isString(input) && !isClass(input);
-}
+const isTreeLike = input => input && !_.isFunction(input) && !_.isString(input) && !isClass(input);
 
 function flatten(tree, dir = __dirname) {
   if (_.isArray(tree)) return tree.map(pattern => flatten(pattern, path.resolve(dir, pattern)));
