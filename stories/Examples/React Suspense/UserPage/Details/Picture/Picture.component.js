@@ -21,7 +21,7 @@ type Props = {
   source: string
 };
 
-export default ({ source }: Props) => (
+export default ({ source }: Props): React.Node => (
   <Suspense fallback={<img src={source} alt="poster" />}>
     <Img src={source} alt="profile picture" />
   </Suspense>

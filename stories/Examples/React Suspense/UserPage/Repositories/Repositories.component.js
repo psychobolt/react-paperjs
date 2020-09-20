@@ -15,7 +15,7 @@ type Props = {
   id: string;
 }
 
-export default ({ id }: Props) => {
+export default ({ id }: Props): React.Node => {
   const repos = UserRepositoriesResource.read(id);
   return (
     <List>

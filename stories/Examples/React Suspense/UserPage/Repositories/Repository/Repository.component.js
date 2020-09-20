@@ -12,7 +12,7 @@ export type Props = {
   url: string
 };
 
-export default ({ description, name, url }: Props) => (
+export default ({ description, name, url }: Props): React.Node => (
   <Item>
     <strong><a href={url}>{name}</a></strong>
     <div>{description}</div>

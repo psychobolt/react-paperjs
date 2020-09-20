@@ -27,7 +27,7 @@ const Container: StyledComponent<any, any, HTMLDivElement> = styled.div`${styles
 const Path = styled.svg`${styles.path}`;
 
 // Heavily inspired by https://codepen.io/mrrocks/pen/EiplA
-export default ({ size = SIZES.Small }: Props) => {
+export default ({ size = SIZES.Small }: Props): React.Node => {
   const baseSize = SPINNER_SIZES[size];
   const pathSize = baseSize / 2;
   const strokeWidth = STROKE_WIDTHS[size];

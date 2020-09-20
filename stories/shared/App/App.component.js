@@ -25,7 +25,7 @@ const App: StyledComponent<any, any, HTMLDivElement> = styled.div`
   ${styles.app}
 `;
 
-export default ({ children }: Props) => (
+export default ({ children }: Props): React.Node => (
   <App>
     <Header>
       <Logo src={logo} alt="logo" />

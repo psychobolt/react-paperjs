@@ -14,7 +14,7 @@ type Props = {
   name: string
 };
 
-export default ({ image, name }: Props) => (
+export default ({ image, name }: Props): React.Node => (
   <Container>
     <Picture source={image} />
     <Name>{name}</Name>

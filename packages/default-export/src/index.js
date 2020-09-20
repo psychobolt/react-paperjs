@@ -5,7 +5,7 @@ type Props = {
   children: React.Node
 }
 
-export default (props: Props) => {
+export default (props: Props): React.Node => {
   console.log('You are calling the default-export package!'); // eslint-disable-line no-console
   return <div {...props} />;
 };
