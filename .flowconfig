@@ -1,6 +1,7 @@
 [options]
 esproposal.export_star_as=enable
 esproposal.optional_chaining=enable
+module.name_mapper='^\(.*\)\.\mdx?$' -> '<PROJECT_ROOT>/RAWFlowStub.js.flow'
 include_warnings=true
 
 [lints]
