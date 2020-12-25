@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import styled, { type StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 
 import * as styles from './Spinner.style';
 
@@ -22,7 +22,7 @@ type Props = {
   size: typeof SIZES,
 };
 
-const Container: StyledComponent<any, any, HTMLDivElement> = styled.div`${styles.container}`;
+const Container = styled.div`${styles.container}`;
 
 const Path = styled.svg`${styles.path}`;
 

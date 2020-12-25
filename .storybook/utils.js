@@ -2,6 +2,7 @@ const path = require('path');
 const glob = require('glob');
 const _ = require('lodash');
 const isClass = require('is-class');
+const slash = require('slash');
 
 const isTreeLike = input => input && !_.isFunction(input) && !_.isString(input) && !isClass(input);
 
@@ -13,7 +14,7 @@ function flatten(tree, dir = __dirname) {
       return paths.concat(isTreeLike(patterns) ? flatten(patterns, directory) : directory);
     }, []);
   }
-  return dir;
+  return slash(dir);
 }
 
 module.exports.getStories = (patterns, dir = __dirname) => patterns.reduce((result, pattern) => {

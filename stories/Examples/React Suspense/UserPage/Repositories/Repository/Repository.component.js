@@ -1,10 +1,10 @@
 // @flow
 import * as React from 'react';
-import styled, { type StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 
 import * as styles from './Repository.style';
 
-const Item: StyledComponent<any, any, HTMLLIElement> = styled.li`${styles.item}`;
+const Item = styled.li`${styles.item}`;
 
 export type Props = {
   name: string,
