@@ -1,10 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 
-import { Header } from '../Header/Header.component';
+import { Header, type Props } from '../Header/Header.component';
 import './page.css';
 
-export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
+export const Page: React.AbstractComponent<Props> = (
+  { user, onLogin, onLogout, onCreateAccount }: Props,
+) => (
   <article>
     <Header user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />
 
@@ -65,13 +67,3 @@ export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
     </section>
   </article>
 );
-Page.propTypes = {
-  user: PropTypes.shape({}),
-  onLogin: PropTypes.func.isRequired,
-  onLogout: PropTypes.func.isRequired,
-  onCreateAccount: PropTypes.func.isRequired,
-};
-
-Page.defaultProps = {
-  user: null,
-};
