@@ -39,5 +39,14 @@ module.exports = {
         },
       ],
     },
+    resolve: {
+      ...config.resolve,
+      alias: {
+        ...(config.resolve ? config.resolve.alias : undefined),
+        react: require.resolve('react'),
+        'react-dom': require.resolve('react-dom'),
+        'styled-components': require.resolve('styled-components'),
+      },
+    },
   }),
 };
