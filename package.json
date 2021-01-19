@@ -22,7 +22,7 @@
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint ./src/**/*.js",
     "lint:js": "cross-env BABEL_ENV=commonjs eslint \"**/*.js\"",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook",
     "build-storybook": "build-storybook",
     "bootstrap": "yarn install && lerna bootstrap",
     "dist": "npm run build && lerna publish",
