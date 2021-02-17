@@ -13,10 +13,14 @@ storybook-static
 .flowconfig
 .stylelintrc
 babel.config.js
+codecov.js
+DEVELOPMENT.md
 flow-typed-update.js
 jest.config.js
 jsconfig.json
 lerna.json
+project-list.js
+RAWFlowStub.js.flow
 rollup.config.*.js
 test-config.js
 yarn.lock
