@@ -1,6 +1,6 @@
 {
   "name": "@psychobolt/react-paperjs",
-  "version": "0.0.58",
+  "version": "1.0.0",
   "description": "React Fiber renderer and component container for Paper.js",
   "main": "./dist/index.js",
   "repository": "https://github.com/psychobolt/react-paperjs.git",
