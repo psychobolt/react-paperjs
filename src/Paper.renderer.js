@@ -93,7 +93,10 @@ const defaultHostConfig = {
         setTimeout(callback, options.timeout);
       },
   prepareForCommit() {
-    // console.log('ignore prepare for commit');
+    return null;
+  },
+  clearContainer(container) {
+    // console.log('ignore clear container');
   },
   resetAfterCommit() {
     // console.log('ignore reset for commit');
