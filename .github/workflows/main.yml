@@ -1,0 +1,29 @@
+name: main
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  coverage:
+    name: Coverage Report
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: npm install -g yarn
+      - run: yarn bootstrap
+      - uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn lint
+      - run: yarn flow-typed-install
+      - run: yarn flow
+      - run: yarn codecov
+
+         
