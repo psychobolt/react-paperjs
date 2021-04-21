@@ -38,10 +38,14 @@ export function diffProps(oldProps, newProps) {
 /* eslint no-param-reassign:
  ["error", { "props": true, "ignorePropertyModificationsFor": ["instance"] }]
 */
-export function updateProps(instance, updatePayload) {
+export function updateProps(ref, updatePayload, type) {
   for (let i = 1; i < updatePayload.length; i += 2) {
     const key = updatePayload[i - 1];
     const value = updatePayload[i];
+    let instance = ref;
+    if (type === 'Rectangle') {
+      instance = instance.bounds;
+    }
     if (key === 'center') {
       instance.position = value;
     } else if (key === 'from') {

@@ -12,15 +12,22 @@ storiesOf('Core/Path', module)
       />
     </PaperContainer>
   ))
-  .add('Rectangle', () => (
-    <PaperContainer>
-      {renderWithPaperScope(paper => (
-        <Rectangle
-          width={90}
-          height={60}
-          fillColor="green"
-          position={paper.view.center}
-        />
-      ))}
-    </PaperContainer>
-  ));
+  .add('Rectangle', () => {
+    const [size, toggleSize] = React.useState([90, 60]);
+    return (
+      <>
+        <div>
+          <button type="button" onClick={() => toggleSize([size[1], size[0]])}>Switch Size</button>
+        </div>
+        <PaperContainer>
+          {renderWithPaperScope(paper => (
+            <Rectangle
+              size={size}
+              fillColor="green"
+              position={paper.view.center}
+            />
+          ))}
+        </PaperContainer>
+      </>
+    );
+});
