@@ -1,0 +1,12 @@
+name: "Setup"
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v2
+    - run: yarn bootstrap
+    - uses: actions/cache@v2
+      with:
+        path: |
+          node_modules
+          packages/*/node_modules
+        key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
