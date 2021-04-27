@@ -12,16 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/actions/setup
+      - uses: actions/setup-node@v2
+      - run: yarn bootstrap
+      - uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+        key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn lint
       - run: yarn flow-typed-install
       - run: yarn flow
-  coverage:
-    name: Coverage Report
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ./.github/actions/setup
       - run: yarn codecov
-
-         
