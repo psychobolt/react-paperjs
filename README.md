@@ -1,6 +1,6 @@
 # React Rollup Boilerplate
 
-[![Build Status](https://travis-ci.com/psychobolt/react-rollup-boilerplate.svg?branch=master)](https://travis-ci.com/psychobolt/react-rollup-boilerplate)
+[![Main workflow](https://github.com/psychobolt/react-rollup-boilerplate/actions/workflows/main.yml/badge.svg)](https://github.com/psychobolt/react-rollup-boilerplate/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/psychobolt/react-rollup-boilerplate/branch/master/graph/badge.svg?flag=react-rollup-boilerplate)](https://codecov.io/gh/psychobolt/react-rollup-boilerplate/tree/master/src)
 
 A boilerplate for building React libraries.
