@@ -7,8 +7,7 @@ on:
     branches:
       - master
 jobs:
-  ci:
-    name: CI
+  main:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -24,3 +23,10 @@ jobs:
       - run: yarn flow-typed-install
       - run: yarn flow
       - run: yarn codecov
+      - run: yarn build
+      - run: yarn build-storybook
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: storybook-static
