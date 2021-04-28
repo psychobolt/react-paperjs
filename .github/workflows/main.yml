@@ -1,4 +1,3 @@
-name: main
 on:
   push:
     branches:
@@ -16,12 +15,7 @@ jobs:
             node_modules
             packages/*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn lint
-      - run: yarn flow-typed-install
-      - run: yarn flow
-      - run: yarn codecov
-      - run: yarn build
-      - run: yarn build-storybook
+      - uses: ./.github/actions/ci
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
