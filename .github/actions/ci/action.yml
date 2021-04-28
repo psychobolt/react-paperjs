@@ -3,6 +3,8 @@ description: Runs linting, code coverage, and dry build
 runs:
   using: "composite"
   steps:
+    - run: yarn bootstrap
+      shell: bash
     - run: yarn lint
       shell: bash
     - run: yarn flow-typed-install
