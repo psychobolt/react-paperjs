@@ -1,0 +1,132 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "13:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: eslint-plugin-flowtype
+    versions:
+    - 5.2.1
+    - 5.2.2
+    - 5.3.0
+    - 5.3.1
+    - 5.4.0
+    - 5.5.0
+    - 5.6.0
+    - 5.7.0
+    - 5.7.1
+  - dependency-name: "@storybook/react"
+    versions:
+    - 6.1.15
+    - 6.1.16
+    - 6.1.17
+    - 6.1.18
+    - 6.2.8
+  - dependency-name: "@storybook/addon-essentials"
+    versions:
+    - 6.1.15
+    - 6.1.16
+    - 6.1.17
+    - 6.1.18
+    - 6.2.8
+  - dependency-name: "@storybook/addon-links"
+    versions:
+    - 6.1.15
+    - 6.1.16
+    - 6.1.17
+    - 6.1.18
+    - 6.2.8
+  - dependency-name: "@storybook/addon-actions"
+    versions:
+    - 6.1.15
+    - 6.1.16
+    - 6.1.17
+    - 6.1.18
+    - 6.2.8
+  - dependency-name: "@storybook/theming"
+    versions:
+    - 6.1.15
+    - 6.1.16
+    - 6.1.17
+    - 6.1.18
+    - 6.2.8
+  - dependency-name: "@storybook/cli"
+    versions:
+    - 6.1.15
+    - 6.1.16
+    - 6.1.17
+    - 6.1.18
+    - 6.2.8
+  - dependency-name: rollup
+    versions:
+    - 2.38.1
+    - 2.38.2
+    - 2.38.3
+    - 2.38.4
+    - 2.38.5
+    - 2.39.0
+    - 2.45.2
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.12.17
+    - 7.13.0
+    - 7.13.1
+    - 7.13.10
+    - 7.13.13
+    - 7.13.14
+    - 7.13.15
+    - 7.13.8
+  - dependency-name: "@babel/preset-env"
+    versions:
+    - 7.12.17
+    - 7.13.0
+    - 7.13.10
+    - 7.13.12
+    - 7.13.15
+    - 7.13.5
+    - 7.13.8
+    - 7.13.9
+  - dependency-name: concurrently
+    versions:
+    - 6.0.0
+    - 6.0.1
+  - dependency-name: flow-bin
+    versions:
+    - 0.143.1
+    - 0.144.0
+    - 0.145.0
+    - 0.146.0
+    - 0.147.0
+    - 0.148.0
+  - dependency-name: "@babel/node"
+    versions:
+    - 7.12.17
+    - 7.13.0
+    - 7.13.10
+    - 7.13.12
+    - 7.13.13
+  - dependency-name: "@babel/plugin-proposal-optional-chaining"
+    versions:
+    - 7.12.17
+    - 7.13.0
+    - 7.13.12
+    - 7.13.8
+  - dependency-name: stylelint
+    versions:
+    - 13.10.0
+    - 13.11.0
+    - 13.12.0
+    - 13.9.0
+  - dependency-name: flow-typed
+    versions:
+    - 3.3.0
+    - 3.3.1
+  - dependency-name: source-map-loader
+    versions:
+    - 2.0.0
+  - dependency-name: node-notifier
+    versions:
+    - 8.0.1
