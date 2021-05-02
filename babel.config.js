@@ -42,6 +42,18 @@ module.exports = {
         loose: true,
       },
     ],
+    [
+      '@babel/plugin-proposal-private-methods',
+      {
+        loose: true,
+      },
+    ],
+    [
+      '@babel/plugin-proposal-private-property-in-object',
+      {
+        loose: true,
+      },
+    ],
     '@babel/plugin-proposal-json-strings',
     // Custom
     [

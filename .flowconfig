@@ -1,6 +1,4 @@
 [options]
-esproposal.export_star_as=enable
-esproposal.optional_chaining=enable
 module.name_mapper='^\(.*\)\.\mdx?$' -> '<PROJECT_ROOT>/RAWFlowStub.js.flow'
 module.name_mapper='^stories/\(.*\)$' -> '<PROJECT_ROOT>/stories/\1'
 include_warnings=true
