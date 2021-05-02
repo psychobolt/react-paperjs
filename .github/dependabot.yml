@@ -5,5 +5,3 @@ updates:
   schedule:
     interval: daily
     time: "13:00"
-  ignore:
-  - dependency-name: source-map-loader
