@@ -2,6 +2,9 @@ const { getStories } = require('./utils');
 
 module.exports = {
   stories: getStories(['../stories']),
+  features: {
+    postcss: false,
+  },
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
