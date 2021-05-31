@@ -1,9 +1,11 @@
 // @flow
 import * as React from 'react';
 import * as ReactPaperJS from '@psychobolt/react-paperjs';
-import typeof { Layer as LayerType } from 'paper';
+import Paper from 'paper';
 
 const { Layer, Group, Line } = ReactPaperJS;
+
+type LayerType = typeof Paper.Layer;
 
 type Props = {
   top: number,
@@ -57,5 +59,6 @@ const Grid = ({ width, height, top = 0, left = 0, right = left + width, bottom =
   );
 };
 
-export default React
-  .forwardRef<Props, LayerType>((props, ref) => <Grid innerRef={ref} {...props} />);
+export default (React.forwardRef<Props, LayerType>(
+  (props, ref) => <Grid innerRef={ref} {...props} />,
+): React.AbstractComponent<Props>);

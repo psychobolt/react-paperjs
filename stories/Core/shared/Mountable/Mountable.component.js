@@ -4,18 +4,20 @@ import * as ReactPaperJS from '@psychobolt/react-paperjs';
 
 const { PaperContainer } = ReactPaperJS;
 
+type DefaultProps = {
+  mount?: boolean
+};
+
 type Props = {
   mount?: boolean,
   children: React.Node,
   className: string,
 };
 
-type State = {
-  mount?: boolean
-}
+type State = DefaultProps;
 
 export default class Mountable extends React.Component<Props, State> {
-  static defaultProps = {
+  static defaultProps: DefaultProps = {
     mount: true,
   }
 
@@ -26,9 +28,9 @@ export default class Mountable extends React.Component<Props, State> {
     };
   }
 
-  onClick = () => this.setState(state => ({ mount: !state.mount }));
+  onClick: SyntheticMouseEvent<'div'> => void = () => this.setState(state => ({ mount: !state.mount }));
 
-  render() {
+  render(): React.Node {
     const { className, mount, children, ...props } = this.props;
     const { mount: mounted } = this.state;
     return (

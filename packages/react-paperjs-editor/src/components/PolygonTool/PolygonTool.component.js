@@ -1,11 +1,15 @@
 // @flow
 import * as React from 'react';
 import * as ReactPaperJS from '@psychobolt/react-paperjs';
-import typeof { Group as Points, Segment, ToolEvent, Tool as ToolType } from 'paper';
+import Paper from 'paper';
 
 import PathTool from '../shared/PathTool';
 
 const { Tool, PaperScope } = ReactPaperJS;
+
+type ToolType = typeof Paper.Tool;
+type ToolEvent = typeof Paper.ToolEvent;
+type Segment = typeof Paper.Segment;
 
 type Props = {
   pathProps: {
@@ -17,7 +21,6 @@ type Props = {
 
 const MOUSE_LEFT_CODE = 0;
 
-// $FlowFixMe
 @PaperScope
 class PolygonTool extends PathTool<Props> {
   static defaultProps = {
@@ -127,7 +130,7 @@ class PolygonTool extends PathTool<Props> {
     }
   }
 
-  points: Points;
+  points: typeof Paper.Points;
 
   selectedSegment: Segment;
 
@@ -145,5 +148,6 @@ class PolygonTool extends PathTool<Props> {
   }
 }
 
-export default React
-  .forwardRef<Props, ToolType>((props, ref) => <PolygonTool innerRef={ref} {...props} />);
+export default (React.forwardRef<Props, ToolType>(
+  (props, ref) => <PolygonTool innerRef={ref} {...props} />,
+): React.AbstractComponent<Props>);

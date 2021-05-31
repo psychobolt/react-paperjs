@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { defaultMemoize } from 'reselect';
-import * as Paper from 'paper';
+import Paper from 'paper';
 
 import PaperRenderer from './Paper.renderer';
 import { CONSTANTS } from './Paper.types';
@@ -45,7 +45,7 @@ type State = {
   canvasProps?: NestedProps<CanvasProps>
 };
 
-export function getProps(scope: typeof Paper.PaperScope, props: NestedProps<any>) {
+export function getProps(scope: typeof Paper.PaperScope, props: NestedProps<any>): any {
   if (typeof props === 'function') {
     return props(scope);
   }
@@ -57,7 +57,7 @@ const getMergeProps = () => (state, props, scope) => ({
   ...getProps(scope, state),
 });
 
-export default (Container: React.ComponentType<any>) => class PaperProvider
+export default (Container => class PaperProvider
   extends React.Component<Props, State> {
   mergeContainerProps = defaultMemoize(getMergeProps());
 
@@ -76,7 +76,7 @@ export default (Container: React.ComponentType<any>) => class PaperProvider
     this.renderer = new Renderer();
     this.state = {
       paper: this.renderer.createInstance(CONSTANTS.PaperScope, {}, Paper),
-      mergeProps: props.mergeProps
+      mergeProps: props.mergeProps // eslint-disable-line react/no-unused-state
         || (mergeProps => this.setState(state => mergeProps(state, props))),
     };
   }
@@ -100,4 +100,4 @@ export default (Container: React.ComponentType<any>) => class PaperProvider
       </Container>
     );
   }
-};
+}: React.ComponentType<any> => React.AbstractComponent<Props>);

@@ -1,13 +1,13 @@
 // @flow
 import * as React from 'react';
-import typeof { PaperScope } from 'paper';
+import Paper from 'paper';
 
 export type Types = {
-  [type: string]: (props: {}, paper: PaperScope, children?: Node) => Object
+  [type: string]: (props: {}, paper: typeof Paper.PaperScope, children?: Node) => Object
 };
 
 export type Components = {
-  [key: string]: React.ComponentType<any>
+  [key: string]: React.AbstractComponent<any>
 };
 
 const PAPER = {
@@ -43,11 +43,14 @@ const TYPES: Types = {
 
 export default TYPES;
 
-export const components: Components = Object.entries(PAPER).reduce((types, [key, Type]) => ({
-  ...types,
-  // $FlowFixMe
-  [key]: React.forwardRef((props, ref) => <Type ref={ref} {...props} />),
-}), {});
+export const components: Components = Object.entries(PAPER).reduce(
+  (types: Components, [key, Type]) => ({
+    ...types,
+    // $FlowFixMe
+    [key]: React.forwardRef((props, ref) => <Type ref={ref} {...props} />),
+  }),
+  {},
+);
 
 export const {
   Tool,

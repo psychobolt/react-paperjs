@@ -61,18 +61,37 @@ yarn lint:js --fix # attempts to fix js lint issues
 ## Test
 
 ```sh
-yarn test # runs functional/unit tests using Jest
-yarn test --coverage # with coverage
+yarn test # runs functional/unit tests for all packages
 ```
 
-> You can also inspect tests in debug mode within Visual Studio Code.
+> Configurable with .project file, supports the [PACKAGES](#packages) variable. You can also inspect all tests in debug mode within Visual Studio Code.
+
+## Coverage
+
+Coverage will be uploaded to your [codecov](https://codecov.io/) account, individually for packages by using each package's name as a [flag](https://docs.codecov.io/docs/flags). By default, coverage is configured to utilize a configuration from codecov-config branch (for [example](https://github.com/psychobolt/react-rollup-boilerplate/tree/codecov-config)). However, you may opt out that setting and configure codecov.yml in the master branch.
+
+```sh
+yarn codecov # Runs tests and upload coverage for all packages
+```
+
+> Configurable with .project file, supports the [PACKAGES](#packages) variable.
 
 ## Other scripts
 
 ```sh
-yarn build # builds all packages
-yarn build:dev [--environment PACKAGES:<*,package-name>] # builds sources for development, optionally provide environment variable to specify local package(s) e.g. yarn build:dev --environment PACKAGES:default-export,package-* (glob pattern supported)
-yarn build:prod [--environment PACKAGES:<*,package-name>] # builds sources for production
-yarn watch [--environment PACKAGES:<*,package-name>]# watches dev builds
+
+yarn build # builds sources for prod and dev
+yarn build:dev # builds sources for development
+yarn build:prod # builds sources for production
+
+yarn watch # watches dev builds
 yarn dist # builds all packages and publishes to npm
 ```
+
+> Configurable with .project file, supports the [PACKAGES](#packages) variable.
+
+## Environment Variables
+
+### PACKAGES
+
+Some scripts optionally allow the environment variable to specific local packages(s) (in Glob format) for running scripts e.g. ```PACKAGES=default-export,package-* yarn test``` This environment variable will override the .projects config.

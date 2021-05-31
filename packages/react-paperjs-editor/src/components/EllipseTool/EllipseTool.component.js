@@ -1,9 +1,12 @@
 // @flow
 import * as React from 'react';
 import * as ReactPaperJS from '@psychobolt/react-paperjs';
-import typeof { Point, ToolEvent, Tool as ToolType } from 'paper';
+import Paper from 'paper';
 
 import PathTool from '../shared/PathTool';
+
+type ToolType = typeof Paper.Tool;
+type ToolEvent = typeof Paper.ToolEvent;
 
 const { Tool, PaperScope } = ReactPaperJS;
 
@@ -16,7 +19,6 @@ type Props = {
 
 const MOUSE_LEFT_CODE = 0;
 
-// $FlowFixMe
 @PaperScope
 class EllipseTool extends PathTool<Props> {
   static defaultProps = {
@@ -91,7 +93,7 @@ class EllipseTool extends PathTool<Props> {
     onMouseUp(event);
   }
 
-  start: Point;
+  start: typeof Paper.Point;
 
   render() {
     const { innerRef, ...rest } = this.props;
@@ -107,5 +109,6 @@ class EllipseTool extends PathTool<Props> {
   }
 }
 
-export default React
-  .forwardRef<Props, ToolType>((props, ref) => <EllipseTool innerRef={ref} {...props} />);
+export default (React.forwardRef<Props, ToolType>(
+  (props, ref) => <EllipseTool innerRef={ref} {...props} />,
+): React.AbstractComponent<Props>);

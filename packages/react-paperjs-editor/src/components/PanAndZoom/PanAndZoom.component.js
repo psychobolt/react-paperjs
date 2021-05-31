@@ -2,20 +2,26 @@
 import * as React from 'react';
 import * as ReactPaperJS from '@psychobolt/react-paperjs';
 import type { EventHandler } from '@psychobolt/react-paperjs';
-import type { PaperScope as PaperScopeType, KeyEvent, MouseEvent } from 'paper';
+import Paper from 'paper';
 
 const { PaperScope, getProps } = ReactPaperJS;
 
-type Props = {
+type PaperScopeType = typeof Paper.PaperScope;
+type KeyEvent = typeof Paper.KeyEvent;
+
+type DefaultProps = {
   onPanEnabled?: () => any,
   onPanDisabled?: () => any,
   onZoom?: (level: number) => any,
   zoomLevel?: number,
+};
+
+type Props = {
   center: Object | number[],
   paper: PaperScopeType,
   mergeProps: (state: {}, props?: {}) => {},
   children: any,
-};
+} & DefaultProps;
 
 type State = {
   draggable: boolean,
@@ -30,9 +36,8 @@ function callAllHandlers(handlers: EventHandler[] = []) {
   return event => handlers.forEach(handler => handler && handler(event));
 }
 
-// $FlowFixMe
 export default @PaperScope class PanAndScroll extends React.Component<Props, State> {
-  static defaultProps = {
+  static defaultProps: DefaultProps = {
     zoomLevel: 1,
     onPanEnabled: () => {},
     onPanDisabled: () => {},
@@ -74,7 +79,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     });
   }
 
-  onWheel = ({ deltaY }: SyntheticWheelEvent<HTMLCanvasElement>) => {
+  onWheel({ deltaY }: SyntheticWheelEvent<HTMLCanvasElement>) {
     const { onZoom, mergeProps } = this.props;
     mergeProps((state, props) => {
       let { zoom } = state.viewProps;
@@ -104,7 +109,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     });
   }
 
-  onKeyDown = ({ key }: KeyEvent) => {
+  onKeyDown({ key }: KeyEvent) {
     const { draggable } = this.state;
     if (key === 'space' && !draggable) {
       const { onPanEnabled, mergeProps } = this.props;
@@ -121,7 +126,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     }
   }
 
-  onKeyUp = ({ key }: KeyEvent) => {
+  onKeyUp({ key }: KeyEvent) {
     if (key === 'space') {
       const { onPanDisabled, mergeProps } = this.props;
       mergeProps((state, props) => ({
@@ -137,7 +142,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     }
   }
 
-  onMouseDown = ({ point }: MouseEvent) => {
+  onMouseDown({ point }: KeyEvent) {
     const { draggable, dragStart } = this.state;
     if (draggable && !dragStart) {
       const { mergeProps } = this.props;
@@ -153,7 +158,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     }
   }
 
-  onMouseUp = () => {
+  onMouseUp() {
     const { dragStart, draggable } = this.state;
     if (dragStart) {
       if (draggable) {
@@ -171,7 +176,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     }
   }
 
-  onMouseDrag = ({ point }: MouseEvent) => {
+  onMouseDrag({ point }: KeyEvent) {
     const { mergeProps, paper } = this.props;
     const { draggable, dragStart } = this.state;
     mergeProps((state, props) => {
@@ -194,7 +199,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     }
   }
 
-  render() {
+  render(): React.Node {
     const { children } = this.props;
     return children;
   }

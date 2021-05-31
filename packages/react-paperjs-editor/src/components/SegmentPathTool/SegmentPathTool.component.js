@@ -1,23 +1,24 @@
 // @flow
 import * as React from 'react';
 import * as ReactPaperJS from '@psychobolt/react-paperjs';
-import typeof { ToolEvent, Tool as ToolType } from 'paper';
+import Paper from 'paper';
 
 import PathTool from '../shared/PathTool';
 
 const { Tool, PaperScope } = ReactPaperJS;
+
+type ToolEvent = typeof Paper.ToolEvent;
 
 type Props = {
   pathProps: {
     strokeColor: string,
   },
   pathData: string,
-  innerRef: React.Ref<ToolType>
+  innerRef: React.Ref<ToolEvent>
 };
 
 const MOUSE_LEFT_CODE = 0;
 
-// $FlowFixMe
 @PaperScope
 class SegmentPathTool extends PathTool<Props> {
   static defaultProps = {
@@ -101,5 +102,6 @@ class SegmentPathTool extends PathTool<Props> {
   }
 }
 
-export default React
-  .forwardRef<Props, ToolType>((props, ref) => <SegmentPathTool innerRef={ref} {...props} />);
+export default (React.forwardRef<Props, typeof Paper.Tool>(
+  (props, ref) => <SegmentPathTool innerRef={ref} {...props} />,
+): React.AbstractComponent<Props>);

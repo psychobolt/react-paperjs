@@ -1,9 +1,9 @@
 // @flow
-import typeof { Path } from 'paper';
+import Paper from 'paper';
 
 import type { MouseEventHandler } from '@psychobolt/react-paperjs';
 
-type PathEventHandler = (path: Path) => any;
+type PathEventHandler = (path: typeof Paper.Path) => any;
 
 export type ToolDefaultProps = {
   onMouseDown: MouseEventHandler,

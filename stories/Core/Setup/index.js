@@ -1,12 +1,22 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import Resizable from './Resizable';
 
-storiesOf('Core/Setup', module)
-  .add('with Resize', () => (
-    <div>
-      <div>Drag borders to resize canvas.</div>
-      <Resizable />
-    </div>
-  ));
+export default {
+  title: 'Core/Setup',
+};
+
+export const DynamicContainer = () => (
+  <>
+    <div>Drag borders to resize the canvas.</div>
+    <Resizable />
+  </>
+);
+
+DynamicContainer.parameters = {
+  docs: {
+    source: {
+      code: require('!!raw-loader!./Resizable/Resizable.component').default, // eslint-disable-line global-require
+    },
+  },
+};

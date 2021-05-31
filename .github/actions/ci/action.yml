@@ -1,0 +1,19 @@
+name: Continuous Integration
+description: Runs linting, code coverage, and dry build
+runs:
+  using: "composite"
+  steps:
+    - run: yarn bootstrap
+      shell: bash
+    - run: yarn lint
+      shell: bash
+    - run: yarn flow-typed-install
+      shell: bash
+    - run: yarn flow
+      shell: bash
+    - run: yarn codecov
+      shell: bash
+    - run: yarn build
+      shell: bash
+    - run: yarn build-storybook
+      shell: bash
