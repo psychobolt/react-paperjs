@@ -9,10 +9,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
-    "@psychobolt/react-paperjs": "^0.0.58"
-  },
-  "peerDependencies": {
-    "@psychobolt/react-paperjs": "^0.0.58"
+  "dependencies": {
+    "@psychobolt/react-paperjs": "^1.0.1"
   }
 }
