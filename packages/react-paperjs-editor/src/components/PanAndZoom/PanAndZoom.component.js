@@ -79,7 +79,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     });
   }
 
-  onWheel({ deltaY }: SyntheticWheelEvent<HTMLCanvasElement>) {
+  onWheel: SyntheticWheelEvent<HTMLCanvasElement> => void = ({ deltaY }) => {
     const { onZoom, mergeProps } = this.props;
     mergeProps((state, props) => {
       let { zoom } = state.viewProps;
@@ -109,7 +109,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     });
   }
 
-  onKeyDown({ key }: KeyEvent) {
+  onKeyDown: KeyEvent => void = ({ key }) => {
     const { draggable } = this.state;
     if (key === 'space' && !draggable) {
       const { onPanEnabled, mergeProps } = this.props;
@@ -126,7 +126,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     }
   }
 
-  onKeyUp({ key }: KeyEvent) {
+  onKeyUp: KeyEvent => void = ({ key }) => {
     if (key === 'space') {
       const { onPanDisabled, mergeProps } = this.props;
       mergeProps((state, props) => ({
@@ -142,7 +142,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     }
   }
 
-  onMouseDown({ point }: KeyEvent) {
+  onMouseDown: KeyEvent => void = ({ point }) => {
     const { draggable, dragStart } = this.state;
     if (draggable && !dragStart) {
       const { mergeProps } = this.props;
@@ -158,7 +158,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     }
   }
 
-  onMouseUp() {
+  onMouseUp: () => void = () => {
     const { dragStart, draggable } = this.state;
     if (dragStart) {
       if (draggable) {
@@ -176,7 +176,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     }
   }
 
-  onMouseDrag({ point }: KeyEvent) {
+  onMouseDrag: KeyEvent => void = ({ point }) => {
     const { mergeProps, paper } = this.props;
     const { draggable, dragStart } = this.state;
     mergeProps((state, props) => {
