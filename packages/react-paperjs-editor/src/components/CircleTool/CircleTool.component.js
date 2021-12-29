@@ -1,9 +1,12 @@
 // @flow
 import * as React from 'react';
 import * as ReactPaperJS from '@psychobolt/react-paperjs';
-import typeof { ToolEvent, Tool as ToolType } from 'paper';
+import Paper from 'paper';
 
 import PathTool from '../shared/PathTool';
+
+type ToolType = typeof Paper.Tool;
+type ToolEvent = typeof Paper.ToolEvent;
 
 const { Tool, PaperScope } = ReactPaperJS;
 
@@ -17,7 +20,6 @@ type Props = {
 
 const MOUSE_LEFT_CODE = 0;
 
-// $FlowFixMe
 @PaperScope
 class CircleTool extends PathTool<Props> {
   static defaultProps = {
@@ -48,7 +50,10 @@ class CircleTool extends PathTool<Props> {
     const { onMouseDrag } = this.props;
     if (toolEvent.event.buttons === 1) {
       const { path } = this;
-      path.scale(toolEvent.point.getDistance(path.position) / (path.bounds.width / 2));
+      const scale = Math.abs(toolEvent.point.getDistance(path.position) / (path.bounds.width / 2));
+      if (scale > 0.1) {
+        path.scale(scale);
+      }
     }
     onMouseDrag(toolEvent);
   }
@@ -81,4 +86,6 @@ class CircleTool extends PathTool<Props> {
   }
 }
 
-export default React.forwardRef((props, ref) => <CircleTool innerRef={ref} {...props} />);
+export default (React.forwardRef<Props, ToolType>(
+  (props, ref) => <CircleTool innerRef={ref} {...props} />,
+): React.AbstractComponent<Props>);

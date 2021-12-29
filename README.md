@@ -1,8 +1,7 @@
 # React Paper.js
 
-[![Stability](https://img.shields.io/badge/Stability-Experimental-Orange.svg)](https://nodejs.org/api/documentation.html#documentation_stability_index)
 [![npm](https://img.shields.io/npm/v/@psychobolt/react-paperjs.svg)](https://www.npmjs.com/package/@psychobolt/react-paperjs)
-[![Build Status](https://travis-ci.org/psychobolt/react-paperjs.svg?branch=master)](https://travis-ci.org/psychobolt/react-paperjs)
+[![Build Status](https://travis-ci.com/psychobolt/react-paperjs.svg?branch=master)](https://travis-ci.com/psychobolt/react-paperjs)
 [![codecov](https://codecov.io/gh/psychobolt/react-paperjs/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-paperjs)
 
 [![Dependencies Status](https://david-dm.org/psychobolt/react-paperjs.svg)](https://david-dm.org/psychobolt/react-paperjs)
@@ -13,7 +12,7 @@ React fiber renderer and component container for [Paper.js](http://paperjs.org/)
 
 ## Install
 
-> Recommended: Paper 0.12.x, React, React DOM 16.x.
+> Recommended: Paper 0.12.x, React, React DOM 17.x.
 
 ```sh
 npm install --save @psychobolt/react-paperjs
@@ -101,20 +100,23 @@ A mapping of types with their instance factory method. __This should not be muta
 import React from 'React';
 import { PaperContainer, PaperRenderer } from '@psychobolt/react-paperjs'
 
-import MyCustomStencil from './MyCustomStencil';
+import MyCustomStencil, { TYPE_NAME as MyCustomStencilComponent } from './MyCustomStencil';
 
 class MyPaperRenderer extends PaperRenderer {
   getInstanceFactory() {
     return { 
-      ...this.defaultTypes,
-      [MyCustomStencil.TYPE_NAME]: (props, paper) => new MyCustomStencil(props),
+      ...this.defaultTypes, /* 
+        refer to default types
+        see https://github.com/psychobolt/react-paperjs/blob/master/src/Paper.types.js#L42 
+      */
+      [MyCustomStencilComponent]: (props, paper) => new MyCustomStencil(props),
     };
   }
 }
 
 const App = (props) => (
    <PaperContainer renderer={MyPaperRenderer}>
-     <MyCustomStencil>
+     <MyCustomStencilComponent />
    </PaperContainer>
 );
 
@@ -159,3 +161,7 @@ export default class Scene {
 ## Extensions
 
 If you're interested in editor components for React Paper JS, you can checkout another [library](https://www.npmjs.com/package/@psychobolt/react-paperjs-editor) that's work in progress.
+
+## Development Guide
+
+Please see [DEVELOPMENT.md](DEVELOPMENT.md)

@@ -1,21 +1,27 @@
 // @flow
 import * as React from 'react';
 import * as ReactPaperJS from '@psychobolt/react-paperjs';
-import type { Paper, EventHandler } from '@psychobolt/react-paperjs';
-import type { KeyEvent, MouseEvent } from 'paper';
+import type { EventHandler } from '@psychobolt/react-paperjs';
+import Paper from 'paper';
 
 const { PaperScope, getProps } = ReactPaperJS;
 
-type Props = {
+type PaperScopeType = typeof Paper.PaperScope;
+type KeyEvent = typeof Paper.KeyEvent;
+
+type DefaultProps = {
   onPanEnabled?: () => any,
   onPanDisabled?: () => any,
   onZoom?: (level: number) => any,
   zoomLevel?: number,
+};
+
+type Props = {
   center: Object | number[],
-  paper: Paper,
+  paper: PaperScopeType,
   mergeProps: (state: {}, props?: {}) => {},
   children: any,
-};
+} & DefaultProps;
 
 type State = {
   draggable: boolean,
@@ -31,7 +37,7 @@ function callAllHandlers(handlers: EventHandler[] = []) {
 }
 
 export default @PaperScope class PanAndScroll extends React.Component<Props, State> {
-  static defaultProps = {
+  static defaultProps: DefaultProps = {
     zoomLevel: 1,
     onPanEnabled: () => {},
     onPanDisabled: () => {},
@@ -73,13 +79,13 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     });
   }
 
-  onWheel = ({ deltaY }: SyntheticWheelEvent<HTMLCanvasElement>) => {
+  onWheel: SyntheticWheelEvent<HTMLCanvasElement> => void = ({ deltaY }) => {
     const { onZoom, mergeProps } = this.props;
     mergeProps((state, props) => {
       let { zoom } = state.viewProps;
       if (deltaY < 0) {
         zoom = add(zoom, 0.1);
-        onZoom(zoom);
+        if (onZoom) onZoom(zoom);
         return {
           viewProps: {
             ...props.viewProps,
@@ -90,7 +96,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
       }
       if (deltaY > 0 && zoom > 0.1) {
         zoom = add(zoom, -0.1);
-        onZoom(zoom);
+        if (onZoom) onZoom(zoom);
         return {
           viewProps: {
             ...props.viewProps,
@@ -103,7 +109,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     });
   }
 
-  onKeyDown = ({ key }: KeyEvent) => {
+  onKeyDown: KeyEvent => void = ({ key }) => {
     const { draggable } = this.state;
     if (key === 'space' && !draggable) {
       const { onPanEnabled, mergeProps } = this.props;
@@ -116,11 +122,11 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
         },
       }));
       this.setState({ draggable: true });
-      onPanEnabled();
+      if (onPanEnabled) onPanEnabled();
     }
   }
 
-  onKeyUp = ({ key }: KeyEvent) => {
+  onKeyUp: KeyEvent => void = ({ key }) => {
     if (key === 'space') {
       const { onPanDisabled, mergeProps } = this.props;
       mergeProps((state, props) => ({
@@ -132,11 +138,11 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
         },
       }));
       this.setState({ draggable: false });
-      onPanDisabled();
+      if (onPanDisabled) onPanDisabled();
     }
   }
 
-  onMouseDown = ({ point }: MouseEvent) => {
+  onMouseDown: KeyEvent => void = ({ point }) => {
     const { draggable, dragStart } = this.state;
     if (draggable && !dragStart) {
       const { mergeProps } = this.props;
@@ -152,7 +158,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     }
   }
 
-  onMouseUp = () => {
+  onMouseUp: () => void = () => {
     const { dragStart, draggable } = this.state;
     if (dragStart) {
       if (draggable) {
@@ -170,7 +176,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     }
   }
 
-  onMouseDrag = ({ point }: MouseEvent) => {
+  onMouseDrag: KeyEvent => void = ({ point }) => {
     const { mergeProps, paper } = this.props;
     const { draggable, dragStart } = this.state;
     mergeProps((state, props) => {
@@ -193,7 +199,7 @@ export default @PaperScope class PanAndScroll extends React.Component<Props, Sta
     }
   }
 
-  render() {
+  render(): React.Node {
     const { children } = this.props;
     return children;
   }

@@ -1,8 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import { PaperContainer, Layer, Circle, renderWithPaperScope } from '@psychobolt/react-paperjs';
-
 import { Grid, PanAndZoom } from '@psychobolt/react-paperjs-editor';
+import styled from 'styled-components';
 
 import * as styles from './PanAndZoom.style';
 import { ref } from '../../shared';

@@ -1,1 +1,1 @@
-import './react-paperjs-editor';
+module.exports['react-paperjs-editor'] = require('./react-paperjs-editor');

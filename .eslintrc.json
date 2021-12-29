@@ -9,13 +9,17 @@
     "plugins": ["flowtype", "jest"],
     "rules": {
         "import/no-extraneous-dependencies": 0,
+        "import/no-webpack-loader-syntax": 0,
         "no-confusing-arrow": ["error", {"allowParens": true}],
         "arrow-parens": ["error", "as-needed"],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-props-no-spreading": 0,
+        "react/static-property-placement": [1, "static public field"],
         "react/no-multi-comp": 0,
         "import/prefer-default-export": 0,
         "object-curly-newline": ["error", { "consistent": true }],
-        "no-bitwise": ["error", { "int32Hint": true }]
+        "no-bitwise": ["error", { "int32Hint": true }],
+        "no-mixed-operators": 0
     },
     "env": {
         "jest/globals": true,
@@ -24,9 +28,8 @@
     "settings": {
         "import/resolver": {
             "babel-module": {
-                "alias": {
-                    "@psychobolt/react-paperjs": "./src/index.js"
-                }
+                "root": ["./"],
+                "cwd": "./"
             }
         }
     }

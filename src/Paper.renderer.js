@@ -1,8 +1,8 @@
 // @flow
 import Reconciler from 'react-reconciler';
-import { Layer, Group, Item, TextItem, Tool } from 'paper';
+import Paper from 'paper';
 
-import TYPES, { type Types, type Paper } from './Paper.types';
+import TYPES, { type Types } from './Paper.types';
 import { diffProps, updateProps } from './Paper.component';
 
 type Props = {
@@ -10,10 +10,10 @@ type Props = {
   children?: any,
 };
 
-type CreateInstance = (type: string, props: Props, paper: Paper) => any;
+type CreateInstance = (type: string, props: Props, paper: typeof Paper.PaperScope) => any;
 
 export function getTypes(instanceFactory: Types): CreateInstance {
-  return (type: string, { children, pathData, ...rest }: Props, paper: Paper) => {
+  return (type: string, { children, pathData, ...rest }: Props, paper: typeof Paper.PaperScope) => {
     const TYPE = instanceFactory[type];
     let instance;
     if (TYPE) {
@@ -26,7 +26,7 @@ export function getTypes(instanceFactory: Types): CreateInstance {
   };
 }
 
-const createInstance = getTypes(TYPES);
+const createInstance: CreateInstance = getTypes(TYPES);
 
 type HostContext = {};
 
@@ -34,28 +34,30 @@ type Instance = Object;
 
 type Fiber = {};
 
+type PaperScope = typeof Paper.PaperScope;
+
 /* eslint-disable no-console, no-unused-vars */
 const defaultHostConfig = {
-  getRootHostContext(paper: Paper) {
+  getRootHostContext(paper: PaperScope): PaperScope {
     return paper;
   },
-  getChildHostContext(parentHostContext: HostContext, type: string, instance: Instance) {
+  getChildHostContext(parentHostContext: HostContext, type: string, instance: Instance): any {
     return {};
   },
-  getPublicInstance(instance: Instance) {
+  getPublicInstance(instance: Instance): Instance {
     return instance;
   },
   createInstance,
   appendInitialChild(parent: Instance, child: Instance) {
-    if (parent instanceof Group && child instanceof Item) {
+    if (parent instanceof Paper.Group && child instanceof Paper.Item) {
       parent.addChild(child);
-    } else if (parent instanceof TextItem && typeof child === 'string') {
+    } else if (parent instanceof Paper.TextItem && typeof child === 'string') {
       Object.assign(parent, { content: child });
     } else {
       // console.log('ignore append initial child');
     }
   },
-  finalizeInitialChildren(instance: Instance, type: string, props: Props) {
+  finalizeInitialChildren(instance: Instance, type: string, props: Props): boolean {
     return true;
   },
   commitMount(instance: Instance, type: string, newProps: Props, internalInstanceHandle: Fiber) {
@@ -66,29 +68,37 @@ const defaultHostConfig = {
     type: string,
     oldProps: Props,
     newProps: Props,
-    paper: Paper,
+    paper: PaperScope,
     hostContext: HostContext,
-  ) {
+  ): any[] {
     return diffProps(oldProps, newProps);
   },
-  shouldSetTextContent(type: string, props: Props) {
+  shouldSetTextContent(type: string, props: Props): boolean {
     const { children } = props;
     return typeof children === 'string';
   },
-  shouldDeprioritizeSubtree(type: string, props: Props) {
+  shouldDeprioritizeSubtree(type: string, props: Props): boolean {
     return false;
   },
   createTextInstance(
     text: string,
-    paper: Paper,
+    paper: PaperScope,
     hostContext: HostContext,
     internalInstanceHandle: Fiber,
-  ) {
+  ): string {
     return text;
   },
-  scheduleDeferredCallback: window.requestIdleCallback,
-  prepareForCommit() {
-    // console.log('ignore prepare for commit');
+  scheduleDeferredCallback:
+    (typeof window !== 'undefined'
+      ? window.requestIdleCallback
+      : function dummyRequestIdleCallback(callback, options) {
+        setTimeout(callback, options.timeout);
+      }: any | ((callback: () => any, options?: any) => void)),
+  prepareForCommit(): any {
+    return null;
+  },
+  clearContainer(container: PaperScope) {
+    // console.log('ignore clear container');
   },
   resetAfterCommit() {
     // console.log('ignore reset for commit');
@@ -112,22 +122,22 @@ const defaultHostConfig = {
     // console.log('ignore reset text content');
   },
   appendChild(parent: Instance, child: Instance) {
-    if (parent instanceof Group && child instanceof Item) {
+    if (parent instanceof Paper.Group && child instanceof Paper.Item) {
       parent.addChild(child);
     } else {
       // console.log('ignore append child', parent, child);
     }
   },
-  appendChildToContainer(container: Paper, child: Instance) {
-    if (child instanceof Item) {
+  appendChildToContainer(container: PaperScope, child: Instance) {
+    if (child instanceof Paper.Item) {
       const { project } = container;
       const { $$default, $$metadata } = project.layers;
-      if (child instanceof Layer) {
+      if (child instanceof Paper.Layer) {
         child.insertBelow($$metadata);
       } else {
         child.addTo($$default);
       }
-    } else if (child instanceof Tool) {
+    } else if (child instanceof Paper.Tool) {
       child.activate();
     } else {
       // console.log('ignore append child to container', child);
@@ -136,15 +146,15 @@ const defaultHostConfig = {
   insertBefore(parent: Instance, child: Instance, beforeChild: Instance) {
     // console.log('ignore insert before child', parent, child, beforeChild);
   },
-  insertInContainerBefore(container: Paper, child: Instance, beforeChild: Instance) {
+  insertInContainerBefore(container: PaperScope, child: Instance, beforeChild: Instance) {
     const { $$default, $$metadata } = container.project.layers;
-    if (child instanceof Layer && beforeChild instanceof Layer) {
+    if (child instanceof Paper.Layer && beforeChild instanceof Paper.Layer) {
       child.insertBelow(beforeChild);
-    } else if (child instanceof Layer) {
+    } else if (child instanceof Paper.Layer) {
       child.insertBelow($$metadata);
-    } else if (child instanceof Item && beforeChild instanceof Layer) {
+    } else if (child instanceof Paper.Item && beforeChild instanceof Paper.Layer) {
       child.addTo($$default);
-    } else if (child instanceof Item && beforeChild instanceof Item) {
+    } else if (child instanceof Paper.Item && beforeChild instanceof Paper.Item) {
       child.insertBelow(beforeChild);
     } else {
       // console.log('ignore insert in container before child', child, beforeChild);
@@ -153,7 +163,7 @@ const defaultHostConfig = {
   removeChild(parent: Instance, child: Instance) {
     child.remove();
   },
-  removeChildFromContainer(container: Paper, child: Instance) {
+  removeChildFromContainer(container: PaperScope, child: Instance) {
     if (child instanceof Object) {
       child.remove();
     }
@@ -162,14 +172,13 @@ const defaultHostConfig = {
 /* eslint-enable no-console, no-unused-vars */
 
 export default class PaperRenderer {
-  defaultHostConfig = defaultHostConfig;
+  defaultHostConfig: typeof defaultHostConfig = defaultHostConfig;
 
-  defaultTypes = TYPES;
+  defaultTypes: Types = TYPES;
 
   reconciler: any;
 
   createInstance: CreateInstance;
-
 
   constructor() {
     const instanceFactory = this.getInstanceFactory();
@@ -190,11 +199,11 @@ export default class PaperRenderer {
     this.reconciler = Reconciler(hostConfig);
   }
 
-  getInstanceFactory() {
+  getInstanceFactory(): Types {
     return this.defaultTypes;
   }
 
-  getHostConfig() {
+  getHostConfig(): typeof defaultHostConfig {
     return this.defaultHostConfig;
   }
 }

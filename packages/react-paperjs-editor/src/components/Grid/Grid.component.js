@@ -1,8 +1,11 @@
 // @flow
 import * as React from 'react';
 import * as ReactPaperJS from '@psychobolt/react-paperjs';
+import Paper from 'paper';
 
 const { Layer, Group, Line } = ReactPaperJS;
+
+type LayerType = typeof Paper.Layer;
 
 type Props = {
   top: number,
@@ -14,7 +17,7 @@ type Props = {
   cellSize: number,
   strokeColor: string,
   strokeWidth: number,
-  innerRef: React.Ref<typeof Layer>
+  innerRef: React.Ref<LayerType>
 };
 
 const Grid = ({ width, height, top = 0, left = 0, right = left + width, bottom = top + height, cellSize = 50, strokeColor = '#D0D0D0', strokeWidth = 1, innerRef }: Props) => {
@@ -56,4 +59,6 @@ const Grid = ({ width, height, top = 0, left = 0, right = left + width, bottom =
   );
 };
 
-export default React.forwardRef((props, ref) => <Grid innerRef={ref} {...props} />);
+export default (React.forwardRef<Props, LayerType>(
+  (props, ref) => <Grid innerRef={ref} {...props} />,
+): React.AbstractComponent<Props>);

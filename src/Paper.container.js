@@ -1,22 +1,21 @@
 // @flow
 import * as React from 'react';
+import Paper from 'paper';
 
 import PaperRenderer from './Paper.renderer';
 import PaperProvider, { type Props as ProviderProps } from './Paper.provider'; // eslint-disable-line no-unused-vars
-import { type Paper, CONSTANTS } from './Paper.types';
+import { CONSTANTS } from './Paper.types';
 
-/* eslint-disable no-use-before-define */
+type PaperScope = typeof Paper.PaperScope;
 
 type Props = {
-  paper: Paper,
+  paper: PaperScope,
   renderer: PaperRenderer,
   canvasProps: {},
   viewProps: {},
-  onMount?: (paper: Paper) => void,
+  onMount?: PaperScope => void,
   className: string,
 } & ProviderProps;
-
-/* eslint-enable no-use-before-define */
 
 // $FlowFixMe
 @PaperProvider
@@ -73,9 +72,10 @@ class PaperContainer extends React.Component<Props> {
 
   render() {
     const { className, canvasProps } = this.props;
-    return <canvas className={className} {...canvasProps} ref={this.canvas} />;
+    return <canvas {...canvasProps} className={className} ref={this.canvas} />;
   }
 }
 
-// $FlowFixMe
-export default React.forwardRef((props, ref) => <PaperContainer {...props} innerRef={ref} />);
+export default (React.forwardRef(
+  (props: any, ref) => <PaperContainer {...props} innerRef={ref} />,
+): React.AbstractComponent<Props | {}>);

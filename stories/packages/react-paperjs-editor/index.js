@@ -1,2 +1,4 @@
-import './Setup';
-import './Tool';
+module.exports = [
+  './Setup/index',
+  './Tool/index',
+];

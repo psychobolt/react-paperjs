@@ -1,18 +1,21 @@
+import fs from 'fs';
+
+import config from 'shared/jest.config';
+
+import { projectList } from './project-list';
+import pkg from './package.json';
+
 module.exports = {
-  setupFiles: [
-    './test-config.js',
+  ...config,
+  projects: projectList.reduce((paths, { location }) => {
+    const configPath = `${location}/jest.config.js`;
+    return fs.existsSync(configPath) ? [...paths, configPath] : paths;
+  }, []),
+
+  // root config
+  displayName: pkg.name,
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/packages/',
   ],
-  collectCoverageFrom: [
-    '(src|packages)/**/*.js',
-    '!**/(index|*.stories|stories).js',
-    '!**/dist/**/*',
-    '!packages/react-cache/**/*',
-  ],
-  snapshotSerializers: [
-    'enzyme-to-json/serializer',
-  ],
-  moduleNameMapper: {
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/__mocks__/file.mock.js',
-    '\\.(css|less)$': '<rootDir>/__mocks__/style.mock.js',
-  },
 };

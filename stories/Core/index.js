@@ -1,5 +1,9 @@
-import './Setup';
-import './Layer';
-import './Path';
-import './Text';
-import './Tool';
+module.exports.Setup = [
+  './index.js',
+];
+
+module.exports.Examples = [
+  './index.js',
+  './Tool/index.js',
+  './Path/index.js',
+];

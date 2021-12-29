@@ -76,3 +76,6 @@ package-lock.json
 
 # Cache files
 .cache
+
+# Node Version Manager
+.nvmrc

@@ -1,3 +1,12 @@
+const { projectList } = require('./project-list');
+
+const aliases = process.env.BABEL_ENV === 'rollup'
+  ? {}
+  : projectList.reduce((projectAliases, { name, location }) => ({
+    ...projectAliases,
+    [name]: `${location}/${process.env.BABEL_ENV === 'test' ? 'src' : 'dist'}`,
+  }), {});
+
 module.exports = {
   presets: [
     [
@@ -33,12 +42,24 @@ module.exports = {
         loose: true,
       },
     ],
+    [
+      '@babel/plugin-proposal-private-methods',
+      {
+        loose: true,
+      },
+    ],
+    [
+      '@babel/plugin-proposal-private-property-in-object',
+      {
+        loose: true,
+      },
+    ],
     '@babel/plugin-proposal-json-strings',
     // Custom
     [
       'lodash',
       {
-        id: ['lodash', 'recompose'],
+        id: ['lodash'],
       },
     ],
     [
@@ -47,7 +68,7 @@ module.exports = {
         root: ['./'],
         cwd: './',
         alias: {
-          '^@psychobolt/(?!react-paperjs$)(.+)': './packages/\\1',
+          ...aliases,
           'react-cache': './packages/react-cache', // See: https://github.com/facebook/react/issues/14780#issuecomment-461861948
         },
       },
@@ -55,6 +76,11 @@ module.exports = {
     'babel-plugin-styled-components',
   ],
   env: {
+    commonjs: {
+      plugins: [
+        '@babel/plugin-transform-modules-commonjs',
+      ],
+    },
     test: {
       plugins: [
         '@babel/plugin-transform-modules-commonjs',

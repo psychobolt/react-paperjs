@@ -1,0 +1,23 @@
+codecov:
+  strict_yaml_branch: master
+
+coverage:
+  status:
+    project:
+      default:
+        target: auto
+      react-paperjs:
+        target: auto
+        flags:
+          - react-paperjs
+      react-paperjs-editor:
+        target: auto
+        flags:
+          - react-paperjs-editor
+  flags:
+    react-paperjs:
+      paths:
+        - src/
+    react-paperjs-editor:
+      paths:
+        - packages/react-paperjs-editor/
