@@ -10,6 +10,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@psychobolt/react-paperjs": "^1.0.2"
+    "@psychobolt/react-paperjs": "^1.0.3"
   }
 }
